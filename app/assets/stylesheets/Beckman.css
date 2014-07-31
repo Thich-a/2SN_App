@@ -1,0 +1,83 @@
+/* ------------------------------- User_widget ------------------------------- */
+/* main size of widget */
+.user_widget {
+  width: 180px;
+  padding: 0px;
+  background-color: #464646;
+}
+
+/* body for user_widget */
+.user_widget_body {
+  height: 170px;
+}
+
+/* photo for user_widget */
+.user_widget_photo {
+  margin-top: 10px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #7f8c8d;
+  height: 80px;
+  width: 80px;
+  background: url();
+  background-repeat: no-repeat;
+
+}
+
+/* Username user_widget */
+.user_widget_info>h5 {
+  font-size: 12px;
+  color: #bdc3c7;
+}
+
+/* complementary text user_widget */
+.user_widget_info {
+  font-size: 10px;
+  color: #7f8c8d;
+}
+
+/* colors over user_widget button */
+.user_widget_colors>div {
+  height: 3px;
+  width: 60px;
+  float: left;
+  margin-left: 15px;
+  margin-right: -15px;
+}
+.red {
+  background-color: #D76817;
+}
+.blue {
+  background-color: #00A6B6;
+}
+.green {
+  background-color: #00D2A5;
+}
+
+/* all buttons on same line */
+.user_widget_buttons>ul {
+  padding: 0px;
+}
+
+/* hover on buttons user_widget */
+.user_widget_buttons li:hover {
+background-color: #DADADA;
+}
+
+/* button styling user_widget */
+.user_widget_buttons>ul>li {
+  float: left;
+  margin-left: 15px;
+  margin-right: -15px;
+  width: 60px;
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.user_widget_buttons>ul>li>a {
+ text-decoration: none;
+ color: #fff;
+ font-size: 10px;
+}
