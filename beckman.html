@@ -9,35 +9,74 @@
   <script src="app/assets/javascripts/bootstrap.min.js"></script>
 </head>
 <body>
-  <!-- USER_WIDGET -->
-  <div class="container user_widget">
-    <div class="user_widget_body">
-      <center>
-        <div class="user_widget_photo"></div>
-        <div class="user_widget_info">
-          <h5>USERNAME</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-        </div><!-- close user_widget_info -->
-      </center>
-    </div>
-    <div class="row user_widget_colors">
-      <div class="color blue"></div>
-      <div class="color red"></div>
-      <div class="color green"></div>
-    </div><!-- close user_widget_colors -->
-    <div class="row user_widget_buttons">
-      <ul>
-        <li><a href=""><i class="glyphicon glyphicon-envelope"></i></a></li>
-        <li><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></li>
-        <li><a href=""><i class="glyphicon glyphicon-user"></i></a></li>
-      </ul>
-    </div><!-- close user_widget_buttons -->
-  </div><!-- close user_widget -->
-<!--  -->
+  <div class"container">
 
-  <!-- USER_GAME_SESSIONS -->
-  <div class="container user_game_sessions">
+      <!-- USER_WIDGET -->
+      <div class="user_widget">
+        <div class="row user_widget_body">
+            <div class="col-md-12 user_widget_photo">
+              <img src="app/assets/img/anon_user.png" class="img-circle">
+            </div>
 
-  </div><!-- close user_game_sessions -->
+            <div class="col-md-12 user_widget_info">
+              <h5>USERNAME</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+            </div><!-- close user_widget_info -->
+        </div>
+        <div class="row user_widget_colors">
+          <div class="blue"></div>
+          <div class="red"></div>
+          <div class="green"></div>
+        </div><!-- close user_widget_colors -->
+        <div class="row user_widget_buttons">
+          <div class="col-sm-4"><a href=""><i class="glyphicon glyphicon-envelope"></i></a></div>
+          <div class="col-sm-4"><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></div>
+          <div class="col-sm-4"><a href=""><i class="glyphicon glyphicon-user"></i></a></div>
+        </div><!-- close user_widget_buttons -->
+      </div><!-- close user_widget -->
+
+      <br>
+
+      <!-- USER_GAME_SESSIONS -->
+      <div class="game_sessions_widget">
+        <div class="row gsw_menu">
+          <div class="col-sm-4"><a href=""><i class="glyphicon glyphicon-envelope"></i></a></div>
+          <div class="col-sm-8"><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></div>
+        </div><!-- close gsw_menu -->
+        <div class="row gsw_game">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-7">
+            <h6>Game 1</h6>
+            <center>
+              <p>Beckman rolled 11. critical hit</p>
+              <p>started 12 october 1997</p>
+          </center>
+          </div>
+          <div class="col-xs-2">
+            <div class="gsw_status green"></div>
+          </div>
+        </div><!-- close gsw_game -->
+        <div class="row gsw_game">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-7">
+            <h6>Game 2</h6>
+            <center>
+              <p>Your turn Citron !</p>
+              <p>started 03 july 2007</p>
+          </center>
+          </div>
+          <div class="col-xs-2">
+            <div class="gsw_status red"></div>
+          </div>
+        </div><!-- close gsw_game -->
+      </div><!-- close game_sessions_widget -->
+
+
+  </div>
+
 </body>
 </html>

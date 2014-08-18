@@ -1,51 +1,3 @@
-/* ------------------------------- User_widget ------------------------------- */
-/* main size of widget */
-.user_widget {
-  width: 210px;
-  padding: 0px;
-  background-color: #464646;
-}
-
-/* body for user_widget */
-.user_widget_body {
-  height: 210px;
-}
-
-/* photo for user_widget */
-.user_widget_photo {
-  margin-top: 30px;
-  border-radius: 50px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #7f8c8d;
-  height: 80px;
-  width: 80px;
-  background: url();
-  background-repeat: no-repeat;
-
-}
-
-/* Username user_widget */
-.user_widget_info>h5 {
-  font-size: 12px;
-  color: #bdc3c7;
-  margin-top: 40px;
-}
-
-/* complementary text user_widget */
-.user_widget_info {
-  font-size: 10px;
-  color: #7f8c8d;
-}
-
-/* colors over user_widget button */
-.user_widget_colors>div {
-  height: 3px;
-  width: 70px;
-  float: left;
-  margin-left: 15px;
-  margin-right: -15px;
-}
 .red {
   background-color: #D76817;
 }
@@ -56,29 +8,150 @@
   background-color: #00D2A5;
 }
 
-/* all buttons on same line */
-.user_widget_buttons>ul {
-  padding: 0px;
+/* ------------------------------- User_widget ------------------------------- */
+
+/* main size of widget */
+.user_widget {
+  width: 210px;
+  background-color: #464646;
 }
 
-/* hover on buttons user_widget */
-.user_widget_buttons li:hover {
-background-color: #DADADA;
+/* body for user_widget */
+.user_widget_body {
+  height: 210px;
+  margin-bottom: 10px;
 }
 
-/* button styling user_widget */
-.user_widget_buttons>ul>li {
+/* photo for user_widget */
+.user_widget_photo img {
+  margin: 30px 65px;
+  margin-bottom: 0px;
+  height: 80px;
+  width: 80px;
+}
+
+.user_widget_info {
+  margin: 0px auto;
+  text-align: center;
+  font-size: 10px;
+  color: #7f8c8d;
+}
+
+/* Username user_widget */
+.user_widget_info>h5 {
+  font-size: 12px;
+  color: #bdc3c7;
+  margin-top: 40px;
+}
+
+/* colors over user_widget button */
+.user_widget_colors>div {
+  height: 3px;
+  width: 70px;
   float: left;
   margin-left: 15px;
   margin-right: -15px;
-  width: 70px;
-  height: 30px;
-  padding-top: 10px;
-  padding-left: 25px;
 }
 
-.user_widget_buttons>ul>li>a {
- text-decoration: none;
- color: #fff;
- font-size: 10px;
+/* all buttons on same line */
+.user_widget_buttons {
+  width: 100%;
+  margin-left: 0px;
 }
+
+.user_widget_buttons div {
+  height: 30px;
+  padding: 0px;
+  text-align: center;
+}
+
+.user_widget_buttons>div>a {
+  color: #DADADA;
+  padding-top: 7px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.user_widget_buttons>div>a:hover{
+  background-color: #7f8c8d;
+}
+
+
+
+/* ------------------------------- Game_widget ------------------------------- */
+.game_sessions_widget {
+  width: 260px;
+  background-color: #464646;
+}
+
+.gsw_menu {
+  width: 100%;
+  margin-left: 0px;
+  border-bottom: thin solid #DADADA;
+}
+
+.gsw_menu div {
+  height: 30px;
+  padding: 0px;
+}
+
+.gsw_menu>div>a {
+  color: #DADADA;
+  padding-top: 7px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gsw_menu>div>a:hover {
+  background-color: #7f8c8d;
+}
+
+.gsw_game {
+  margin-left: 0px;
+  margin-right: 0px;
+  border-bottom: thin solid #DADADA;
+}
+
+.gsw_game:hover {
+  background-color: #616161;
+
+}
+
+.gsw_game h6 {
+  font-size: 10px;
+  color : #bdc3c7;
+}
+
+.gsw_game p {
+  font-size: 10px;
+  color : #7f8c8d;
+}
+
+.gsw_game img {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 40px;
+}
+
+.gsw_status {
+  padding-right: 0px;
+  margin-top: 5px;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
