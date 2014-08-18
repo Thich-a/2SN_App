@@ -1,3 +1,8 @@
+body {
+  margin-left : 250px;
+  background-color: grey;
+}
+
 .red {
   background-color: #D76817;
 }
@@ -118,7 +123,6 @@
 
 .gsw_game:hover {
   background-color: #616161;
-
 }
 
 .gsw_game h6 {
@@ -147,8 +151,80 @@
 
 
 
+/* ------------------------------- Friend_widget ------------------------------- */
+.friend_widget {
+  width: 250px;
+}
+
+.fw_menu {
+  margin-left: 0px;
+  border-bottom: 5px solid transparent;
+}
+
+.fw_menu>button {
+  border: none;
+  border-radius: 0px;
+  width: 45px;
+  height: 35px;
+  float: left;
+}
+
+.fw_menu>button:hover {
+  background-color: #00A6B6;
+}
 
 
+
+.fw_menu>input {
+  border: none;
+  width: 205px;
+  border-radius: 0px;
+  height: 35px;
+}
+
+.fw_friends {
+margin-left: -3px;
+margin-right: 0px;
+margin-bottom: 3px;
+}
+
+.fw_friend {
+  margin-left: 4px;
+  float: left;
+  background-color: red;
+}
+
+.fw_friend img {
+  border-radius: 0px;
+  width: 80px;
+  height: 80px;
+}
+
+.fw_info {
+  border-top: 2px solid #D76817;
+  background-color: #DADADA;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.fw_info div {
+  height: 30px;
+  padding: 0px;
+  text-align: center;
+}
+
+.fw_info>div>a {
+  padding-top: 5px;
+  display: block;
+  text-decoration: none;
+  color: #7f8c8d;
+  width: 100%;
+  height: 100%;
+}
+
+.fw_info a:hover {
+  background-color: #616161;
+}
 
 
 
