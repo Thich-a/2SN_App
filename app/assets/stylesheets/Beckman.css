@@ -3,14 +3,21 @@ body {
   background-color: grey;
 }
 
-.red {
+.new_action {
   background-color: #D76817;
 }
+.up_to_date {
+  background-color: #00D2A5;
+}
+
+.red {
+  border-top: 3px solid #D76817;
+}
 .blue {
-  background-color: #00A6B6;
+  border-top: 3px solid #00A6B6;
 }
 .green {
-  background-color: #00D2A5;
+  border-top: 3px solid #00D2A5;
 }
 
 /* ------------------------------- User_widget ------------------------------- */
@@ -87,7 +94,7 @@ body {
 
 /* ------------------------------- Game_widget ------------------------------- */
 .game_sessions_widget {
-  width: 260px;
+  width: 320px;
   background-color: #464646;
 }
 
@@ -153,7 +160,7 @@ body {
 
 /* ------------------------------- Friend_widget ------------------------------- */
 .friend_widget {
-  width: 250px;
+  width: 320px;
 }
 
 .fw_menu {
@@ -163,6 +170,7 @@ body {
 
 .fw_menu>button {
   border: none;
+  background-color: #00D2A5;
   border-radius: 0px;
   width: 45px;
   height: 35px;
@@ -177,27 +185,32 @@ body {
 
 .fw_menu>input {
   border: none;
-  width: 205px;
+  width: 275px;
   border-radius: 0px;
   height: 35px;
 }
 
 .fw_friends {
-margin-left: -3px;
+margin-left: 0px;
 margin-right: 0px;
-margin-bottom: 3px;
+margin-bottom: 5px;
+}
+
+.fw_friends .fw_friend:first-child {
+margin-left: 5px;
+margin-right: 0px;
 }
 
 .fw_friend {
-  margin-left: 4px;
+  margin-left: 5px;
   float: left;
   background-color: red;
 }
 
 .fw_friend img {
   border-radius: 0px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 .fw_info {
@@ -228,6 +241,76 @@ margin-bottom: 3px;
 
 
 
+/* ------------------------------- Character_widget ------------------------------- */
+.character_sheet_widget {
+  width: 320px;
+}
 
+.character_sheet_widget a {
+  text-decoration: none;
+}
 
+.csw_title p {
+  margin: 0px;
+}
 
+.csw_title {
+  border-bottom: 2px solid transparent;
+}
+
+.csw_new p {
+  background-color: #464646;
+  margin: 0px;
+}
+
+.csw_new {
+  border-bottom: 1px solid #00A6B6;
+}
+
+.csw_new a {
+  color: #DADADA;
+  width: 320px;
+}
+
+.csw_new a:hover {
+  color: black;
+}
+
+.character_sheet_widget > .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.csw_title p {
+  padding-top: 5px;
+  padding-bottom : 5px;
+  background-color: #00A6B6;
+}
+
+.csw_char {
+  font-size: 10px;
+  border-bottom: 1px solid #00A6B6;
+  padding: 5px;
+  background-color: #464646;
+}
+
+.csw_char h6 {
+  color: #bdc3c7;
+}
+
+.csw_char p {
+  color : #7f8c8d;
+}
+
+.csw_char a {
+  color: #DADADA;
+}
+
+.csw_char a:hover {
+  color: black;
+}
+
+.csw_char > div > img {
+  width: 50px;
+  height: 50px;
+}
