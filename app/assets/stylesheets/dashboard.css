@@ -362,6 +362,7 @@ margin-right: 0px;
 }
 
 .pw_post {
+  height: 120px;
   border-bottom: 1px solid #00A6B6;
   background-color: #464646;
   padding: 10px;
