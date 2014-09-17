@@ -1,0 +1,203 @@
+/* ---------------------- character widget ---------------------- */
+.character_widget {
+  width: 240px;
+  background-color: #464646;
+}
+
+.character_widget .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.character_widget_photo img {
+  margin-top: 10px;
+  width: 100%;
+  border: solid 3px #00A6B6;
+}
+
+.character_widget_info p, h5 {
+  text-align: center;
+}
+
+.character_widget_info p a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Game_sessions widget */
+/* ------------------------------- Game_widget ------------------------------- */
+.game_sessions_widget {
+  width: 240px;
+  background-color: #464646;
+}
+
+.gsw_name {
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  background-color: #00A6B6;
+}
+
+.gsw_menu {
+  width: 100%;
+  margin-left: 0px;
+  border-bottom: thin solid #DADADA;
+}
+
+.gsw_menu div {
+  height: 30px;
+  padding: 0px;
+}
+
+.gsw_menu>div>a {
+  text-decoration: none;
+  color: #DADADA;
+  margin-top: 2px;
+  text-align: left;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gsw_menu>div>a:hover {
+  background-color: #7f8c8d;
+}
+
+.gsw_game {
+  margin-left: 0px;
+  margin-right: 0px;
+  border-bottom: thin solid #DADADA;
+}
+
+.gsw_game:hover {
+  background-color: #616161;
+}
+
+.gsw_game h6 {
+  font-size: 10px;
+  color : #bdc3c7;
+}
+
+.gsw_game p {
+  font-size: 10px;
+  color : #7f8c8d;
+}
+
+.gsw_game img {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 40px;
+}
+
+.gsw_status {
+  padding-right: 0px;
+  margin-top: 5px;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+}
+
+
+/* ---------------------- current game session ---------------------- */
+.game_session {
+  background-color: #00A6B6;
+  width: 600px;
+  padding: 10px;
+}
+
+.game_session .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.gs_title {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #00A6B6;
+}
+
+.game_frame {
+  background-color: #ecf0f1;
+  padding: 10px;
+}
+
+.gs_chat {
+  height: 400px;
+  overflow: scroll;
+}
+
+.gsc_image img {
+  width: 100%;
+  border: solid 2px #00A6B6;
+}
+
+.gsc_message>div p {
+  text-align: right;
+}
+
+.gsc_message>div:last-child {
+  margin-bottom: 10px;
+  border-bottom: 3px solid #00A6B6;
+}
+
+.gsc_message>div:last-child>p {
+  text-align: left;
+}
+
+.gs_send {
+  padding: 10px;
+  background-color: #00A6B6;
+  border-radius: 10px;
+}
+
+.gs_send>div:last-child p {
+  margin-top: 20px;
+}
+
+/* ---------------------- current game session players ---------------------- */
+.Game_session_palyers {
+  width: 240px;
+  background-color: #ecf0f1;
+}
+
+.Game_session_palyers .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.gsp_title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #00A6B6;
+  margin-bottom: 10px;
+}
+
+.players_frame {
+  padding: 10px;
+}
+
+.gsp_master {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid red;
+}
+
+.gsp_master img {
+  width: 100%;
+  border: 2px solid red;
+}
+
+.gsp_player {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #00A6B6;
+}
+
+.gsp_player img {
+  width: 100%;
+  border: 2px solid #00A6B6;
+}
+
+
