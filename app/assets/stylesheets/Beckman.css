@@ -369,3 +369,36 @@ margin-right: 0px;
   width: 50px;
   height: 50px;
 }
+
+/* ------------------------------- Picture_widget ------------------------------- */
+.pictures_widget {
+  width: 320px;
+  background-color: #464646;
+}
+
+.pictures_widget .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.picw_title {
+  text-align: center;
+  background-color: #00A6B6;
+  margin-bottom: 2px;
+}
+
+.picw_title p {
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pictures_widget .row div {
+  padding: 0px;
+}
+
+.picw_images img {
+  width: 100%;
+  padding: 2px;
+  border-radius: 0px;
+}
