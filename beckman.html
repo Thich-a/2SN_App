@@ -34,9 +34,10 @@
 
       <!-- USER_GAME_SESSIONS -->
       <div class="game_sessions_widget">
+        <div class="row gsw_name">Game Sessions</div>
         <div class="row gsw_menu">
-          <div class="col-xs-4"><a href=""><i class="glyphicon glyphicon-envelope"></i></a></div>
-          <div class="col-xs-8"><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></div>
+          <div class="col-xs-4"><a href="">+ join Game</a></div>
+          <div class="col-xs-8"><a href="">Create New Game session</a></div>
         </div><!-- close gsw_menu -->
         <div class="row gsw_game">
           <div class="col-xs-3">
@@ -106,50 +107,81 @@
         </div><!-- close row fw_info -->
       </div><!-- close game_sessions_widget -->
 
-<br>
+      <br>
 
-<!-- USER_CHARACTERS_SHEETS -->
-<div class="character_sheet_widget">
-  <div class="row csw_title">
-    <center><p>Character Sheets</p></center>
-  </div><!-- close csw_title -->
-  <div class="row">
-    <div class="csw_new">
-      <p><a href=""> + New Character</a></p>
-    </div>
-  </div><!-- close csw_title -->
-  <div class="row csw_char">
-    <div class="col-xs-3">
-      <img src="app/assets/img/anon_user.png" class="img-rounded">
-    </div>
-    <div class="col-xs-7">
-      <h6>Jesus Christ</h6>
-        <p>lvl 12 healer</p>
-      <center>
-        <p>current game : Super Smach Relegion Brwal</p>
-      </center>
-    </div>
-    <div class="col-xs-2">
-      <div class="csw_edit"><a href="">Edit</a></div>
-    </div>
-  </div><!-- close csw_char -->
-  <div class="row csw_char">
-    <div class="col-xs-3">
-      <img src="app/assets/img/anon_user.png" class="img-rounded">
-    </div>
-    <div class="col-xs-7">
-      <h6>{{char.name}}</h6>
-        <p>{{char.description}}</p>
-      <center>
-        <p>{{char.game}}</p>
-      </center>
-    </div>
-    <div class="col-xs-2">
-      <div class="csw_edit"><a href="">Edit</a></div>
-    </div>
-  </div><!-- close csw_char -->
-</div><!-- close character_sheet_widget -->
+      <!-- USER_CHARACTERS_SHEETS -->
+      <div class="character_sheet_widget">
+        <div class="row csw_title">
+          <center><p>Character Sheets</p></center>
+        </div><!-- close csw_title -->
+        <div class="row">
+          <div class="csw_new">
+            <p><a href=""> + New Character</a></p>
+          </div>
+        </div><!-- close csw_new -->
+        <div class="row csw_char">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-7">
+            <h6>Jesus Christ</h6>
+              <p>lvl 12 healer</p>
+            <center>
+              <p>current game : Super Smach Relegion Brwal</p>
+            </center>
+          </div>
+          <div class="col-xs-2">
+            <div class="csw_edit"><a href="">Edit</a></div>
+          </div>
+        </div><!-- close csw_char -->
+        <div class="row csw_char">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-7">
+            <h6>{{char.name}}</h6>
+              <p>{{char.description}}</p>
+            <center>
+              <p>{{char.game}}</p>
+            </center>
+          </div>
+          <div class="col-xs-2">
+            <div class="csw_edit"><a href="">Edit</a></div>
+          </div>
+        </div><!-- close csw_char -->
+      </div><!-- close character_sheet_widget -->
 
+      <br>
+
+      <!-- USER_POST_WIDGET -->
+      <div class="post_widget">
+        <div class="row pw_title">
+          <p>POSTS</p>
+        </div><!-- close pw_title -->
+        <div class="row">
+          <div class="pw_new">
+            <p><a href=""> + New Post</a></p>
+          </div>
+        </div><!-- close pw_new -->
+        <div class="row pw_post">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-9">
+            <div class="row"><p>DATE HERE</p></div>
+            <div class="row"><p>POST HERE</p></div>
+          </div>
+        </div><!-- close pw_post -->
+        <div class="row pw_post">
+          <div class="col-xs-3">
+            <img src="app/assets/img/anon_user.png" class="img-rounded">
+          </div>
+          <div class="col-xs-9">
+            <div class="row"><p>DATE HERE</p></div>
+            <div class="row"><p>POST HERE</p></div>
+          </div>
+        </div><!-- close pw_post -->
+      </div><!-- close post_widget -->
 
   </div>
 

@@ -98,6 +98,11 @@ body {
   background-color: #464646;
 }
 
+.gsw_name {
+  margin-left: 0px;
+  text-align: center;
+}
+
 .gsw_menu {
   width: 100%;
   margin-left: 0px;
@@ -110,6 +115,7 @@ body {
 }
 
 .gsw_menu>div>a {
+  text-decoration: none;
   color: #DADADA;
   padding-top: 7px;
   text-align: center;
@@ -311,6 +317,55 @@ margin-right: 0px;
 }
 
 .csw_char > div > img {
+  width: 50px;
+  height: 50px;
+}
+
+/* ------------------------------- Post_widget ------------------------------- */
+.post_widget {
+  width: 320px;
+}
+
+.post_widget .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.pw_title p {
+  margin-bottom: 2px;
+  background-color: #00A6B6;
+  text-align: center;
+}
+
+.pw_new {
+  background-color: #464646;
+}
+
+.pw_new p {
+  border-bottom: 1px solid #00A6B6;
+  margin-bottom: 0px;
+}
+
+.pw_new a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.pw_post {
+  border-bottom: 1px solid #00A6B6;
+  background-color: #464646;
+  padding: 10px;
+}
+
+.pw_post>div p {
+  text-align: right;
+}
+
+.pw_post>div:last-child>div:last-child p {
+  text-align: left;
+}
+
+.pw_post > div > img {
   width: 50px;
   height: 50px;
 }
