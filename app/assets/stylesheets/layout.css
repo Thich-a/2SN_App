@@ -5,6 +5,7 @@ body{
 }
 
 /* ------------------------------- User_Menu ------------------------------- */
+a:hover{ text-decoration: none;}
 
 .container-fluid{
   background-color: rgb(70, 70, 70);
@@ -59,5 +60,3 @@ body{
   padding-top: 25px;
   padding-bottom: 25px;
 }
-
-
