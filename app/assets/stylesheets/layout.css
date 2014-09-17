@@ -2,56 +2,61 @@ body{
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  background: url(../img/background_1.png) no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* ------------------------------- User_Menu ------------------------------- */
-a:hover{ text-decoration: none;}
-
+.navbar-default{
+  border: 0px;
+}
 .container-fluid{
-  background-color: rgb(70, 70, 70);
-  border-radius: 2px;
+  background-color: #ecf0f1;
+  border-radius: 4px;
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: white;
+  color: black;
   font-size: 18px;
-  font-weight: lighter;
+  font-weight: 200;
   letter-spacing: 1px;
   border-bottom: 4px solid transparent;
 
 }
 
 .dropdown .dropdown-toggle {
-  padding-bottom: 27px;
+  padding-bottom: 26px;
 }
 
 .dropdown-menu{
-  background-color: rgb(70, 70, 70);
+  background-color: #ecf0f1;
 }
 
 .dropdown-menu>li>a{
-  color: white;
+  color: black;
   font-size: 16px;
-  font-weight: lighter;
+  font-weight: 200;
   letter-spacing: 1px;
   border-left: 4px solid transparent;
 }
 
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-  color: rgb(70, 70, 70);
-  background-color: rgb(218, 218, 218);
+  background-color: #e3e7e8;
   border-bottom: 4px solid #d76817;
 
 }
 
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
   border-left: 4px solid #d76817;
-  background-color: rgb(218, 218, 218);
+  background-color: #e3e7e8;
 }
 
  .navbar-default .navbar-nav>img{
-  width: 50px;
+  width: 36px;
   float:left;
   padding-top: 5px;
 }
