@@ -1,12 +1,12 @@
 App.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'app/views/index.html',
+      templateUrl: 'webapp/views/index.html',
       controller:  'indexCtrl'
     });
   $routeProvider
     .when('/dashboard', {
-      templateUrl: 'app/views/dashboard.html',
+      templateUrl: 'webapp/views/dashboard.html',
       controller:  'dashboardCtrl'
     });
 });
