@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
   <meta charset="utf-8" />
   <title>2SN</title>
   <meta charset="UTF-8">
-  <title>2SN</title>
   <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/layout.css">
   <!-- JavaScript -->
-  <script src="app/assets/javascripts/jquery-1.11.1.min.js"></script>
-  <script src="app/assets/javascripts/bootstrap.min.js"></script>
+  <script src="app/assets/javascripts/lib/jquery-1.11.1.min.js"></script>
+  <script src="app/assets/javascripts/lib/angular.min.js"></script>
+  <script src="app/assets/javascripts/lib/angular-route.min.js"></script>
+  <script src="app/assets/javascripts/lib/angular-cookies.min.js"></script>
+  <script src="app/assets/javascripts/lib/bootstrap.min.js"></script>
+  <script src="app/assets/javascripts/application.js"></script>
+  <script src="app/assets/javascripts/routes.js"></script>
+  <script src="app/assets/javascripts/controllers/index_controller.js"></script>
 </head>
 <body>
   <div class="container">
@@ -56,6 +61,7 @@
         </div><!-- /.container-fluid -->
       </nav>
     </header>
+    <div ng-view></div>
   </div>
 </body>
 </html>
