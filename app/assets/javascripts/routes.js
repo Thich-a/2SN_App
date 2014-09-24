@@ -4,4 +4,9 @@ App.config(function($routeProvider) {
       templateUrl: 'app/views/index.html',
       controller:  'indexCtrl'
     });
+  $routeProvider
+    .when('/dashboard', {
+      templateUrl: 'app/views/dashboard.html',
+      controller:  'dashboardCtrl'
+    });
 });
