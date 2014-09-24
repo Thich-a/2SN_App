@@ -1,7 +1,7 @@
 /* ---------------------- character widget ---------------------- */
 .character_widget {
-  width: 240px;
-  background-color: #464646;
+  width: 100%;
+  background-color: #ecf0f1;
 }
 
 .character_widget .row {
@@ -21,14 +21,14 @@
 
 .character_widget_info p a {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 /* Game_sessions widget */
 /* ------------------------------- Game_widget ------------------------------- */
 .game_sessions_widget {
-  width: 240px;
-  background-color: #464646;
+  width: 100%;
+  background-color: #ecf0f1;
 }
 
 .gsw_name {
@@ -51,7 +51,7 @@
 
 .gsw_menu>div>a {
   text-decoration: none;
-  color: #DADADA;
+  color: black;
   margin-top: 2px;
   text-align: left;
   display: block;
@@ -60,7 +60,7 @@
 }
 
 .gsw_menu>div>a:hover {
-  background-color: #7f8c8d;
+  background-color: #bdc3c7;
 }
 
 .gsw_game {
@@ -70,17 +70,15 @@
 }
 
 .gsw_game:hover {
-  background-color: #616161;
+  background-color: #bdc3c7;
 }
 
 .gsw_game h6 {
   font-size: 10px;
-  color : #bdc3c7;
 }
 
 .gsw_game p {
   font-size: 10px;
-  color : #7f8c8d;
 }
 
 .gsw_game img {
@@ -151,13 +149,17 @@
   border-radius: 10px;
 }
 
+.gs_send textarea {
+  resize: none;
+}
+
 .gs_send>div:last-child p {
   margin-top: 20px;
 }
 
 /* ---------------------- current game session players ---------------------- */
 .Game_session_palyers {
-  width: 240px;
+  width: 100%;
   background-color: #ecf0f1;
 }
 
@@ -195,9 +197,15 @@
   border-bottom: 2px solid #00A6B6;
 }
 
+.gsp_player:last-child {
+  border-bottom: none;
+}
+
 .gsp_player img {
   width: 100%;
   border: 2px solid #00A6B6;
 }
+
+
 
 

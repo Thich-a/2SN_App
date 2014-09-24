@@ -9,6 +9,10 @@ body{
   background-size: cover;
 }
 
+.container {
+  margin-bottom: 30px;
+}
+
 /* ------------------------------- User_Menu ------------------------------- */
 .navbar-default{
   border: 0px;
