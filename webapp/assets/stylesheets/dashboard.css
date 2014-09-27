@@ -1,6 +1,7 @@
 /* ------------------------------- Character_widget ------------------------------- */
 .character_sheet_widget {
-  width: 320px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .character_sheet_widget a {
@@ -11,22 +12,18 @@
   margin: 0px;
 }
 
-.csw_new p {
-  background-color: #464646;
-  margin: 0px;
-}
-
 .csw_new {
   border-bottom: 1px solid #00A6B6;
+  background-color: #ecf0f1;
 }
 
 .csw_new a {
-  color: #DADADA;
-  width: 320px;
+  color: black;
+  width: 100%;
 }
 
-.csw_new a:hover {
-  color: black;
+.csw_new:hover {
+  background-color: #bdc3c7;
 }
 
 .character_sheet_widget > .row {
@@ -41,14 +38,26 @@
 }
 
 .csw_char {
-  font-size: 10px;
   border-bottom: 1px solid #00A6B6;
   padding: 5px;
-  background-color: #464646;
+  background-color: #ecf0f1;
+}
+
+.csw_char:hover {
+  background-color: #bdc3c7;
+}
+
+.csw_char>div {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.csw_char:last-child {
+  border-bottom: none;
 }
 
 .csw_char h6 {
-  color: #bdc3c7;
+  color: black;
 }
 
 .csw_char p {
@@ -56,7 +65,7 @@
 }
 
 .csw_char a {
-  color: #DADADA;
+  color: black;
 }
 
 .csw_char a:hover {
@@ -64,45 +73,44 @@
 }
 
 .csw_char > div > img {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  padding: 10px;
 }
 
 /* ------------------------------- User_widget ------------------------------- */
 
 /* main size of widget */
 .user_widget {
-  width: 250px;
-  height: 300px;
-  background-color: #464646;
+  width: 300px;
+  background-color: #ecf0f1;
+  margin-bottom: 20px;
 }
 
-/* body for user_widget */
-.user_widget_body {
-  height: 210px;
-  margin-bottom: 10px;
+.user_widget .row {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /* photo for user_widget */
 .user_widget_photo img {
-  margin: 30px 65px;
+  margin: 30px auto;
   margin-bottom: 0px;
-  height: 80px;
-  width: 80px;
+  width: 150px;
+  border: 2px solid #00A6B6;
 }
 
 .user_widget_info {
   margin: 0px auto;
   text-align: center;
-  font-size: 10px;
-  color: #7f8c8d;
+  color: black;
 }
 
 /* Username user_widget */
 .user_widget_info>h5 {
-  font-size: 12px;
-  color: #bdc3c7;
-  margin-top: 40px;
+  color: black;
+  margin-top: 20px;
 }
 
 /* colors over user_widget button */
@@ -121,14 +129,23 @@
 }
 
 .user_widget_buttons div {
-  height: 30px;
+  height: 40px;
   padding: 0px;
   text-align: center;
+  border-top: 3px solid #D76817;
+}
+
+.user_widget_buttons div:first-child {
+  border-top: 3px solid #00D2A5;
+}
+
+.user_widget_buttons div:last-child {
+  border-top: 3px solid #00A6B6;
 }
 
 .user_widget_buttons>div>a {
-  color: #DADADA;
-  padding-top: 7px;
+  color: black;
+  padding-top: 10px;
   text-align: center;
   display: block;
   width: 100%;
@@ -136,18 +153,22 @@
 }
 
 .user_widget_buttons>div>a:hover{
-  background-color: #7f8c8d;
+  background-color: #bdc3c7;
 }
 
 /* ------------------------------- Game_widget ------------------------------- */
 .game_sessions_widget {
-  width: 320px;
-  height: 251px;
-  background-color: #464646;
+  width: 100%;
+  background-color: #ecf0f1;
+  margin-bottom: 20px;
+}
+
+.game_sessions_widget .row{
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .gsw_name {
-  width: 320px;
   padding-top: 5px;
   padding-bottom : 5px;
   background-color: #00A6B6;
@@ -155,7 +176,7 @@
 
 .gsw_menu {
   width: 100%;
-  border-bottom: thin solid #DADADA;
+  border-bottom: thin solid black;
 }
 
 .gsw_menu div {
@@ -165,7 +186,7 @@
 
 .gsw_menu>div>a {
   text-decoration: none;
-  color: #DADADA;
+  color: black;
   padding-top: 7px;
   text-align: center;
   display: block;
@@ -174,33 +195,39 @@
 }
 
 .gsw_menu>div>a:hover {
-  background-color: #7f8c8d;
+  background-color: #bdc3c7;
 }
 
 .gsw_game {
   margin-left: 0px;
   margin-right: 0px;
-  border-bottom: thin solid #DADADA;
+  border-bottom: thin solid black;
+}
+
+.gsw_game:last-child {
+  border-bottom: none;
 }
 
 .gsw_game:hover {
-  background-color: #616161;
+  background-color: #bdc3c7;
+}
+
+.gsw_game>div {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .gsw_game h6 {
-  font-size: 10px;
-  color : #bdc3c7;
+  color : black;
 }
 
 .gsw_game p {
-  font-size: 10px;
   color : #7f8c8d;
 }
 
 .gsw_game img {
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 40px;
+  width: 100%;
+  padding: 10px;
 }
 
 .gsw_status {
@@ -209,69 +236,63 @@
   height: 10px;
   width: 10px;
   border-radius: 10px;
+  background-color: #00D2A5;
 }
 
 /* ------------------------------- Friend_widget ------------------------------- */
 .friend_widget {
-  width: 320px;
-  margin-top: -50px;
-  background-color: #464646;
+  width: 100%;
+  background-color: #ecf0f1;
+  margin-bottom: 20px;
 }
 
 .fw_menu {
   margin-left: 0px;
+  margin-right: 0px;
   border-bottom: 5px solid transparent;
 }
 
-.fw_menu>button {
+.fw_menu>div {
+  padding: 0px;
+}
+
+.fw_menu button {
   border: none;
   background-color: #00D2A5;
   border-radius: 0px;
-  width: 45px;
+  width: 100%;
   height: 35px;
   float: left;
 }
 
-.fw_menu>button:hover {
+.fw_menu button:hover {
   background-color: #00A6B6;
 }
 
-
-
-.fw_menu>input {
+.fw_menu input {
   border: none;
-  width: 275px;
+  width: 100%;
   border-radius: 0px;
   height: 35px;
-  margin-left: -14px;
 }
 
 .fw_friends {
-margin-left: 0px;
-margin-right: 0px;
-margin-bottom: 5px;
+  margin: 0px;
 }
 
-.fw_friends .fw_friend:first-child {
-margin-left: 5px;
-margin-right: 0px;
+.fw_friends>div {
+  padding: 0px;
 }
 
-.fw_friend {
-  margin-left: 5px;
-  float: left;
-  background-color: red;
-}
-
-.fw_friend img {
+.fw_friends>div img {
   border-radius: 0px;
-  width: 100px;
-  height: 100px;
+  padding: 2px;
+  width: 100%;
 }
 
 .fw_info {
   border-top: 2px solid #D76817;
-  background-color: #DADADA;
+  background-color: #ecf0f1;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -286,19 +307,20 @@ margin-right: 0px;
   padding-top: 5px;
   display: block;
   text-decoration: none;
-  color: #7f8c8d;
+  color: black;
   width: 100%;
   height: 100%;
 }
 
 .fw_info a:hover {
-  background-color: #616161;
+  background-color: #bdc3c7;
 }
 
 /* ------------------------------- Picture_widget ------------------------------- */
 .pictures_widget {
-  width: 320px;
-  background-color: #464646;
+  width: 100%;
+  background-color: #ecf0f1;
+  margin-bottom: 20px;
 }
 
 .pictures_widget .row {
@@ -330,9 +352,8 @@ margin-right: 0px;
 
 /* ------------------------------- Post_widget ------------------------------- */
 .post_widget {
-  width: 320px;
-  height: 280px;
-  margin-top: -50px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .post_widget .row {
@@ -345,14 +366,17 @@ margin-right: 0px;
 }
 
 .pw_title p {
-  width: 320px;
   padding-top: 5px;
   padding-bottom : 5px;
   background-color: #00A6B6;
 }
 
 .pw_new {
-  background-color: #464646;
+  background-color: #ecf0f1;
+}
+
+.pw_new:hover {
+  background-color: #bdc3c7;
 }
 
 .pw_new p {
@@ -362,14 +386,27 @@ margin-right: 0px;
 
 .pw_new a {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 .pw_post {
   height: 116px;
   border-bottom: 1px solid #00A6B6;
-  background-color: #464646;
+  background-color: #ecf0f1;
   padding: 10px;
+}
+
+.pw_post>div {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pw_post:hover {
+  background-color: #bdc3c7;
+}
+
+.pw_post:last-child {
+  border-bottom: none;
 }
 
 .pw_post>div p {
@@ -381,6 +418,6 @@ margin-right: 0px;
 }
 
 .pw_post > div > img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  padding: 10px;
 }
