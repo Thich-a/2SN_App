@@ -1,0 +1,7 @@
+<div ng-repeat='users in response'>
+  <div ng-repeat="user in users">
+    <div ng-repeat="(key, value) in user">
+      <p><b>{{ key }}</b> : {{ value }}</p>
+    </div>
+  </div>
+</div>
