@@ -1,209 +1,272 @@
 <div class="row">
   <!-- USER_CHARACTERS_SHEETS -->
-  <div class="col-md-4"><center>
-    <div class="character_sheet_widget">
-    <div class="row csw_title">
-      <center><p>Character Sheets</p></center>
-    </div><!-- close csw_title -->
-    <div class="row">
-      <div class="csw_new">
-        <a href=""> + New Character</a>
-      </div>
-    </div><!-- close csw_new -->
-    <div class="row csw_char">
-      <div class="col-xs-3">
-        <img src="webapp/assets/img/anon_user.png" class="img-rounded">
-      </div>
-      <div class="col-xs-7">
-        <h6>Jesus Christ</h6>
-          <p>lvl 12 healer</p>
-        <center>
-          <p>current game : Super Smach Relegion Brwal</p>
-        </center>
-      </div>
-      <div class="col-xs-2">
-        <div class="csw_edit"><a href="">Edit</a></div>
-      </div>
-    </div><!-- close csw_char -->
-    <div class="row csw_char">
-      <div class="col-xs-3">
-        <img src="webapp/assets/img/anon_user.png" class="img-rounded">
-      </div>
-      <div class="col-xs-7">
-        <h6>{{char.name}}</h6>
-          <p>{{char.description}}</p>
-        <center>
-          <p>{{char.game}}</p>
-        </center>
-      </div>
-      <div class="col-xs-2">
-        <div class="csw_edit"><a href="">Edit</a></div>
-      </div>
-    </div><!-- close csw_char -->
-    </div><!-- close character_sheet_widget -->
-  </center></div>
-  <!-- USER_WIDGET -->
-  <div class="col-md-4"><center>
-    <div class="user_widget">
-      <div class="row user_widget_body">
-          <div class="col-xs-12 user_widget_photo">
-            <img src="webapp/assets/img/anon_user.png" class="img-circle">
+  <div class="col-md-4">
+    <div class="panel panel-default standard">
+      <div class="panel-heading text-center lead character_sheets">Character Sheets</div>
+      <div class="panel-body">
+        <p class='text-center'><a href=""> + New Character</a></p>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
           </div>
-
-          <div class="col-xs-12 user_widget_info">
-            <h5>USERNAME</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-          </div><!-- close user_widget_info -->
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>Jesus Christ</h4>
+            <p><b>lvl 12 healer</b></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <p class='text-muted'>Current game : <br>Super Smach Relegion Brwal</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+          </div>
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>Beckozaurus Rex</h4>
+            <p><b>lvl 6 drunk irish monster</b></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <p class='text-muted'>Current game : <br>Lavoir adventures</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+          </div>
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>Beck Beckinson the Bucket</h4>
+            <p><b>lvl 11 gipsy developer</b></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <p class='text-muted'>Current game : <br>My_guitar_to_the_vertical</p>
+          </div>
+        </div>
       </div>
-      <div class="row user_widget_buttons">
-        <div class="col-xs-4 blue"><a href=""><i class="glyphicon glyphicon-envelope"></i></a></div>
-        <div class="col-xs-4 red"><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></div>
-        <div class="col-xs-4 green"><a href=""><i class="glyphicon glyphicon-user"></i></a></div>
-      </div><!-- close user_widget_buttons -->
-  </center></div><!-- close user_widget -->
-  <div class="col-md-4"><center>
-    <!-- USER_GAME_SESSIONS -->
-    <div class="game_sessions_widget">
-      <div class="row gsw_name">Game Sessions</div>
-      <div class="row gsw_menu">
-        <div class="col-xs-4"><a href="">+ join Game</a></div>
-        <div class="col-xs-8"><a href="">Create New Game session</a></div>
-      </div><!-- close gsw_menu -->
-      <div class="row gsw_game">
-        <div class="col-xs-3">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded">
+    </div>
+  </div>
+  <!-- USER_WIDGET -->
+  <div class="col-md-4 text-center">
+    <br>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-xs-12 user_widget_photo">
+          <img src="webapp/assets/img/anon_user.png" class="img-circle">
         </div>
-        <div class="col-xs-7">
-          <h6>Game 1</h6>
-          <center>
-            <p>Beckman rolled 11. critical hit</p>
-            <p>started 12 october 1997</p>
-        </center>
+         <h2>USERNAME</h2>
+         <br>
+      </div>
+      <div class="panel-footer">
+          <a href="" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
+          <a href="" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
+          <a href="" class='blue'><i class="glyphicon glyphicon-user"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- GAME_SESSIONS_WIDGET -->
+  <div class="col-md-4">
+    <div class="panel panel-default standard">
+      <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <a href=""><h3 style='margin-top:4px;'>Game 1<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
+            <p><b>Started 12 october 1997</b></p>
+            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+          </div>
         </div>
-        <div class="col-xs-2">
-          <div class="gsw_status up_to_date"></div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <a href=""><h3 style='margin-top:4px;'>Game 2<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
+            <p><b>Started 12 october 1997</b></p>
+            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+          </div>
         </div>
-      </div><!-- close gsw_game -->
-      <div class="row gsw_game">
-        <div class="col-xs-3">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded">
+        <hr>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <a href=""><h3 style='margin-top:4px;'>Game 3<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
+            <p><b>Started 12 october 1997</b></p>
+            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+          </div>
         </div>
-        <div class="col-xs-7">
-          <h6>Game 2</h6>
-          <center>
-            <p>Your turn Citron !</p>
-            <p>started 03 july 2007</p>
-        </center>
+        <hr>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <a href=""><h3 style='margin-top:4px;'>Game 4</h3></a>
+            <p><b>Started 12 october 1997</b></p>
+            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+          </div>
         </div>
-        <div class="col-xs-2">
-          <div class="gsw_status new_action"></div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <a href=""><h3 style='margin-top:4px;'>Game 5</h3></a>
+            <p><b>Started 12 october 1997</b></p>
+            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+          </div>
         </div>
-      </div><!-- close gsw_game -->
-    </div><!-- close game_sessions_widget -->
-  </center></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <br>
 
 <div class="row">
-  <div class="col-md-4"><center>
-    <!-- USER_FRIEND_WIDGET -->
-    <div class="friend_widget">
-      <div class="row fw_menu">
-        <div class="col-xs-2">
-          <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-envelope"></i></button>
+  <!-- FRIENDS_WIDGET -->
+  <div class="col-md-4">
+    <div class="panel panel-default standard">
+      <div class="panel-heading text-center lead friend_list">Friends</div>
+      <div class="panel-body" style='border-radius:0;'>
+        <input type='text' class='form-control'>
+        <hr>
+        <div class="row pictures">
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
         </div>
-        <div class="col-xs-10">
-          <input type='text' class='form-control' placeholder="Search ...">
+        <div class="row pictures">
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
         </div>
-      </div><!-- close fw_menu -->
-      <div class="row fw_friends">
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="row pictures">
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="row pictures">
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
+          <div class="col-md-4 text-center">
+            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          </div>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+      </div>
+      <div class="panel-footer text-center lead"><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
+    </div>
+  </div>
+  <!-- PICTURES_WIDGET -->
+  <div class="col-md-4">
+    <div class="panel panel-default standard">
+      <div class="panel-heading text-center lead pictures">Pictures</div>
+      <div class="panel-body">
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-      </div><!-- close row fw_friends -->
-      <div class="row fw_friends">
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-      </div><!-- close row fw_friends -->
-      <div class="row fw_info">
-        <div class="col-xs-6"><a href="">98 friends</a></div>
-        <div class="col-xs-6"><a href="">4 Groups</a></div>
-      </div><!-- close row fw_info -->
-    </div><!-- close game_sessions_widget -->
-  </center></div>
-  <div class="col-md-4"><center>
-    <!-- USER_PICTURES_WIDGET -->
-    <div class="pictures_widget">
-      <div class="row picw_title">
-        <p>Pictures</p>
-      </div><!-- close pw_title -->
-      <div class="row picw_images">
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-      </div><!-- close row picw_images -->
-      <div class="row picw_images">
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-        <div class="col-xs-4">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded"></a>
+        <div class="col-md-6 text-center">
+          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
         </div>
-      </div><!-- close row picw_images -->
-    </div><!-- close pictures_widget -->
-  </center></div>
-  <div class="col-md-4"><center>
-    <!-- USER_POST_WIDGET -->
-    <div class="post_widget">
-      <div class="row pw_title">
-        <p>POSTS</p>
-      </div><!-- close pw_title -->
-      <div class="row">
-        <div class="pw_new">
-          <p><a href=""> + New Post</a></p>
+      </div>
+      <div class="panel-footer text-center lead">
+        <br>
+        <p><b>1337</b> Pictures - <b>69</b> Albums</p>
+      </div>
+    </div>
+  </div>
+  <!-- POSTS_WIDGET -->
+  <div class="col-md-4">
+    <div class="panel panel-default standard">
+      <div class="panel-heading text-center lead posts">Posts</div>
+      <div class="panel-body">
+        <p class='text-center'><a href=""> + New Post</a></p>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+          </div>
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>Hello world !</h4>
+            <p class='text-muted'>"<i>This is my first post</i>"</p>
+            <p><a href="">Read more</a></p>
+          </div>
         </div>
-      </div><!-- close pw_new -->
-      <div class="row pw_post">
-        <div class="col-xs-3">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded">
+        <hr>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+          </div>
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>One, two, one, two...</h4>
+            <p class='text-muted'>"<i>...It's a test.</i>"<br></p>
+            <p><a href="">Read more</a></p>
+          </div>
         </div>
-        <div class="col-xs-9">
-          <div class="row"><p>DATE HERE</p></div>
-          <div class="row"><p>POST HERE</p></div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+          </div>
+          <div class="col-xs-7">
+            <h4 style='margin-top:4px;'>Another test</h4>
+            <p class='text-muted'>"<i>Becase we can.</i>"</p>
+            <p><a href="">Read more</a></p>
+          </div>
         </div>
-      </div><!-- close pw_post -->
-      <div class="row pw_post">
-        <div class="col-xs-3">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded">
-        </div>
-        <div class="col-xs-9">
-          <div class="row"><p>DATE HERE</p></div>
-          <div class="row"><p>POST HERE</p></div>
-        </div>
-      </div><!-- close pw_post -->
-    </div><!-- close post_widget -->
-  </center></div>
+      </div>
+      <div class="panel-footer text-center lead">
+        <br>
+        <p><b>42</b> Posts</p>
+      </div>
+  </div>
 </div>
