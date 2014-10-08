@@ -9,7 +9,7 @@ App.config(function($routeProvider) {
       controller:  'dashboardCtrl'
     })
     .when('/messages', {
-      templateUrl: 'webapp/views/messages/show.html',
+      templateUrl: 'webapp/views/messages/index.html',
       controller:  'messagesCtrl'
     })
     .when('/games', {
