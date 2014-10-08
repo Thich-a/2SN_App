@@ -11,6 +11,7 @@ App.config(function($routeProvider) {
     .when('/messages', {
       templateUrl: 'webapp/views/messages/show.html',
       controller:  'messagesCtrl'
+    })
     .when('/games', {
       templateUrl: 'webapp/views/game_sessions/index.html',
       controller:  'gameSessionsCtrl'
