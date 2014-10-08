@@ -8,4 +8,8 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/dashboard.html',
       controller:  'dashboardCtrl'
     });
+    .when('/messages', {
+      templateUrl: 'webapp/views/messages/show.html',
+      controller:  'messagesCtrl'
+    });
 });
