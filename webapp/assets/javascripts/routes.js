@@ -15,5 +15,9 @@ App.config(function($routeProvider) {
     .when('/games', {
       templateUrl: 'webapp/views/game_sessions/index.html',
       controller:  'gameSessionsCtrl'
+    })
+    .when('/account', {
+      templateUrl: 'webapp/views/account/index.html',
+      controller:  'accountCtrl'
     });
 });
