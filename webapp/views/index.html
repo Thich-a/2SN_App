@@ -1,7 +1,188 @@
-<div ng-repeat='users in response'>
-  <div ng-repeat="user in users">
-    <div ng-repeat="(key, value) in user">
-      <p><b>{{ key }}</b> : {{ value }}</p>
+<div class="row">
+  <div class="col-md-1 col-md-offset-1 text-right">
+    <p><img src="webapp/assets/img/1D20-logo2.png" alt="Logo_1D20" title="Logo du site 1D20" class="welcome-logo"></p>
+  </div>
+  <div class="col-md-1">
+    <p style='font-size:50px; line-height:100px; margin-left:-30px;'> 1d20</p>
+  </div>
+  <div class="col-md-6 col-md-offset-2 text-right">
+    <p class='pull-right' style='font-size:20px; line-height:100px;'>
+      <a href="" class='btn btn-primary'>Login</a>   
+      <a href="" class='btn btn-primary'>Blog</a>   
+      <a href="" class='btn btn-primary'>About</a>
+    </p>
+  </div>
+</div>
+<div class="welcome-first-section" style='margin-top:-50px;'>
+  <div class='welcome-title text-center'>
+    <h1><br>Play your favourite RPGs with <b>1d20</b></h1>
+    <h2 class='lead text-muted'>RPGs everywhere, everytime.</h2>
+    <br>
+    <p><img src="webapp/assets/img/pictures/dices.jpg" class='img-thumbnail' style='max-height:500px;'></p>
+    <p class='text-muted'><i>Mobile apps to be announced</i></p>
+  </div>
+</div>
+<hr class='welcome-hr'>
+<div class="welcome-second-section">
+  <div class='welcome-title text-center'>
+    <h1><b>Features</b> you'll really dig</h1>
+    <h2 class='lead text-muted'>We've covered all your needs.</h2>
+    <br>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <p><img src="webapp/assets/img/pictures/content_sharing.jpg" class='welcome-picture img-thumbnail'></p>
+      <p class='lead'>Content Sharing</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <p><img src="webapp/assets/img/pictures/game_session.jpg" class='welcome-picture img-thumbnail'></p>
+      <p class='lead'>Private Game Sessions</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <p><img src="webapp/assets/img/pictures/sheet_management.jpg" class='welcome-picture img-thumbnail'></p>
+      <p class='lead'>Character sheets management</p>
+    </div>
+  </div>
+  <div class="row welcome-description">
+    <div class='col-md-6 col-md-offset-2'>
+      <h3>Content Sharing</h3>
+      <p class='text-justify'>Share your experiences with our users, show them your passions, pictures and works through your dashboard.</p>
+    </div>
+    <div class="col-md-4" style='height:100px;'> </div>
+  </div>
+  <div class="row welcome-description">
+    <div class='col-md-6 col-md-offset-4'>
+      <h3 class='text-right'>Private Game Sessions</h3>
+      <p class='text-right text-justify'>Play with your friends in private session and keep track of your adventures without being disturbed.</p>
+    </div>
+    <div class="col-md-2" style='height:100px;'></div>
+  </div>
+  <div class="row welcome-description">
+    <div class='col-md-6 col-md-offset-2'>
+      <h3>Character sheets management</h3>
+      <p class='text-justify'>All of your character sheets are stored in our cloud and are accessible in one click, wherever you are.</p>
+    </div>
+    <div class="col-md-4" style='height:100px;'> </div>
+  </div>
+</div>
+<hr class='welcome-hr'>
+<div class="welcome-third-section">
+  <div class='welcome-title text-center'>
+    <h1>Our <b>pricing</b> cater to your needs.</h1>
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1" style='margin-left: 11%; margin-right:-30px;'>
+      <br>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center lead">Freemium</h3>
+        </div>
+        <div class="panel-body text-center">
+          <br>
+          <p>1 character sheet</p>
+          <p>1 active game session</p>
+          <hr>
+          <h3 class='text-center'>Free</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading" style='background-color:#5cb85c;'>
+          <h2 class="panel-title text-center lead" style='font-size:30px;'>Plus</h2>
+        </div>
+        <div class="panel-body text-center">
+          <br>
+          <p style='font-size:20px'>5 character sheets</p>
+          <br>
+          <p style='font-size:20px'>5 active game sessions</p>
+          <br>
+          <hr>
+          <h2 class='text-center'>$4,99 / month</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" style='margin-left:-30px;'>
+      <br>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center lead">Premium</h3>
+        </div>
+        <div class="panel-body text-center">
+          <br>
+          <p>Unlimited character sheets</p>
+          <p>Unlimited active game sessions</p>
+          <hr>
+          <h3 class='text-center'>$9,99 / month</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center">
+  <br>
+  <a href="" class='btn btn-lg btn-success'>Sign up now</a>
+</div>
+<hr class='welcome-hr'>
+<div class="welcome-fourth-section">
+  <div class='welcome-title text-center'>
+    <h1>By players, for players.</h1>
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <p>
+        Sandboxing UDID content management system ruby on rails continuous deployment big data infographic. Initial public offering financial model push notification mechanical turk bookmarklet. Term sheet convertible note colluding bootstrapping. Cloud computing subscription model out of the box proactive solution.
+      </p>
+      <br>
+      <p class='text-center'><b>And if you're not satisfied, you can cancel for free at any time within your 30-day trial.</b></p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="welcome-fifth-section">
+  <div class='welcome-title text-center'>
+    <h2 class='text-muted'>Keep in touch.</h1>
+    <br>
+    <br>
+  </div>
+  <div class="row">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <h4>About us</h4>
+        <p>
+          Crown Designs was founded in 2012 by Frank Upfield and Nathan Kent-Young to take advantage of the latest technologies in order to aid viral B2B synergy.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h4>   Sign up to the newsletter</h4>
+        <div class="col-md-10">
+          <p><input type='text' class='form-control'></p>
+        </div>
+        <div class="col-md-2">
+          <a href="" class='btn btn-primary'>Subscribe</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class='row'>
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-3 text-center"><b><a href="">Support</a></b></div>
+        <div class="col-md-3 text-center"><b><a href="">Privacy</a></b></div>
+        <div class="col-md-3 text-center"><b><a href="">Policy</a></b></div>
+        <div class="col-md-3 text-center"><b><a href="">Contact</a></b></div>
+      </div>
     </div>
   </div>
 </div>
