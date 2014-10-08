@@ -20,51 +20,7 @@
   <script src="webapp/assets/javascripts/controllers/dashboard_controller.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-
-              <img SRC="webapp/assets/img/1D20-logo2.png" ALT="Logo_1D20" TITLE="Logo du site 1D20" class="center-block">
-
-              <li><a href="#dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Account</a></li>
-              <li><a href="#messages"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-tower"></span> Games</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Galleries</a></li>
-
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Me <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-    </header>
-    <div ng-view style='background-color: #ecf0f1; padding:20px; border-radius: 4px'></div>
+  <div class="container" ng-view style='background-color: #ecf0f1; padding:20px; border-radius: 4px'>
   </div>
 </body>
 </html>
