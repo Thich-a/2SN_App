@@ -1,1 +1,53 @@
 <div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="col-md-offset-2 col-md-2">
+  <div>
+    <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture">
+  </div>
+  <div>
+    edit
+  </div>
+
+</div>
+
+<div class="col-md-4">
+
+  <div class="">
+    <p>Username</p>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input id="userEmail" type="text" class="form-control" placeholder="user.email">
+    </div>
+    <br>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">**</span>
+      <input type="password" class="form-control" placeholder="*********">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">**</span>
+      <input type="password" class="form-control" placeholder="*********">
+    </div>
+    <br>
+    <br>
+
+    <script type="text/javascript">
+    $('.selectpicker').selectpicker();
+    </script>
+
+    <div class="btn-group">
+      <div class="btn-group">
+        <select id="planSelect" class="selectpicker">
+          <option>Freemium</option>
+          <option>Plus</option>
+          <option>Premium</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-default">Update !</button>
+    </div>
+
+
+  </div>
+</div>
