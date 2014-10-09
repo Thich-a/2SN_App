@@ -1,0 +1,9 @@
+#galleries-photo-album {
+  list-style: none;
+}
+
+#galleries-photo-album li {
+  display: inline-block;
+}
+
+

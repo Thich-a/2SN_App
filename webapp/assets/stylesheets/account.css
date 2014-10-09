@@ -1,3 +1,37 @@
+.userPicture img {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.settings-btn {
+  margin-top: 5px;
+  border-radius: 0px;
+  padding-left: 7px;
+}
+
+.planType {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.planType div {
+  padding: 0px;
+}
+
+.planType div button {
+  width: 100%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.row.planType>div>.btn-group.bootstrap-select {
+  width: 100%;
+}
+
 .btn-group.bootstrap-select button  {
   border-radius: 4px 0px 0px 4px;
+}
+
+.settingsSave button {
+  width: 100%;
 }

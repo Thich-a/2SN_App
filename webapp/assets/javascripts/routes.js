@@ -19,5 +19,10 @@ App.config(function($routeProvider) {
     .when('/account', {
       templateUrl: 'webapp/views/account/index.html',
       controller:  'accountCtrl'
+    })
+    .when('/galleries', {
+      templateUrl: 'webapp/views/galleries/index.html',
+      controller:  'galleriesCtrl'
     });
+
 });

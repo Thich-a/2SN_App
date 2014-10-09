@@ -1,0 +1,51 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="row">
+  <div id="galleries-photo-display" class="col-md-offset-2 col-md-8"></div>
+</div>
+
+<div class="row">
+  <ul id="galleries-photo-album">
+    <li><img src="webapp/assets/img/anon_user.png" class="img-rounded"></li>
+    <li>other test</li>
+    <li>last test</li>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  // Detecting click on picture
+  $(document).on('click', '#galleries-photo-album li', function() {
+
+    // get rid of class 'active'
+    // $('#galleries-photo-album li').
+
+    // set class active for current element
+    // this.class += active ...
+
+    var photo = this.innerHTML;
+    $('#galleries-photo-display').html(photo);
+
+    // change photo attributes
+
+  });
+
+
+  // setting up left and right arrows
+
+
+
+  // setting up click on different album
+
+</script>
+
+<div class="row">
+
+  <div class="col-md-6">
+    here albums
+  </div>
+
+  <div class="col-md-6">
+    here details
+  </div>
+
+</div>
