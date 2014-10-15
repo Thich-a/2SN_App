@@ -4,6 +4,10 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/index.html',
       controller:  'indexCtrl'
     })
+    .when('/login', {
+      templateUrl: 'webapp/views/login.html',
+      controller:  'loginCtrl'
+    })
     .when('/dashboard', {
       templateUrl: 'webapp/views/dashboard.html',
       controller:  'dashboardCtrl'
