@@ -9,6 +9,7 @@
   background-color: #00A6B6;
   margin-bottom:0;
   color: white;
+  text-shadow: 0 2px 0 rgba(0,0,0,.3);
 }
 
 .panel-default > .character_sheets { background-color: #26A65B; }
@@ -20,6 +21,7 @@
   padding: 0;
   border-top: none;
   background-color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.3);
 }
 .panel-default > .panel-footer a {
   padding: 9px 6px;
@@ -85,7 +87,7 @@
 .user_widget_photo img {
   margin: 30px auto;
   width: 150px;
-  border: 2px solid #00A6B6;
+  border: 1px solid #00A6B6;
 }
 
 /* ------------------------------- Friend_widget ------------------------------- */
