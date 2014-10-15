@@ -2,57 +2,31 @@
 <div class="row">
   <!-- USER_CHARACTERS_SHEETS -->
   <div class="col-md-4">
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #26A65B;'>
       <div class="panel-heading text-center lead character_sheets">Character Sheets</div>
       <div class="panel-body">
         <p class='text-center'><a href=""> + New Character</a></p>
         <hr>
-        <div class="row">
-          <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-          </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>Jesus Christ</h4>
-            <p><b>lvl 12 healer</b></p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <p class='text-muted'>Current game : <br>Super Smach Relegion Brwal</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
+        <div ng-repeat="sheet in sheets">
+          <div class="row">
             <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+              <img src="{{ sheet.avatar }}" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h3 style='margin-top:4px;'>{{ sheet.char_name }}</h3>
+              <p><b>{{ sheet.details }}</b></p>
+            </div>
           </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>Beckozaurus Rex</h4>
-            <p><b>lvl 6 drunk irish monster</b></p>
+          <br>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <p class='text-muted'>
+                Current game : <br>
+                {{ sheet.game_session.name }}
+              </p>
+            </div>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <p class='text-muted'>Current game : <br>Lavoir adventures</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-          </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>Beck Beckinson the Bucket</h4>
-            <p><b>lvl 11 gipsy developer</b></p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <p class='text-muted'>Current game : <br>My_guitar_to_the_vertical</p>
-          </div>
+          <hr ng-if="!$last">
         </div>
       </div>
     </div>
@@ -65,10 +39,10 @@
       <div class="panel-body">
         <div class="col-xs-12 user_widget_photo">
           <div>
-            <img src="webapp/assets/img/anon_user.png" class="img-circle">
+            <img src="{{ user.avatar }}" class="img-circle">
           </div>
         </div>
-         <h2>USERNAME</h2>
+         <h2>{{ user.username }}</h2>
          <br>
       </div>
       <div class="panel-footer">
@@ -80,47 +54,18 @@
   </div>
   <!-- GAME_SESSIONS_WIDGET -->
   <div class="col-md-4">
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #F39C12;'>
       <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
       <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 1<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+        <div ng-repeat='session in sessions'>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <a href="#gamesessions/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
+              <p><small><b>Started {{ session.created_at }}</b></small></p>
+              <p><i class='text-muted'>{{ session.last_log }}</i></p>
+            </div>
           </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 2<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 3<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 4</h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 5</h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
+          <hr ng-if="!$last">
         </div>
       </div>
     </div>
@@ -132,7 +77,7 @@
 <div class="row">
   <!-- FRIENDS_WIDGET -->
   <div class="col-md-4">
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #00A6B6;'>
       <div class="panel-heading text-center lead friend_list">Friends</div>
       <div class="panel-body" style='border-radius:0;'>
         <input type='text' class='form-control'>
@@ -182,54 +127,33 @@
           </div>
         </div>
       </div>
-      <div class="panel-footer text-center lead"><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
+      <div class="panel-footer text-center lead" style='color: #00A6B6;'><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
     </div>
   </div>
   <!-- PICTURES_WIDGET -->
   <div class="col-md-4">
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #CF000F;'>
       <div class="panel-heading text-center lead pictures">Pictures</div>
       <div class="panel-body">
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
-        </div>
-        <div class="col-md-6 text-center">
-          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded big-picture"></a>
+        <div ng-repeat='album in albums'>
+          <div ng-repeat='pictures in album'>
+            <div ng-repeat='picture in in filtered = (pictures)'>
+              <div class="col-md-6 text-center">
+                <a href="#pictures/{{ picture.id }}"><img src="{{ picture.url }}" class="img-rounded big-picture"></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p><b>1337</b> Pictures - <b>69</b> Albums</p>
+        <p style='color: #CF000F;'><b>{{ filtered.length }}</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
       </div>
     </div>
   </div>
   <!-- POSTS_WIDGET -->
   <div class="col-md-4">
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #674172;'>
       <div class="panel-heading text-center lead posts">Posts</div>
       <div class="panel-body">
         <p class='text-center'><a href=""> + New Post</a></p>
@@ -269,7 +193,7 @@
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p><b>42</b> Posts</p>
+        <p style='color: #674172;'><b>42</b> Posts</p>
       </div>
   </div>
 </div>

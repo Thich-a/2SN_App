@@ -24,7 +24,7 @@
   text-shadow: 0 1px 0 rgba(0,0,0,.3);
 }
 .panel-default > .panel-footer a {
-  padding: 9px 6px;
+  padding: 6px 6px;
   display:inline-block;
   width: 33.3%;
   height: 40px;
@@ -77,7 +77,8 @@
 
 .big-picture{
   border: 1px solid black;
-  max-height: 100px;
+  max-height: 90px;
+  max-width: 120px;
   margin-bottom: 20px;
 }
 

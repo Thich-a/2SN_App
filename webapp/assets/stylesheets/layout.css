@@ -48,14 +48,7 @@ body{
 
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-  background-color: #e3e7e8;
   border-bottom: 4px solid #d76817;
-
-}
-
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-  border-bottom: 4px solid #d76817;
-  background-color: #e3e7e8;
 }
 
  .navbar-default .navbar-nav>img{
