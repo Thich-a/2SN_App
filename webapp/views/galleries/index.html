@@ -1,51 +1,137 @@
 <div ng-include src='"webapp/views/partials/top-menu.html"'></div>
 
 <div class="row">
-  <div id="galleries-photo-display" class="col-md-offset-2 col-md-8"></div>
+  <center>
+    <div class="col-md-2"> <img value="left" class="galleries-arrows img-rounded" src="webapp/assets/img/icons/galleries-left.png"> </div>
+    <div id="galleries-photo-display" class="col-md-8"></div>
+    <div class="col-md-2"> <img value="right" class="galleries-arrows img-rounded" src="webapp/assets/img/icons/galleries-right.png"> </div>
+  </center>
 </div>
 
 <div class="row">
-  <ul id="galleries-photo-album">
-    <li><img src="webapp/assets/img/anon_user.png" class="img-rounded"></li>
-    <li>other test</li>
-    <li>last test</li>
-  </ul>
+  <div id="galleries-photo-album">
+    <div class="active"><img src="webapp/assets/img/galleries/avatar.png"></div>
+    <div><img src="webapp/assets/img/galleries/avengers2SN.png"></div>
+    <div><img src="webapp/assets/img/galleries/AmericaBoy.png"></div>
+    <div><img src="webapp/assets/img/galleries/rubyMan.png"></div>
+    <div><img src="webapp/assets/img/galleries/cookieMonster.png"></div>
+    <div><img src="webapp/assets/img/galleries/hipsterMax.png"></div>
+    <div><img src="webapp/assets/img/galleries/ninjaTurtles.png"></div>
+    <div><img src="webapp/assets/img/galleries/titanic3D.png"></div>
+    <div><img src="webapp/assets/img/galleries/zionLion.png"></div>
+  </div>
 </div>
 
 <script type="text/javascript">
+
+  // setting up first image onload
+  var photo = $('#galleries-photo-album .active').html();
+  $('#galleries-photo-display').html(photo);
+
   // Detecting click on picture
-  $(document).on('click', '#galleries-photo-album li', function() {
+  $(document).on('click', '#galleries-photo-album div', function() {
+    galleriesSwitchPhoto(this);
+  });
 
-    // get rid of class 'active'
-    // $('#galleries-photo-album li').
+  // setting up left and right arrows
+  $(document).on('click', '.galleries-arrows', function() {
 
-    // set class active for current element
-    // this.class += active ...
+    if (this.getAttribute('value') == 'left')
+      var photo = $('#galleries-photo-album .active').prev('div');
+    else
+      var photo = $('#galleries-photo-album .active').next('div');
 
-    var photo = this.innerHTML;
-    $('#galleries-photo-display').html(photo);
-
-    // change photo attributes
-
+    if (typeof photo[0] != 'undefined')
+      galleriesSwitchPhoto(photo[0]);
   });
 
 
-  // setting up left and right arrows
+  function galleriesSwitchPhoto(active) {
+    $('#galleries-photo-album .active').removeClass('active');
+    active.setAttribute('class', 'active');
 
+    var photo = active.innerHTML;
+    $('#galleries-photo-display').html(photo);
+  }
 
+  // Making sure PhotoAlbums have different names
+  $('#galleries-album-create-name').keyup(function() {
+    var albumName = $('#galleries-album-create-name').val();
+    $("#galleries-album-create").prop('disabled', false);
+    if (albumName != '')
+    {
+      $('#AlbumSelect option').each(function(){
+        if (this.value == albumName) {
+          $("#galleries-album-create").prop('disabled', true);
+          return;
+        }
+      });
+    }
+    else
+      $("#galleries-album-create").prop('disabled', true);
+  });
 
-  // setting up click on different album
+  // setting selectpicker
+  $('.selectpicker').selectpicker();
 
 </script>
 
 <div class="row">
 
   <div class="col-md-6">
-    here albums
-  </div>
+    <div class="row">
+      <select id="AlbumSelect" class="col-xs-10 selectpicker">
+        <option>Dream Team</option>
+        <option>Vacances a la plage</option>
+        <option>Selfies</option>
+      </select>
+    </div>
 
-  <div class="col-md-6">
-    here details
+    <div class="row">
+      <div class="col-xs-5">
+        <p>create new album :</p>
+        <p>
+          <div class="row galleries-album-creation">
+            <div class="col-xs-6">
+              <input id="galleries-album-create-name" class="form-control" type="text">
+            </div>
+            <div class="col-xs-6">
+              <button id="galleries-album-create" type="button" class="btn btn-default" disabled>Create</button>
+            </div>
+          </div>
+        </p>
+      </div>
+
+      <div class="col-xs-5">
+        <p>upload image to current album :</p>
+        <p>
+          <div class="row">
+            <div class="col-xs-offset-1 col-xs-10 galleries-album-add">
+              <button id="galleries-album-add-picture" type="button" class="btn btn-default">Upload</button>
+            </div>
+          </div>
+        </p>
+      </div>
+    </div>
+
   </div>
+    <div class="col-md-6">
+      <p class="lead">PCI0001243</p>
+      <div class="row">
+        <div class="col-xs-6">
+          <p>09/10/2014</p>
+        </div>
+        <div class="col-xs-6">
+          <p>in album : Dream Team</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-9">
+          <p>
+            Petit album sympa, ou je met toutes les photos de mon crew. #Crew #PormotionMars2017 #NoFilter
+          </p>
+        </div>
+      </div>
+    </div>
 
 </div>

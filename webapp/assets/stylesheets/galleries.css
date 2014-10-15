@@ -1,9 +1,57 @@
 #galleries-photo-album {
-  list-style: none;
+  display: -webkit-inline-box;
+  display: -moz-box;
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  overflow-x: scroll;
+  margin-bottom: 30px;
 }
 
-#galleries-photo-album li {
-  display: inline-block;
+#galleries-photo-album div {
+  height: 100px;
+  margin-left: 20px;
 }
 
+#galleries-photo-display {
+  height: 380px;
+  margin-bottom: 30px;
+}
 
+#galleries-photo-display img, #galleries-photo-album img {
+  height: 100%;
+}
+
+.galleries-arrows {
+  width: 30px;
+  margin-top: 170px;
+}
+
+.galleries-album-creation > div {
+  padding-left: 0px;
+  padding-right: 15px;
+}
+
+.galleries-album-creation > div:first-child {
+  padding-left: 15px;
+  padding-right: 0px;
+}
+
+.galleries-album-creation input {
+  width: 100%;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.galleries-album-creation button {
+  width: 100%;
+  border-radius: 4px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.galleries-album-add>button {
+  width: 100%;
+}
