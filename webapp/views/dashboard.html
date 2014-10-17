@@ -60,7 +60,7 @@
         <div ng-repeat='session in sessions'>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-              <a href="#gamesessions/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
+              <a href="#games/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
               <p><small><b>Started {{ session.created_at }}</b></small></p>
               <p><i class='text-muted'>{{ session.last_log }}</i></p>
             </div>
