@@ -1,7 +1,7 @@
 <div ng-include src='"webapp/views/partials/top-menu.html"'></div>
 
 <div class="col-md-offset-2 col-md-2 userPicture">
-  <img src="webapp/assets/img/anon_user.png" class="img-rounded">
+  <img id="account-picture" src="webapp/assets/img/anon_user.png" class="img-rounded">
   <br>
   <div class="row">
       <button id="account-settings-photo-upload" type="button" class="col-xs-offset-2 col-xs-4 settings-btn btn btn-info">Upload</button>
@@ -12,11 +12,11 @@
 <div class="col-md-4">
 
   <div class="account-settings">
-    <p class="text-center">Username</p>
+    <p id="account-username" class="text-center">Username</p>
     <p>
       <div class="input-group">
         <span class="input-group-addon">@</span>
-        <input id="userEmail" type="text" class="form-control" placeholder="user.email">
+        <input id="account-usermail" type="text" class="form-control" placeholder="user.email">
       </div>
     </p>
     <p>
@@ -39,9 +39,9 @@
     <div class="row planType">
       <div class="col-xs-9">
         <select id="planSelect" class="col-xs-9 selectpicker">
-          <option>Freemium</option>
-          <option>Plus</option>
-          <option>Premium</option>
+          <option value='0'>Freemium</option>
+          <option value='1'>Plus</option>
+          <option value='2'>Premium</option>
         </select>
       </div>
       <div class="col-xs-3">
