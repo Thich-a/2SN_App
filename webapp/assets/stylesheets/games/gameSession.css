@@ -1,211 +1,152 @@
 /* ---------------------- character widget ---------------------- */
-.character_widget {
-  width: 100%;
-  background-color: #ecf0f1;
+.Character_widget_photo img{
+  border: 4px solid #00A6B6;
+  width: 180px;
 }
 
-.character_widget .row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.character_widget_photo img {
-  margin-top: 10px;
-  width: 100%;
-  border: solid 3px #00A6B6;
-}
-
-.character_widget_info p, h5 {
-  text-align: center;
-}
-
-.character_widget_info p a {
-  text-decoration: none;
-  color: black;
+.Character_widget_name{
+  color: #00A6B6;
 }
 
 /* Game_sessions widget */
-/* ------------------------------- Game_widget ------------------------------- */
-.game_sessions_widget {
-  width: 100%;
-  background-color: #ecf0f1;
-}
 
-.gsw_name {
-  margin-left: 0px;
-  margin-right: 0px;
-  text-align: center;
-  background-color: #00A6B6;
-}
 
-.gsw_menu {
-  width: 100%;
-  margin-left: 0px;
-  border-bottom: thin solid #DADADA;
-}
 
-.gsw_menu div {
-  height: 30px;
-  padding: 0px;
-}
 
-.gsw_menu>div>a {
-  text-decoration: none;
-  color: black;
-  margin-top: 2px;
-  text-align: left;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.gsw_menu>div>a:hover {
-  background-color: #bdc3c7;
-}
-
-.gsw_game {
-  margin-left: 0px;
-  margin-right: 0px;
-  border-bottom: thin solid #DADADA;
-}
-
-.gsw_game:hover {
-  background-color: #bdc3c7;
-}
-
-.gsw_game h6 {
-  font-size: 10px;
-}
-
-.gsw_game p {
-  font-size: 10px;
-}
-
-.gsw_game img {
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 40px;
-}
-
-.gsw_status {
-  padding-right: 0px;
-  margin-top: 5px;
-  height: 10px;
-  width: 10px;
-  border-radius: 10px;
-}
 
 
 /* ---------------------- current game session ---------------------- */
-.game_session {
-  background-color: #00A6B6;
-  width: 100%;
-  padding: 10px;
+
+.GS-CurrentGame > span:first-child, .GS-CurrentGame > span:nth-child(3){
+  font-size: 13px;
+  margin-top: 6px;
 }
 
-.game_session .row {
+.GS-CurrentGame a{
+  text-decoration: none;
+  color: white;
+}
+
+.messages-message-board-GS .panel-heading{
+  border-bottom: 1px solid #00A6B6;
+}
+
+.messages-message-type > .panel-body {
+  min-height: 290px;
+  max-height: 290px;
+  overflow-y: scroll;
+}
+
+.messages-message-type > .messages-private-message {
+  background-color: #26A65B;
+}
+
+.messages-message-type > .messages-group-message {
+  background-color: #CF000F;
+}
+
+.messages-message-board-GS > .panel-body {
+  min-height: 620px;
+  max-height: 620px;
+  overflow-y: scroll;
+  border-left: 6px solid #00A6B6;
+  border-right: 6px solid #00A6B6;
+}
+
+
+.messages-message-board-message-master img {
+  width: 100%;
+  border: 2px solid #F39C12;
+}
+
+.messages-message-board-message-master > div:nth-child(1){
+  border-bottom: 1px solid #F39C12;
+  min-height: 57px;
+  font-size: 14px;
+}
+
+
+.messages-message-board-message-other-GS img {
+  width: 100%;
+  border: 2px solid #00D2A5;
+}
+
+.messages-message-board-message-other-GS > div:nth-child(2){
+  border-bottom: 1px solid #00D2A5;
+  min-height: 57px;
+  font-size: 14px;
+}
+
+.messages-message-board-GS > .messages-message-board-new-GS {
   margin-left: 0px;
   margin-right: 0px;
-}
-
-.gs_title {
-  text-align: center;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;
   background-color: #00A6B6;
 }
 
-.game_frame {
-  background-color: #ecf0f1;
-  padding: 10px;
-}
-
-.gs_chat {
-  height: 400px;
-  overflow: scroll;
-}
-
-.gsc_image img {
-  width: 100%;
-  border: solid 2px #00A6B6;
-}
-
-.gsc_message>div p {
-  text-align: right;
-}
-
-.gsc_message>div:last-child {
-  margin-bottom: 10px;
-  border-bottom: 3px solid #00A6B6;
-}
-
-.gsc_message>div:last-child>p {
-  text-align: left;
-}
-
-.gs_send {
-  padding: 10px;
-  background-color: #00A6B6;
-  border-radius: 10px;
-}
-
-.gs_send textarea {
+.messages-message-board-GS > .messages-message-board-new-GS textarea {
   resize: none;
+  width: 100%;
+  height: 65px;
+  border-radius: 4px;
+  padding: 5px;
 }
 
-.gs_send>div:last-child p {
-  margin-top: 20px;
+.messages-message-board-GS > .messages-message-board-new-GS p {
+  margin-left: -15px;
+  margin-top: 15px;
 }
+
 
 /* ---------------------- current game session players ---------------------- */
-.Game_session_palyers {
-  width: 100%;
-  background-color: #ecf0f1;
+.widget-Palyer-GS > .panel-body > div:first-child{
+  min-height: 665px;
+  max-height: 665px;
+  overflow-y: scroll;
 }
 
-.Game_session_palyers .row {
-  margin-left: 0px;
-  margin-right: 0px;
+.widget-Palyer-GS > .panel-body{
+  padding-top: 0px;
 }
 
-.gsp_title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-  background-color: #00A6B6;
-  margin-bottom: 10px;
+.widget-Palyer-GS .panel-footer{
+  background-color: white;
 }
 
-.players_frame {
-  padding: 10px;
+.widget-Palyer-GS .panel-footer button{
+  margin-bottom: -20px;
 }
 
-.gsp_master {
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid red;
+.widget-Palyer-GS .panel-heading{
+  background-color: #00D2A5;
+  border-bottom: 1px solid #00D2A5;
 }
 
-.gsp_master img {
-  width: 100%;
-  border: 2px solid red;
+.char-name-GS{
+  font-size: 18px;
+  color: #00D2A5;
+  font-weight: bold;
 }
 
-.gsp_player {
-  margin-bottom: 5px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #00A6B6;
+.pic_master{
+  border: 2px solid #F39C12;
 }
 
-.gsp_player:last-child {
-  border-bottom: none;
+.pic_character{
+  border: 2px solid #00D2A5;
 }
 
-.gsp_player img {
-  width: 100%;
-  border: 2px solid #00A6B6;
+.widget-Palyer-GS a{
+  color: black;
+}
+.widget-Palyer-GS .btn-invit-d a{
+  color: white;
 }
 
+.widget-Palyer-GS a:hover{
+  text-decoration: none;
+}
 
 
 

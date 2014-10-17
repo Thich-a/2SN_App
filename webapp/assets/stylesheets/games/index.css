@@ -6,3 +6,141 @@
 }
 
 /* ------------------------------- Game_invitation ------------------------------- */
+
+.btn-invit-a {
+  background-color:#00D2A5;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-invit-d {
+  background-color:#d9534f;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.name-invite {
+  color: #00A6B6;
+
+}
+
+.game-invit-i{
+  font-size: 14px;
+  font-weight: inherit;
+}
+
+.name-game {
+  color: #F39C12;
+}
+
+.btn-invit-a:hover {
+  background-color:#03e8b7;
+  color: white;
+}
+
+.btn-invit-d:hover{
+  background-color:#f25d58;
+  color: white;
+}
+
+.name-game:hover {
+  text-decoration: none;
+  color: #ffbd55;
+}
+
+/* ----- Game_invitation : Modal -------- */
+
+.modal-game-palyer {
+  background-color: #00D2A5;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+   border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.modal-game-invt {
+  background-color: #ffbd55;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+   border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.modal-body {
+font-size: 18px;
+}
+
+
+
+
+/* ------------------------------- Game_Join ------------------------------- */
+
+.btn-creat-game {
+  background-color:#F39C12;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-join-conf {
+  background-color:#00A6B6;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-join-d {
+  background-color:#d9534f;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-join-conf a, .btn-join-d a, .btn-creat-game a{
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-creat-game:hover {
+  background-color:#ffa414;
+  color: white;
+}
+
+.btn-join-conf:hover{
+  background-color:#01bdcf;
+  color: white;
+}
+
+.btn-join-d:hover {
+  background-color:#f25d58;
+  color: white;
+}
+
+.btn-join-conf a, .btn-join-d a, .btn-creat-game a:hover{
+  text-decoration: none;
+}
+
+.game-creat-join a{
+  text-decoration: none;
+}
+
+li.list-group-item.game-creat-join:hover {
+background-color: #ecf0f1;
+/*border: 2px solid white;
+border-bottom: 4px solid white;*/
+}
+
+.collapse-game{
+  background-color: white;
+  border: 2px solid #00A6B6;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px;
+}
+
+

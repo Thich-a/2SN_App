@@ -27,6 +27,10 @@ App.config(function($routeProvider) {
     .when('/galleries', {
       templateUrl: 'webapp/views/galleries/index.html',
       controller:  'galleriesCtrl'
+    })
+    .when('/games/:id', {
+      templateUrl: 'webapp/views/game_sessions/session-game.html',
+      controller:  'gameSessionsShowCtrl'
     });
 
 });
