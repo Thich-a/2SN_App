@@ -1,6 +1,23 @@
 #posts-wrapper img {
   width: 80%;
 }
+
+#posts-new textarea {
+  resize: none;
+}
+
+#posts-new-post.row, #posts-answer {
+  text-align: right;
+  margin: 0px;
+}
+
+#posts-new .modal-header, #posts-answer-new .modal-header {
+  background-color: #00A6B6;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid black;
+}
+
 .posts-post.row {
   margin-left: 0px;
   margin-right: 0px;

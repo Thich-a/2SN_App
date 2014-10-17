@@ -20,7 +20,11 @@
     <div class="panel panel-default standard" style='border-color: #00A6B6;'>
       <div class="panel-heading text-center lead">Posts</div>
       <div class="panel-body posts-panel">
+        <div id="posts-new-post" class="row">
+          <a href="" data-toggle="modal" data-target="#posts-new">+ New Post</a>
+        </div>
         <div id="posts-wrapper" ng-repeat="post in userPosts | filter:searchedText | orderBy:'-id'">
+          <hr>
           <div class="posts-post row">
             <div class="col-xs-2">
               <img src="{{user.avatar}}" class="img-rounded">
@@ -33,9 +37,28 @@
               <p>{{post.time}}</p>
             </div>
           </div>
-          <div class="posts-comments"></div>
-          <hr ng-if="!$last">
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="posts-new">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        New Post
+      </div>
+      <div class="modal-body">
+        <p>content :</p>
+        <p>
+          <textarea rows="4" class="form-control"></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Post</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
