@@ -68,11 +68,11 @@
 
 .messages-message-board-message-other-GS img {
   width: 100%;
-  border: 2px solid #00D2A5;
+  border: 2px solid #26A65B;
 }
 
 .messages-message-board-message-other-GS > div:nth-child(2){
-  border-bottom: 1px solid #00D2A5;
+  border-bottom: 1px solid #26A65B;
   min-height: 57px;
   font-size: 14px;
 }
@@ -110,6 +110,11 @@
   padding-top: 0px;
 }
 
+.widget-Palyer-GS > .panel-body > div{
+border-left: 1px solid #26A65B;
+border-right: 1px solid #26A65B;
+}
+
 .widget-Palyer-GS .panel-footer{
   background-color: white;
 }
@@ -119,13 +124,13 @@
 }
 
 .widget-Palyer-GS .panel-heading{
-  background-color: #00D2A5;
-  border-bottom: 1px solid #00D2A5;
+  background-color: #26A65B;
+  border-bottom: 1px solid #26A65B;
 }
 
 .char-name-GS{
   font-size: 18px;
-  color: #00D2A5;
+  color: #26A65B;
   font-weight: bold;
 }
 
@@ -134,7 +139,7 @@
 }
 
 .pic_character{
-  border: 2px solid #00D2A5;
+  border: 2px solid #26A65B;
 }
 
 .widget-Palyer-GS a{
