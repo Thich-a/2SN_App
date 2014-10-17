@@ -137,7 +137,7 @@
       <div class="panel-body">
         <div ng-repeat='album in albums'>
           <div ng-repeat='pictures in album'>
-            <div ng-repeat='picture in in filtered = (pictures)'>
+            <div ng-repeat='picture in filtered = (pictures)'>
               <div class="col-md-6 text-center">
                 <a href="#pictures/{{ picture.id }}"><img src="{{ picture.url }}" class="img-rounded big-picture"></a>
               </div>
@@ -147,7 +147,7 @@
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p style='color: #CF000F;'><b>{{ filtered.length }}</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
+        <p style='color: #CF000F;'><b>11</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
       </div>
     </div>
   </div>
