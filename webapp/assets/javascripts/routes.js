@@ -40,5 +40,8 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/posts/show.html',
       controller:  'postShowCtrl'
     })
-    ;
+    .when('/contactAdmin', {
+      templateUrl: 'webapp/views/contact_admin/index.html',
+      controller:  'contactAdminCtrl'
+    });
 });

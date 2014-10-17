@@ -1,0 +1,19 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <div class="contact-admin row">
+      <p>select reason for contacting admin :</p>
+      <p>
+        <select id="contact-trouble-select" class="form-control selectpicker troubleSelect">
+          <option ng-repeat="troubleType in troubleTypes" value="{{troubleType.id}}">{{troubleType.name}}</option>
+        </select>
+      </p>
+      <p><textarea rows="5" class="form-control"></textarea></p>
+    </div>
+    <hr>
+    <div class="contact-send row">
+      <div class="col-xs-offset-2 col-xs-8"><button type="button" class="form-control btn btn-info">Send</button></div>
+    </div>
+  </div>
+</div>

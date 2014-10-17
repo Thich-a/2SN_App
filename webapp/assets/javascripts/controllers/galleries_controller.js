@@ -88,16 +88,13 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location){
 
   // Making sure PhotoAlbums have different names
   $('#galleries-album-create-name').keyup(function() {
-    var albumName = $('#galleries-album-create-name').val();
+    $scope.newAlbumName = $('#galleries-album-create-name').val();
     $("#galleries-album-create").prop('disabled', false);
-    if (albumName != '')
+    if ($scope.newAlbumName != '')
     {
-      $('#AlbumSelect option').each(function(){
-        if (this.value == albumName) {
+      for(album in $scope.albums)
+        if ($scope.albums[album].name == $scope.newAlbumName)
           $("#galleries-album-create").prop('disabled', true);
-          return;
-        }
-      });
     }
     else
       $("#galleries-album-create").prop('disabled', true);

@@ -31,18 +31,18 @@
               <input id="galleries-album-create-name" class="form-control" type="text">
             </div>
             <div class="col-xs-6">
-              <button id="galleries-album-create" type="button" class="btn btn-default" disabled>Create</button>
+              <button id="galleries-album-create" data-toggle="modal" data-target="#galleries-new" type="button" class="btn btn-success" disabled>Create</button>
             </div>
           </div>
         </p>
       </div>
 
       <div class="col-xs-5">
-        <p>upload image to current album :</p>
+        <p>add image to album :</p>
         <p>
           <div class="row">
             <div class="col-xs-offset-1 col-xs-10 galleries-album-add">
-              <button id="galleries-album-add-picture" type="button" class="btn btn-default">Upload</button>
+              <button id="galleries-album-add" type="button" class="btn btn-info">Upload</button>
             </div>
           </div>
         </p>
@@ -70,4 +70,21 @@
 
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="galleries-new">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        Confirm creation of new album
+      </div>
+      <div class="modal-body">
+        <p>create new album "{{newAlbumName}}" ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 

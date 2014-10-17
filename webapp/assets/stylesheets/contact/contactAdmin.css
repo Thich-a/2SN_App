@@ -1,0 +1,11 @@
+.btn-group.bootstrap-select.form-control.troubleSelect button {
+  border-radius: 3px;
+}
+
+.contact-admin textarea {
+  resize:none;
+}
+
+.contact-send {
+  margin-bottom: 50px;
+}

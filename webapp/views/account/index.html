@@ -32,16 +32,10 @@
       </div>
     </p>
 
-    <script type="text/javascript">
-    $('.selectpicker').selectpicker();
-    </script>
-
     <div class="row planType">
       <div class="col-xs-9">
         <select id="planSelect" class="col-xs-9 selectpicker">
-          <option value='0'>Freemium</option>
-          <option value='1'>Plus</option>
-          <option value='2'>Premium</option>
+          <option ng-repeat="plan in plans" value="{{plan.id}}">{{plan.name}}</option>
         </select>
       </div>
       <div class="col-xs-3">
