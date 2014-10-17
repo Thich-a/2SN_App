@@ -16,47 +16,18 @@
     <!-- CHARACTER_SHEET_WIDGET       END -->
 
     <!-- GAME_SESSION_WIDGET -->
-    <div class="panel panel-default standard">
+    <div class="panel panel-default standard" style='border-color: #F39C12;'>
       <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
       <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 1<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
+        <div ng-repeat='session in sessions'>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <a href="#games/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
+              <p><small><b>Started {{ session.created_at }}</b></small></p>
+              <p><i class='text-muted'>{{ session.last_log }}</i></p>
+            </div>
           </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 2<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 3<span class='pull-right'><i class='glyphicon glyphicon-flash'></i></span></h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 4</h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <a href=""><h3 style='margin-top:4px;'>Game 5</h3></a>
-            <p><b>Started 12 october 1997</b></p>
-            <p><i class='text-muted'>Beckman rolled 11. Critical hit !</i></p>
-          </div>
+          <hr ng-if="!$last">
         </div>
       </div>
     </div>
