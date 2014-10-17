@@ -16,9 +16,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location){
     {'id':2, 'name':'PCI0001244', 'description':'This is a description', 'date':'18/09/2014' ,'url':'webapp/assets/img/galleries/avengers2SN.png'},
     {'id':9, 'name':'PCI0001251', 'description':'This is a description', 'date':'31/12/2013' ,'url':'webapp/assets/img/galleries/zionLion.png'}
   ]},
-  {'id':3, 'name':'titi', 'content':[
-    {'id':1, 'name':'PCI0001243', 'description':'This is a description', 'date':'19/09/2014' ,'url':'webapp/assets/img/galleries/avatar.png'},
-    {'id':9, 'name':'PCI0001251', 'description':'This is a description', 'date':'31/12/2013' ,'url':'webapp/assets/img/galleries/zionLion.png'}
+  {'id':3, 'name':'cousins', 'content':[
+    {'id':1, 'name':'LES COUSINS', 'description':'This is a description', 'date':'19/09/2014' ,'url':'webapp/assets/img/galleries/cousins.png'}
   ]}
   ];
 
