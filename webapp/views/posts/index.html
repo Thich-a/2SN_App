@@ -1,0 +1,42 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default standard" style='border-color: #00A6B6;'>
+      <div class="panel-heading text-center lead">searching for a post in particular ?</div>
+      <div class="panel-body">
+       <p>just pop in in here :</p>
+       <p><input type="text" class="form-control" ng-model="searchedText"></p>
+       <br>
+       <hr>
+       <br>
+       <p>it's really easy, simply input a date, word, or username or time in the input above</p>
+       <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+       tempor incididunt ut labore et  </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default standard" style='border-color: #00A6B6;'>
+      <div class="panel-heading text-center lead">Posts</div>
+      <div class="panel-body posts-panel">
+        <div id="posts-wrapper" ng-repeat="post in userPosts | filter:searchedText | orderBy:'-id'">
+          <div class="posts-post row">
+            <div class="col-xs-2">
+              <img src="{{user.avatar}}" class="img-rounded">
+            </div>
+            <div class="col-xs-8">
+              <a href="#posts/{{post.id}}"><p>{{post.content}}</p></a>
+            </div>
+            <div class="col-xs-2">
+              <p>{{post.date}}</p>
+              <p>{{post.time}}</p>
+            </div>
+          </div>
+          <div class="posts-comments"></div>
+          <hr ng-if="!$last">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+#posts-wrapper img {
+  width: 80%;
+}
+.posts-post.row {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.standard > .panel-body.posts-panel {
+  max-height: none;
+  min-height: 0px;
+}
+
+.posts-comments.row {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.posts-comments.row div .row {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: whitesmoke;
+}

@@ -31,6 +31,14 @@ App.config(function($routeProvider) {
     .when('/games/:id', {
       templateUrl: 'webapp/views/game_sessions/session-game.html',
       controller:  'gameSessionsShowCtrl'
-    });
-
+    })
+    .when('/posts', {
+      templateUrl: 'webapp/views/posts/index.html',
+      controller:  'postsCtrl'
+    })
+    .when('/posts/:id', {
+      templateUrl: 'webapp/views/posts/show.html',
+      controller:  'postShowCtrl'
+    })
+    ;
 });

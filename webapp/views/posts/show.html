@@ -1,0 +1,33 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="panel panel-default standard" style='border-color: #00A6B6;'>
+  <div class="panel-heading text-center lead">Posts</div>
+  <div class="panel-body posts-panel">
+    <div id="posts-wrapper">
+      <div class="posts-post row">
+        <div class="col-xs-2">
+          <img src="{{user.avatar}}" class="img-rounded">
+        </div>
+        <div class="col-xs-8">
+          <p>{{currentPost.content}}</p>
+        </div>
+        <div class="col-xs-2">
+          <p>{{currentPost.date}}</p>
+          <p>{{currentPost.time}}</p>
+        </div>
+      </div>
+      <div class="posts-comments row" ng-repeat="answer in answers">
+        <div class="col-xs-offset-2 col-xs-8">
+          <div class="row">
+            <div class="col-xs-2">
+              <img src="{{answer.user.avatar}}" class="img-rounded">
+            </div>
+            <div class="col-xs-8">
+              <p>{{answer.content}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
