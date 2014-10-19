@@ -1,4 +1,5 @@
-App.controller('dashboardCtrl', function ($scope, $http, $window, $location){
+App.controller('dashboardCtrl', function ($scope, $http, $window, $location, AuthService){
+
   $scope.user = {
                   'id' :       1,
                   'username' : 'Yinfei',
