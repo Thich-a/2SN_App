@@ -98,6 +98,29 @@
   margin-top: 15px;
 }
 
+.btn-send-message{
+  background-color:#39c6a7;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+
+}
+
+.btn-send-message:hover{
+  background-color:#40e3bf;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+
+.modal-game-story {
+  background-color: #00A6B6;
+  color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
 
 /* ---------------------- current game session players ---------------------- */
 .widget-Palyer-GS > .panel-body > div:first-child{
@@ -110,9 +133,10 @@
   padding-top: 0px;
 }
 
-.widget-Palyer-GS > .panel-body > div{
+.widget-Palyer-GS {
 border-left: 1px solid #26A65B;
 border-right: 1px solid #26A65B;
+border-bottom: 1px solid #26A65B;
 }
 
 .widget-Palyer-GS .panel-footer{
@@ -153,5 +177,8 @@ border-right: 1px solid #26A65B;
   text-decoration: none;
 }
 
+.modal-img-GS {
+  height: 300px;
+}
 
 

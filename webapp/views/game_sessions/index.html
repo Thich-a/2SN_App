@@ -4,29 +4,29 @@
  <!-- Invitation pour une partie -->
   <div class="col-md-4">
     <div class="panel panel-default game_session">
-      <div class="panel-heading text-center lead">Invitation</div>
-
+      <div class="panel-heading text-center lead">
+        Invitation
+      </div>
+      <div ng-repeat="invite in invitations">
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-3 col-xs-offset-1">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+            <a href=""><img src="{{ invite.creator.avatar }}" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
           </div>
           <div class="col-xs-7">
-            <p><span class="pull-left"><b><a href="" class="name-invite">Beck Beck</a></b></span><br>
+            <p><span class="pull-left"><b><a href="" class="name-invite">{{ invite.creator.username }}</a></b></span><br>
             <span class="game-invit-i">Send you an invitation for :</span><br>
-            <a href="" data-toggle="modal" data-target="#myModal" class="name-game"><b>Super Smash peigne</b></p></a>
+            <a href="" data-toggle="modal" data-target="#myinvite{{ invite.id }}" class="name-game"><b>{{ invite.game_name }}</b></p></a>
             <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myinvite{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header modal-game-invt">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">Super Smash peigne</h4>
+                    <h4 class="modal-title text-center" id="myModalLabel">{{ invite.game_name }}</h4>
                   </div>
                   <div class="modal-body">
-                    Rejoins l'un des plus grand combat épique !!!<br>
-                    Bat toi pour ta survie et deviens le plus grand guerrier de l'arène.<br>
-                    ...
+                    {{ invite.story }}
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
@@ -36,63 +36,23 @@
               </div>
             </div>
           </div>
-        </div>
+        </div><!-- end row -->
         <div class="pull-right">
           <button type="button" class="btn btn-invit-a">Join</button>
           <button type="button" class="btn btn-invit-d">Denied</button>
         </div>
-      </div>
+      </div> <!-- end panel body -->
       <hr>
-
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-3 col-xs-offset-1">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-          </div>
-          <div class="col-xs-7">
-            <p><span class="pull-left"><b><a href="" class="name-invite">Toinou</a></b></span><br>
-            <span class="game-invit-i">Send you an invitation for :</span><br>
-            <a href="" data-toggle="modal" data-target="#myModal1" class="name-game"><b>Game 17</b></p></a>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header modal-game-invt">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">Game 17</h4>
-                  </div>
-                  <div class="modal-body">
-                    ceci est un text de test <br>
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
-                    <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pull-right">
-          <button type="button" class="btn btn-invit-a">Join</button>
-          <button type="button" class="btn btn-invit-d">Denied</button>
-        </div>
       </div>
-      <hr>
-
-
       <div class="panel-body">
         <h6 class="lead" >Search Friends :</h6>
         <input type='text' class='form-control'>
       </div>
-
-
     </div>
   </div>
 
-  <div class="col-md-8"><!-- Selection d'une partie -->
-
+  <!-- Selection d'une partie -->
+  <div class="col-md-8">
      <div class="panel panel-default" >
       <div class="panel-heading text-center lead" style="border-radius: 4px; border:0px;">
         Game Sessions
@@ -106,16 +66,16 @@
 
       <!-- List group -->
       <ul class="list-group">
-        <li class="list-group-item game-creat-join">
-          <a href="#games/1"><h3 class="text-center"><span class="label label-primary btn-creat-game">- Game 1 -</span><a href="" data-toggle="modal" data-target="#myModal2" class="pull-right" ><span class="label label-primary btn-invit-a badge pull-right">5 Players</span></a></h3></a>
+        <li class="list-group-item game-creat-join" ng-repeat="creatG in Game_Creat">
+          <a href="#games/{{ creatG.id }}"><h3 class="text-center"><span class="label label-primary btn-creat-game">- {{ creatG.name }} -</span><a href="" data-toggle="modal" data-target="#Modal_Player{{ creatG.id }}" class="pull-right"><span class="label label-primary btn-invit-a badge pull-right">5 Players</span></a></h3></a>
           <br>
           <div class="row">
             <div class="col-xs-9">
             <p>
-              <i>Started 12 october 1997 by <a href="">Username</a> : </i>
+              <i>Started {{ creatG.created_at }} by <a href="">{{ creatG.creator.username }}</a> : </i>
               <span class="label label-primary btn-join-conf">
                 <i> Story</i>
-                <a href="" data-toggle="collapse" data-target="#demo1">
+                <a href="" data-toggle="collapse" data-target="#col_GS_{{ creatG.id }}">
                   <span class="glyphicon glyphicon-chevron-down"></span>
                 </a>
               </span>
@@ -123,66 +83,27 @@
             </div>
             <div class="col-xs-3">
               <!-- Modal -->
-              <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="Modal_Player{{ creatG.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header modal-game-palyer">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title text-center" id="myModalLabel">Game 1 : Players</h4>
+                      <h4 class="modal-title text-center" id="myModalLabel">- {{ creatG.name }} -<br>Players</h4>
                     </div>
                     <div class="modal-body">
 
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+                      <div ng-repeat="player in creatG.user">
+                        <div class="row">
+                          <div class="col-xs-1 col-xs-offset-1">
+                            <a href=""><img src="{{ player.charaters.avatar }}" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+                          </div>
+                          <div class="col-xs-9">
+                            <p class="text-center"><b>- {{ player.charaters.char_name }} -</b><br>
+                            <a href="" class="name-invite">{{ player.username }}</a></p>
+                          </div>
                         </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- BECKERMAN -</b><br>
-                          <a href="" class="name-invite">Beck Beck</a></p>
-                        </div>
+                        <hr>
                       </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- TORGNOL -</b><br>
-                          <a href="" class="name-invite">Kéké_75</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- Princesse Sarah -</b><br>
-                          <a href="" class="name-invite">Lili</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- SORCELLE -</b><br>
-                          <a href="" class="name-invite">Gamer_22</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- GORGU -</b><br>
-                          <a href="" class="name-invite">Steve_J</a></p>
-                        </div>
-                      </div>
-
-
 
                     </div> <!-- Modal-body end -->
                   </div>
@@ -191,10 +112,8 @@
 
             </div>
           </div>
-          <div id="demo1" class="collapse collapse-game">
-            <p>En 1974, le Dungeons and Dragons original (aujourd’hui appelé OD&D) était une boite contenant trois livrets, publiés par TSR (Tactical Studies Rules), à l'époque une société amateur1. Écrit dans un style propre aux connaisseurs du genre, il était conçu pour un public ayant déjà l’habitude des wargames. Ce jeu n’en a pourtant pas moins connu une grande popularité, d’abord parmi les wargamersNote 2, mais aussi plus largement parmi les étudiants. Cette première boîte est plusieurs fois réimprimée, et complétée par des suppléments officiels (notamment les première éditions des mondes de Greyhawk et de Blackmoor, en 19752) et par des articles de magazines, publiés par TSR ou par de nombreux fanzines.
-            Dans la première édition de 1974, seules trois classes de personnages sont disponibles : le Fighting Man (guerrier), le Magic User (magicien) et le Cleric (prêtre). Le Thief (voleur), le Paladin, le Druid (druide) et le Monk (moine) sont introduits au fil des suppléments. De nombreuses règles du jeu font référence au wargame avec figurines Chainmail, ce qui fait de cette première édition plus un supplément à Chainmail qu'un jeu à part entière. Notamment, le système de jeu de combat, qui est la base des éditions suivantes, n'est présenté que comme une option, les auteurs recommandant d'utiliser plutôt Chainmail.
-            À partir de 1977, TSR met en place une stratégie de division du jeu en deux gammes distinctes, qui va durer plus de vingt ans3. D’un côté est publiée la boîte Basic Dungeons & Dragons, une présentation claire des règles essentielles à destination du public qui n’a jamais joué aux wargames auparavant, rédigée par le psychologue J. Eric Holmes. De l’autre est publiée, dès 1978, Advanced Dungeons & Dragons, qui rassemble l’ensemble des règles, variantes, options et corrections proposées depuis la première édition, afin de les unifier3.</p>
+          <div id="col_GS_{{ creatG.id }}" class="collapse collapse-game">
+            <p>{{ creatG.story }}</p>
           </div>
 
           <div class="row">
@@ -207,9 +126,8 @@
               </button>
             </div>
           </div>
-
-
         </li>
+
         <li class="list-group-item">
           <button type="button" class="btn btn-join-conf">
           <a href=""> + Create Game Session</a>
@@ -225,16 +143,16 @@
       </div>
       <!-- List group -->
       <ul class="list-group">
-        <li class="list-group-item game-creat-join">
-          <a href="#games/2"><h3 class="text-center"><span class="label label-primary btn-creat-game">- Game 2 -</span><a href="" data-toggle="modal" data-target="#myModal3" class="pull-right" ><span class="label label-primary btn-invit-a badge pull-right">3 Players</span></a></h3></a>
+        <li class="list-group-item game-creat-join" ng-repeat="joinG in Game_Join">
+          <a href="#games/{{ joinG.id }}"><h3 class="text-center"><span class="label label-primary btn-creat-game">- {{ joinG.name }} -</span><a href="" data-toggle="modal" data-target="#Modal_Player{{ joinG.id }}" class="pull-right"><span class="label label-primary btn-invit-a badge pull-right">5 Players</span></a></h3></a>
           <br>
           <div class="row">
             <div class="col-xs-9">
             <p>
-              <i>Started 12 october 1997 by <a href="">Toby</a> : </i>
+              <i>Started {{ joinG.created_at }} by <a href="">{{ joinG.creator.username }}</a> : </i>
               <span class="label label-primary btn-join-conf">
                 <i> Story</i>
-                <a href="" data-toggle="collapse" data-target="#demo">
+                <a href="" data-toggle="collapse" data-target="#col_GS_{{ joinG.id }}">
                   <span class="glyphicon glyphicon-chevron-down"></span>
                 </a>
               </span>
@@ -242,126 +160,40 @@
             </div>
             <div class="col-xs-3">
               <!-- Modal -->
-              <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="Modal_Player{{ joinG.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header modal-game-palyer">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title text-center" id="myModalLabel">Game 2 : Players</h4>
+                      <h4 class="modal-title text-center" id="myModalLabel">- {{ joinG.name }} -<br>Players</h4>
                     </div>
                     <div class="modal-body">
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+
+                      <div ng-repeat="player in joinG.user">
+                        <div class="row">
+                          <div class="col-xs-1 col-xs-offset-1">
+                            <a href=""><img src="{{ player.charaters.avatar }}" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+                          </div>
+                          <div class="col-xs-9">
+                            <p class="text-center"><b>- {{ player.charaters.char_name }} -</b><br>
+                            <a href="" class="name-invite">{{ player.username }}</a></p>
+                          </div>
                         </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- IRONMAN -</b><br>
-                          <a href="" class="name-invite">MaryLou</a></p>
-                        </div>
+                        <hr>
                       </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- THOR -</b><br>
-                          <a href="" class="name-invite">Dj</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- HULK -</b><br>
-                          <a href="" class="name-invite">James_G</a></p>
-                        </div>
-                      </div>
+
                     </div> <!-- Modal-body end -->
                   </div>
                 </div>
-              </div> <!-- Modal end -->
+              </div>
 
             </div>
           </div>
-
-          <div id="demo" class="collapse collapse-game">
-            <p>Histoire du jeu2 ....
-              Trouver un traitement pour le text.
-            </p>
+          <div id="col_GS_{{ joinG.id }}" class="collapse collapse-game">
+            <p>{{ joinG.story }}</p>
           </div>
         </li>
 
-        <li class="list-group-item game-creat-join">
-          <a href="#games/3"><h3 class="text-center"><span class="label label-primary btn-creat-game">- Game 3 -</span><a href="" data-toggle="modal" data-target="#myModal3" class="pull-right" ><span class="label label-primary btn-invit-a badge pull-right">3 Players</span></a></h3></a>
-          <br>
-          <div class="row">
-            <div class="col-xs-9">
-            <p>
-              <i>Started 12 october 1997 by <a href="">Bekeck</a> : </i>
-              <span class="label label-primary btn-join-conf">
-                <i> Story</i>
-                <a href="" data-toggle="collapse" data-target="#demo2">
-                  <span class="glyphicon glyphicon-chevron-down"></span>
-                </a>
-              </span>
-            </p>
-            </div>
-            <div class="col-xs-3">
-              <!-- Modal -->
-              <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header modal-game-palyer">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title text-center" id="myModalLabel">Game 3 : Players</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- IRONMAN -</b><br>
-                          <a href="" class="name-invite">MaryLou</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- THOR -</b><br>
-                          <a href="" class="name-invite">Dj</a></p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-1 col-xs-offset-1">
-                          <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-9">
-                          <p class="text-center"><b>- HULK -</b><br>
-                          <a href="" class="name-invite">James_G</a></p>
-                        </div>
-                      </div>
-                    </div> <!-- Modal-body end -->
-                  </div>
-                </div>
-              </div> <!-- Modal end -->
-
-            </div>
-          </div>
-
-          <div id="demo2" class="collapse collapse-game">
-            <p>Histoire du jeu3 ....
-              Trouver un traitement pour le text.
-            </p>
-          </div>
-        </li>
 
       </ul>
     </div>
