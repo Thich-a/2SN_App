@@ -34,11 +34,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location){
   $scope.galleriesArrows = function(direction) {
 
     var photoId = $('#galleries-photo-album div .active').attr('imageId');
-
-    /////////////////////////////////////// PROBLEM : two calls at once ! /////////////////////////////////////////////
-    console.log('CALL here ');
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     for (var i = 0; i < $scope.images.length; i++)
     {
       if (($scope.images[i].id == photoId) && (direction == 'left'))
