@@ -8,7 +8,7 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/users/index.html',
       controller:  'usersCtrl'
     })
-    .when('/user/:user', {
+    .when('/users/:id', {
       templateUrl: 'webapp/views/users/show.html',
       controller:  'userCtrl'
     })

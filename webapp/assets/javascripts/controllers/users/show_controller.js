@@ -1,5 +1,5 @@
 App.controller('userCtrl', function ($scope, $http, $window, $location, $routeParams){
-  $scope.user = $routeParams.user;
+  $scope.user = $routeParams.id;
 
   $scope.users = [{
                   'id' : 1,
@@ -101,10 +101,10 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
 
   $scope.getUser = function() {
     for (var user in $scope.users)
-      if ($scope.users[user].username == $scope.user)
+      if ($scope.users[user].id == $scope.user)
         $scope.currentUser = $scope.users[user];
     if (typeof $scope.currentUser == 'undefined')
-      $('#user-show-profil').html('<p style="text-align: center;">Sorry, user ' + $scope.user + ' does not exist</p>');
+      $('#user-show-profil').html('<p style="text-align: center;">Sorry, user with id ' + $scope.user + ' does not exist</p>');
   }
 
   $scope.getUser();
