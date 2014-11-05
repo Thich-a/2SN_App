@@ -3,6 +3,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
   $scope.Game_Join = [];
   $scope.Game_Creat = [];
   $scope.Liste_player_Game = [];
+  $scope.currentGameSel = [];
 
   $scope.sessions = [{
                         'id' : 1,
@@ -169,6 +170,19 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                                                   },
                                       },
                                       {
+                                      'id' :       221,
+                                      'username' : 'Boby',
+                                      'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                                      'charaters':{
+                                                  'id' : 127,
+                                                  'char_name' : 'SANGOKU',
+                                                  'details'   : 'Level 5 Scout',
+                                                  'story'     : 'Lee Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que lee a une cousine, Asuka Kazama. Toutefois, ils ne ................................son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
+                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
+                                                  'master'    : false
+                                                  },
+                                      },
+                                      {
                                       'id' :       3,
                                       'username' : 'Beck Beck',
                                       'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
@@ -233,6 +247,21 @@ $scope.selectCreatGame = function(){
 }
 $scope.selectCreatGame();
 
+$scope.countPlayerGame = function(GameId){
+  var i = 0;
+  $scope.nb_player = 0;
+  for (session in $scope.sessions){
+    if ($scope.sessions[session].id == GameId)
+    {
+      $scope.currentGameSel = $scope.sessions[session];
+    }
+  }
+  for (game in $scope.currentGameSel.user){
+    i++;
+  }
+  if (i > 0)
+    $scope.nb_player = i;
+}
 
 
 });
