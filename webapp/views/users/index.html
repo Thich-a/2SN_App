@@ -1,0 +1,34 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default standard" style='border-color: #00A6B6;'>
+      <div class="panel-heading text-center lead">searching for a user in particular ?</div>
+      <div class="panel-body">
+       <p>just pop his name in here :</p>
+       <p><input type="text" class="form-control" ng-model="searchedText"></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default standard" style='border-color: #00A6B6;'>
+      <div class="panel-heading text-center lead">Users</div>
+      <div class="panel-body posts-panel">
+        <div id="users-wrapper" ng-repeat="user in users | filter:searchedText">
+          <div class="row">
+            <div class="col-xs-2">
+              <img src="{{user.avatar}}" class="img-rounded">
+            </div>
+            <div class="col-xs-offset-1 col-xs-7">
+              <p><a href="#users/{{user.id}}">{{user.username}}</a></p>
+            </div>
+            <div class="col-xs-2">
+              <a href="#"><p>Send friend request</p></a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

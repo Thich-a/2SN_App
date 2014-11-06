@@ -4,41 +4,17 @@
 
   <!-- private messages -->
   <div class="panel panel-default messages-message-type">
-    <div class="panel-heading text-center lead messages-private-message">Private Messages</div>
+    <div class="panel-heading text-center lead messages-private-message">Friend Groups</div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Beckosaurus Rex</h4>
-        </div>
+        <p style="text-align:right; margin:0px; margin-right:10px; "><a href="">+ Create</a></p>
       </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Autre personnage</h4>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Autre personnage</h4>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Autre personnage</h4>
+      <div ng-repeat="friendGroup in friendGroups">
+        <hr>
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-7">
+            <h4 style='margin-top:4px;' name="{{friendGroup.id}}" onclick="switchGroups(this.getAttribute('name'))">{{friendGroup.name}}</h4>
+          </div>
         </div>
       </div>
     </div>
@@ -46,34 +22,8 @@
 
   <!-- group messages -->
   <div class="panel panel-default messages-message-type">
-    <div class="panel-heading text-center lead messages-group-message">Group Messages</div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Group 1</h4>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Group 2</h4>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-          <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-        </div>
-        <div class="col-xs-7">
-          <h4 style='margin-top:4px;'>Group 3</h4>
-        </div>
-      </div>
+    <div class="panel-heading text-center lead messages-group-message">Friends</div>
+    <div id="messages-friends-in-group" class="panel-body">
     </div>
   </div>
 

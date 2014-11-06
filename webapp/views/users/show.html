@@ -1,0 +1,203 @@
+<div ng-include src='"webapp/views/partials/top-menu.html"'></div>
+<div id="user-show-profil" class="row">
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default standard" style='border-color: #26A65B;'>
+        <div class="panel-heading text-center lead character_sheets">Character Sheets</div>
+        <div class="panel-body">
+          <div ng-repeat="sheet in sheets">
+            <div class="row">
+              <div class="col-xs-3 col-xs-offset-1">
+                <img src="{{ sheet.avatar }}" class="img-rounded small-picture" >
+              </div>
+              <div class="col-xs-7">
+                <h3 style='margin-top:4px;'>{{ sheet.char_name }}</h3>
+                <p><b>{{ sheet.details }}</b></p>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-10 col-xs-offset-1">
+                <p class='text-muted'>
+                  Current game : <br>
+                  {{ sheet.game_session.name }}
+                </p>
+              </div>
+            </div>
+            <hr ng-if="!$last">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- USER_WIDGET -->
+    <div class="col-md-4 text-center">
+      <br>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-xs-12 user_widget_photo">
+            <div>
+              <img src="{{ currentUser.avatar }}" class="img-circle">
+            </div>
+          </div>
+           <h2>{{ currentUser.username }}</h2>
+           <br>
+        </div>
+        <div class="panel-footer">
+            <a href="" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
+            <a href="" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
+            <a href="" class='blue'><i class="glyphicon glyphicon-user"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- GAME_SESSIONS_WIDGET -->
+    <div class="col-md-4">
+      <div class="panel panel-default standard" style='border-color: #F39C12;'>
+        <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
+        <div class="panel-body">
+          <div ng-repeat='session in sessions'>
+            <div class="row">
+              <div class="col-xs-10 col-xs-offset-1">
+                <a href="#games/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
+                <p><small><b>Started {{ session.created_at }}</b></small></p>
+                <p><i class='text-muted'>{{ session.last_log }}</i></p>
+              </div>
+            </div>
+            <hr ng-if="!$last">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <!-- FRIENDS_WIDGET -->
+    <div class="col-md-4">
+      <div class="panel panel-default standard" style='border-color: #00A6B6;'>
+        <div class="panel-heading text-center lead friend_list">Friends</div>
+        <div class="panel-body" style='border-radius:0;'>
+          <input type='text' class='form-control'>
+          <hr>
+          <div class="row pictures">
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+          </div>
+          <div class="row pictures">
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+          </div>
+          <div class="row pictures">
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+          </div>
+          <div class="row pictures">
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-center lead" style='color: #00A6B6;'><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
+      </div>
+    </div>
+    <!-- PICTURES_WIDGET -->
+    <div class="col-md-4">
+      <div class="panel panel-default standard" style='border-color: #CF000F;'>
+        <div class="panel-heading text-center lead pictures">Pictures</div>
+        <div class="panel-body">
+          <div ng-repeat='album in albums'>
+            <div ng-repeat='pictures in album'>
+              <div ng-repeat='picture in filtered = (pictures)'>
+                <div class="col-md-6 text-center">
+                  <a href="#pictures/{{ picture.id }}"><img src="{{ picture.url }}" class="img-rounded big-picture"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-center lead">
+          <br>
+          <p style='color: #CF000F;'><b>11</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
+        </div>
+      </div>
+    </div>
+    <!-- POSTS_WIDGET -->
+    <div class="col-md-4">
+      <div class="panel panel-default standard" style='border-color: #674172;'>
+        <div class="panel-heading text-center lead posts">Posts</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h4 style='margin-top:4px;'>Hello world !</h4>
+              <p class='text-muted'>"<i>This is my first post</i>"</p>
+              <p><a href="">Read more</a></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-xs-3 col-xs-offset-1">
+              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h4 style='margin-top:4px;'>One, two, one, two...</h4>
+              <p class='text-muted'>"<i>...It's a test.</i>"<br></p>
+              <p><a href="">Read more</a></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h4 style='margin-top:4px;'>Another test</h4>
+              <p class='text-muted'>"<i>Becase we can.</i>"</p>
+              <p><a href="">Read more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-center lead">
+          <br>
+          <p style='color: #674172;'><b>42</b> Posts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

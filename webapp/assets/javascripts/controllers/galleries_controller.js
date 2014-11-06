@@ -1,4 +1,14 @@
-App.controller('galleriesCtrl', function ($scope, $http, $window, $location){
+App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $routeParams){
+
+  $scope.userid = $routeParams.user;
+
+
+  // need to get user id currently logged
+  if ($scope.userid != 1)
+    $('#galleries-administration').html('');
+
+
+
   $scope.albums = [
   {'id':1, 'name':'toto', 'content':[
     {'id':1, 'name':'Avatar', 'description':'AVATAR POWWWA !', 'date':'19/09/2014' ,'url':'webapp/assets/img/galleries/avatar.png'},
@@ -34,11 +44,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location){
   $scope.galleriesArrows = function(direction) {
 
     var photoId = $('#galleries-photo-album div .active').attr('imageId');
-
-    /////////////////////////////////////// PROBLEM : two calls at once ! /////////////////////////////////////////////
-    console.log('CALL here ');
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     for (var i = 0; i < $scope.images.length; i++)
     {
       if (($scope.images[i].id == photoId) && (direction == 'left'))

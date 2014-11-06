@@ -1,5 +1,7 @@
 App.controller('postShowCtrl', function ($scope, $http, $window, $location, $routeParams){
 
+  $scope.userid = $routeParams.user;
+
   $scope.user = {
                   'id' :       1,
                   'username' : 'Yinfei',
