@@ -1,4 +1,6 @@
 App.controller('userCtrl', function ($scope, $http, $window, $location, $routeParams){
+
+  $scope.userid = $routeParams.user;
   $scope.user = $routeParams.id;
 
   $scope.users = [{

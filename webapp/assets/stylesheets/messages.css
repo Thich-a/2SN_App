@@ -39,3 +39,7 @@
 .messages-message-board > .messages-message-board-new button {
   margin-top: 15px;
 }
+
+.messages-message-type h4:hover {
+  color: #26A65B;
+}

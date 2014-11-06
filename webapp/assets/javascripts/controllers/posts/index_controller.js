@@ -1,21 +1,16 @@
-App.controller('postsCtrl', function ($scope, $http, $window, $location){
+App.controller('postsCtrl', function ($scope, $http, $window, $location, $routeParams){
+
+  $scope.userid = $routeParams.user;
+
+  // need to get user id currently logged
+  if ($scope.userid != 1)
+    $('#posts-new-post').html('');
 
   $scope.user = {
                   'id' :       1,
                   'username' : 'Yinfei',
                   'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
                 }
-
-  // $scope.userPosts = [
-  //                     {'id':1, 'date':'10/10/2014', 'time':'12:03', 'content':'This is my first post'},
-  //                     {'id':2, 'date':'11/10/2014', 'time':'07:34', 'content':'AnotherPost'},
-  //                     {'id':3, 'date':'11/10/2014', 'time':'09:56', 'content':'Did you know I had a chinese guy in my class that used to be called coaching ?'},
-  //                     {'id':4, 'date':'12/10/2014', 'time':'16:01', 'content':'tout a dix balles ou je remballe'},
-  //                     {'id':5, 'date':'14/10/2014', 'time':'08:27', 'content':'Lorem ipsum sit amet ....'},
-  //                     {'id':6, 'date':'16/10/2014', 'time':'22:45', 'content':'Git reset --hard --head --force ... REAL developers have needs.'},
-  //                     {'id':7, 'date':'17/10/2014', 'time':'09:18', 'content':'i\'m never gonna give you up, never gonna let you down'},
-  //                     {'id':8, 'date':'17/10/2014', 'time':'09:24', 'content':'I used to remember that I was gay, but sometimes I fagget'}
-  //                   ];
 
   $scope.userPosts = [{
                         'id':1,
