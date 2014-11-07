@@ -4,6 +4,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
   $scope.Game_Creat = [];
   $scope.Liste_player_Game = [];
   $scope.currentGameSel = [];
+  $scope.liste_Char_Join = [];
 
   $scope.sessions = [{
                         'id' : 1,
@@ -227,6 +228,48 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                                   }
                       }]
 
+$scope.myCharacteres = [{
+                        'id' : 33,
+                        'char_name' : 'Super Mario',
+                        'details'   : 'Level 20 Plumber',
+                        'story'     : 'Mr Video est le premier nom donné par Shigeru Miyamoto à Mario3. Selon le jeune développeur, ce personnage destiné à apparaître dans tous les jeux qu\'il réaliserait se devait de posséder une stature propre, contrairement aux autres jeux de cette époque (PacMan, Space Invaders). ',
+                        'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif',
+                        'master'    : false,
+                        'inGame'    : true
+                      },{
+                        'id' : 1,
+                        'char_name' : 'Jill Valentine',
+                        'details'   : 'Level 7 Scout',
+                        'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
+                        'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
+                        'master'    : true,
+                        'inGame'    : true
+                      },{
+                        'id' : 2,
+                        'char_name' : 'Big Boss',
+                        'details'   : 'Level 18 Infiltrator',
+                        'story'     : 'Le Vrai hero de Guerre. Big Boss !!! Il ne rate jamais sont tire...',
+                        'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png',
+                        'master'    : false,
+                        'inGame'    : true
+                      },{
+                        'id' : 68,
+                        'char_name' : 'Golum',
+                        'details'   : 'Level 3 Infiltrator',
+                        'story'     : 'Gollum est un personnage fictif du légendaire créé par l\’écrivain britannique J. R. R. Tolkien et qui apparaît dans ses romans Le Hobbit et Le Seigneur des anneaux. Connu en tant que Sméagol à l\'origine, Gollum est un Hobbit de la branche des Forts, qui vivait aux Champs aux Iris vers 2440 T. A.. En 2463 T. A., il s\'empare de l\'Anneau unique après avoir tué son cousin qui vient de découvrir l\'anneau dans le lit de l\'Anduin. Chassé par sa famille, il se réfugie dans une caverne des Monts Brumeux et prend le nom « Gollum » à cause de bruits de déglutition qu\'il fait avec sa gorge. Grâce à l\'Anneau unique, sa vie se voit allongée de plusieurs siècles mais il est obsédé par celui-ci au point d\'en devenir l\'esclave.',
+                        'avatar'    : 'webapp/assets/img/fixtures-pictures/gollum.jpg',
+                        'master'    : false,
+                        'inGame'    : false
+                      },{
+                        'id' : 45,
+                        'char_name' : 'Minion',
+                        'details'   : 'Level 100 Kawai',
+                        'story'     : 'A l\'origine de simples organismes monocellulaires de couleur jaune, les Minions ont évolué au cours des âges au service de maîtres plus abjectes les une que les autres. Les disparitions répétitives de ceux-ci, des tyrannosaures à Napoléon, ont plongé les Minions dans une profonde dépression. Mais l\'un d\'eux, prénommé Kevin, a une idée. Flanqué de Stuart, l\'adolescent rebelle et de l\'adorable petit Bob, Kevin part à la recherche d\'un nouveau patron malfaisant pour guider les siens. ',
+                        'avatar'    : 'webapp/assets/img/fixtures-pictures/minion.jpg',
+                        'master'    : false,
+                        'inGame'    : false
+                      }]
+
 
 $scope.selectCreatGame = function(){
   var i = 0;
@@ -263,5 +306,17 @@ $scope.countPlayerGame = function(GameId){
     $scope.nb_player = i;
 }
 
+$scope.selectCharJoin = function(){
+  var i = 0;
+  for(charJoin in $scope.myCharacteres)
+  {
+    if ($scope.myCharacteres[charJoin].inGame == false)
+    {
+      $scope.liste_Char_Join[i] = $scope.myCharacteres[charJoin];
+      i++;
+    }
+  }
+}
+$scope.selectCharJoin();
 
 });

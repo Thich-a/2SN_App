@@ -33,6 +33,50 @@
                   <div class="modal-body">
                     {{ invite.story }}
                   </div>
+                  <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
+                    <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
+                  </div> -->
+                </div>
+              </div>
+            </div><!-- END Modal -->
+          </div>
+        </div><!-- end row -->
+        <div class="pull-right btn-choose">
+
+          <button type="button" class="btn btn-invit-a btn-sm" data-toggle="modal" data-target="#myJoinChar{{ invite.id }}">Join</button>
+          <!-- Modal -->
+            <div class="modal fade" id="myJoinChar{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header modal-game-palyer">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title text-center" id="myModalLabel">Select a character to Join<br>{{ invite.game_name }}</h3>
+                  </div>
+
+                  <div class="modal-body" class="radio">
+                    <div ng-repeat="char in liste_Char_Join">
+                      <div class="row">
+                        <div class="col-xs-1" style="margin-top: 10px;">
+                          <br><input class="pull-right" type="radio" name="optionsRadios" id="optionsRadios{{ char.id }}"  value="{{ char.id }}" checked>
+                        </div>
+                        <div class="col-xs-3">
+                          <a href=""><img src="{{ char.avatar }}" class="img-rounded" style='max-height:100px; border: 1px solid black;'></a>
+                        </div>
+                        <div class="col-xs-8">
+                          <h2 class="text-center">- {{ char.char_name }} -</h2>
+                          <p class="text-center"><i>{{ char.details }}</i></p>
+                          <p ng-hide="storyGame">"{{ char.story | limitTo: 120 }}..."<a href=""> <i class="glyphicon glyphicon-chevron-down" ng-click="storyGame = !storyGame"></i></a></p>
+                          <p ng-show="storyGame">"{{ char.story }}"<a href=""> <i class="glyphicon glyphicon-chevron-up" ng-click="storyGame = !storyGame"></i></a></p>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
+
+                  <div>
+                    <a href=""><h2 class="text-center">+ Create Character</h2></a><br><br>
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
                     <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
@@ -40,11 +84,9 @@
                 </div>
               </div>
             </div><!-- END Modal -->
-          </div>
-        </div><!-- end row -->
-        <div class="pull-right btn-choose">
-          <button type="button" class="btn btn-invit-a btn-sm">Join</button>
+
           <button type="button" class="btn btn-invit-d btn-sm">Denied</button>
+
         </div>
       </div> <!-- end panel body -->
       </div>
@@ -212,3 +254,36 @@
   </div> <!--- end Row 9 game session -->
 
 </div>
+
+<!-- <div class="bs-example">
+    <ul class="popover-examples list-inline">
+        <li><a href="" class="btn btn-primary" data-toggle="popover" title="Popover title" data-content="Default popover">Popover</a></li>
+        <li><a href="" class="btn btn-success" data-toggle="popover" title="Popover title" data-content="Another popover">Another popover</a></li>
+        <li><a href="" class="btn btn-info" data-toggle="popover" title="Popover title" data-content="A larger popover to demonstrate the max-width of the Bootstrap popover.">Large popover</a></li>
+        <li><a href="" class="btn btn-warning" data-toggle="popover" title="Popover title" data-content="The last tip!">Last popover</a></li>
+    </ul>
+</div>
+
+<p>Le <a href="" id="infob-html" class="infobulle-complexe" data-placement="right" data-toggle="popover" role="button">Lorem Ipsum</a> est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+ -->
+
+
+
+<script type="text/javascript">
+// $(document).ready(function()
+// {
+
+//     $("#infob-html").popover(
+//     {
+//       html    : true,
+//       content : '<p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression pour maintenant.</p><p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p><p><a href="http://www.developpement-facile.com" class="btn btn-danger">Rendez-vous sur Dev Facile !</a></p>',
+//       title   : '<h3>Select your character :</h3>'
+//     });
+// })
+
+// $(document).ready(function(){
+//     $(".popover-examples a").popover({
+//         placement : 'top'
+//     });
+// });
+</script>
