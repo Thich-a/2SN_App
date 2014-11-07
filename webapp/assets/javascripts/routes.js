@@ -32,7 +32,7 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/account/index.html',
       controller:  'accountCtrl'
     })
-    .when('/:user/galleries', {
+    .when('/users/:user/galleries', {
       templateUrl: 'webapp/views/galleries/index.html',
       controller:  'galleriesCtrl'
     })
@@ -40,7 +40,7 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/game_sessions/session-game.html',
       controller:  'gameSessionsShowCtrl'
     })
-    .when('/:user/posts', {
+    .when('/users/:user/posts', {
       templateUrl: 'webapp/views/posts/index.html',
       controller:  'postsCtrl'
     })

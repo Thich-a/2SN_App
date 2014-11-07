@@ -13,15 +13,15 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" ng-controller="menuCtrl">
 
           <img SRC="webapp/assets/img/1D20-logo2.png" ALT="Logo_1D20" TITLE="Logo du site 1D20" class="center-block">
 
           <li><a href="#dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           <li><a href="#messages"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
           <li><a href="#games"><span class="glyphicon glyphicon-tower"></span> Games</a></li>
-          <li><a href="#/1/galleries"><span class="glyphicon glyphicon-picture"></span> Galleries</a></li>
-          <li><a href="#/1/posts"><span class="glyphicon glyphicon-comment"></span> Posts</a></li>
+          <li><a href="#/users/{{userid}}/galleries"><span class="glyphicon glyphicon-picture"></span> Galleries</a></li>
+          <li><a href="#/users/{{userid}}/posts"><span class="glyphicon glyphicon-comment"></span> Posts</a></li>
           <li><a href="#users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 
         </ul>
