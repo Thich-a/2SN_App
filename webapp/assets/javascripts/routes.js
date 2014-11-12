@@ -44,7 +44,7 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/posts/index.html',
       controller:  'postsCtrl'
     })
-    .when('/:user/posts/:id', {
+    .when('/users/:user/posts/:id', {
       templateUrl: 'webapp/views/posts/show.html',
       controller:  'postShowCtrl'
     })

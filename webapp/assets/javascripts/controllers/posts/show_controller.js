@@ -3,97 +3,57 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
   $scope.userid = $routeParams.user;
 
   $scope.user = {
-                  'id' :       1,
-                  'username' : 'Yinfei',
-                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
-                }
+      "id": 3,
+      "plan":2,
+      "username": "beck",
+      "username_canonical": "beck",
+      "email": "beck@mail.com",
+      "email_canonical": "beck@mail.com",
+      "enabled": true,
+      "salt": "pcy4ecsaneo088wkwko8880o4wcg0gg",
+      "password": "VfDot+qja2uQzKNqabwmkHyR8jSSZimg1YtA9q0skrwHfWLl+nL2VEEw39rSRgOXFUAA7kWZBUdRj34vNxJvqg==",
+      "locked": false,
+      "expired": false,
+      "roles": [],
+      "credentials_expired": false,
+      "image_profile": "yinfei.png",
+      "friend_groups": [{
+        "id": 5,
+        "name": "general",
+        "friends": []
+      }, {
+        "id": 6,
+        "name": "wait",
+        "friends": []
+      }],
+      "posts": [{
+        "id": 4,
+        "content": "Hey Welcome !",
+        "created_at": "2014-11-07T15:49:25+0100",
+        "updated_at": "2014-11-07T15:49:25+0100",
+        "comments": [{"id":1,
+                      "user":{"username":"toto", "image_profile":"beck.jpg"},
+                      "content":"Toto Bolo ma gueule"
+                    }]
+      }],
+      "albums": [{
+        "id": 3,
+        "name": "Wall",
+        "slug": "wall-2",
+        "created_at": "2014-11-07T15:49:25+0100",
+        "updated_at": "2014-11-07T15:49:25+0100",
+        "photos": []
+      }, {
+        "id": 4,
+        "name": "Profile",
+        "slug": "profile",
+        "created_at": "2014-11-07T15:49:25+0100",
+        "updated_at": "2014-11-07T15:49:25+0100",
+        "photos": []
+      }]
+    };
 
-  $scope.userPosts = [{
-                        'id':1,
-                        'date':'10/10/2014',
-                        'time':'12:03',
-                        'content':'This is my first post',
-                        'answers':[{
-                                    'id':1,
-                                    'user':{
-                                            'id' :       2,
-                                            'username' : 'ZionLion',
-                                            'avatar' :   'webapp/assets/img/galleries/zionLion.png'
-                                          },
-                                    'content':'Well done man, your first post !'
-                                  },
-                                  {
-                                    'id':2,
-                                    'user':{
-                                            'id' :       1,
-                                            'username' : 'Yinfei',
-                                            'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
-                                          },
-                                    'content':'Thank you my friend'
-                                  }]
-                      },
-                      {
-                        'id':2,
-                        'date':'11/10/2014',
-                        'time':'07:34',
-                        'content':'AnotherPost',
-                        'answers':[{
-                                    'id':1,
-                                    'user':{
-                                            'id' :       2,
-                                            'username' : 'ZionLion',
-                                            'avatar' :   'webapp/assets/img/galleries/zionLion.png'
-                                          },
-                                    'content':'This is getting old dude'
-                                  },
-                                  {
-                                    'id':2,
-                                    'user':{
-                                            'id' :       1,
-                                            'username' : 'Yinfei',
-                                            'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
-                                          },
-                                    'content':'NEVER'
-                                  }]
-                      },
-                      {
-                        'id':3,
-                        'date':'11/10/2014',
-                        'time':'09:56',
-                        'content':'Did you know I had a chinese guy in my class that used to be called coaching ?',
-                        'answers':[{
-                                    'id':1,
-                                    'user':{
-                                            'id' :       2,
-                                            'username' : 'ZionLion',
-                                            'avatar' :   'webapp/assets/img/galleries/zionLion.png'
-                                          },
-                                    'content':'MAAAAAAAAAN STOP IT !'
-                                  }]
-                      },
-                      {
-                        'id':4,
-                        'date':'17/10/2014',
-                        'time':'09:18',
-                        'content':'I\'m never gonna give you up, never gonna let you down',
-                        'answers':[]
-                      },
-                      {
-                        'id':5,
-                        'date':'17/10/2014',
-                        'time':'09:24',
-                        'content':'I used to remember that I was gay, but sometimes I fagget',
-                        'answers':[{
-                                    'id':1,
-                                    'user':{
-                                            'id' :       1,
-                                            'username' : 'Yinfei',
-                                            'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
-                                          },
-                                    'content':'true story ...'
-                                  }]
-                      }
-                    ];
+  $scope.userPosts = $scope.user.posts;
 
   $scope.fetchPost = function() {
     for (post in $scope.userPosts)
@@ -103,5 +63,5 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     }
   }
   $scope.fetchPost();
-  $scope.answers = $scope.currentPost.answers;
+  $scope.comments = $scope.currentPost.comments;
 });

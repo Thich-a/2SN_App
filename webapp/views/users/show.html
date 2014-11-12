@@ -39,10 +39,10 @@
         <div class="panel-body">
           <div class="col-xs-12 user_widget_photo">
             <div>
-              <img src="{{ currentUser.avatar }}" class="img-circle">
+              <img src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-circle">
             </div>
           </div>
-           <h2>{{ currentUser.username }}</h2>
+           <h2>{{ user.username }}</h2>
            <br>
         </div>
         <div class="panel-footer">
@@ -93,39 +93,6 @@
               <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
             </div>
           </div>
-          <div class="row pictures">
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-          </div>
-          <div class="row pictures">
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-          </div>
-          <div class="row pictures">
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-            <div class="col-md-4 text-center">
-              <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-            </div>
-          </div>
         </div>
         <div class="panel-footer text-center lead" style='color: #00A6B6;'><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
       </div>
@@ -156,38 +123,22 @@
       <div class="panel panel-default standard" style='border-color: #674172;'>
         <div class="panel-heading text-center lead posts">Posts</div>
         <div class="panel-body">
-          <div class="row">
+
+          <div class="row" ng-repeat="post in posts">
             <div class="col-xs-3 col-xs-offset-1">
-              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+              <img src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded small-picture" >
             </div>
             <div class="col-xs-7">
-              <h4 style='margin-top:4px;'>Hello world !</h4>
-              <p class='text-muted'>"<i>This is my first post</i>"</p>
-              <p><a href="">Read more</a></p>
+              <h4 style='margin-top:4px;'>ON A PAS PENSE AU TITRE ...</h4>
+              <p class='text-muted'>"<i>{{post.content}}</i>"</p>
+              <p><a href="#users/{{user.id}}/posts/{{post.id}}">Read more</a></p>
             </div>
           </div>
+
           <hr>
-          <div class="row">
-              <div class="col-xs-3 col-xs-offset-1">
-              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-            </div>
-            <div class="col-xs-7">
-              <h4 style='margin-top:4px;'>One, two, one, two...</h4>
-              <p class='text-muted'>"<i>...It's a test.</i>"<br></p>
-              <p><a href="">Read more</a></p>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
-              <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-            </div>
-            <div class="col-xs-7">
-              <h4 style='margin-top:4px;'>Another test</h4>
-              <p class='text-muted'>"<i>Becase we can.</i>"</p>
-              <p><a href="">Read more</a></p>
-            </div>
-          </div>
+
+
+
         </div>
         <div class="panel-footer text-center lead">
           <br>

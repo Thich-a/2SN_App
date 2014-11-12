@@ -6,7 +6,7 @@
     <div id="posts-wrapper">
       <div class="posts-post row">
         <div class="col-xs-2">
-          <img src="{{user.avatar}}" class="img-rounded">
+          <img src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded">
         </div>
         <div class="col-xs-8">
           <p>{{currentPost.content}}</p>
@@ -16,14 +16,14 @@
           <p>{{currentPost.time}}</p>
         </div>
       </div>
-      <div class="posts-comments row" ng-repeat="answer in answers">
+      <div class="posts-comments row" ng-repeat="comment in comments">
         <div class="col-xs-offset-2 col-xs-8">
           <div class="row">
             <div class="col-xs-2">
-              <img src="{{answer.user.avatar}}" class="img-rounded">
+              <img src="webapp/assets/img/fixtures-pictures/{{comment.user.image_profile}}" class="img-rounded">
             </div>
             <div class="col-xs-8">
-              <p>{{answer.content}}</p>
+              <p>{{comment.content}}</p>
             </div>
           </div>
         </div>
