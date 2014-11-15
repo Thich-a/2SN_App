@@ -12,9 +12,10 @@
           <p>{{currentPost.content}}</p>
         </div>
         <div class="col-xs-2">
-          <p>{{currentPost.date}}</p>
-          <p>{{currentPost.time}}</p>
+          <p>{{currentPost.created_at | date:'dd/MM/yyyy'}}</p>
+          <p>{{currentPost.created_at | date:'HH:mm:ss'}}</p>
         </div>
+        <div class="col-xs-offset-1 col-xs-1"><i ng-click="deletePost()" class="glyphicon glyphicon-remove"></i></div>
       </div>
       <div class="posts-comments row" ng-repeat="comment in comments">
         <div class="col-xs-offset-2 col-xs-8">
@@ -24,6 +25,9 @@
             </div>
             <div class="col-xs-8">
               <p>{{comment.content}}</p>
+            </div>
+            <div class="col-xs-offset-1 col-xs-1">
+              <i ng-click="deleteComment($event)" name="{{comment.id}}" class="glyphicon glyphicon-remove"></i>
             </div>
           </div>
         </div>
@@ -47,11 +51,11 @@
       <div class="modal-body">
         <p>content :</p>
         <p>
-          <textarea rows="4" class="form-control"></textarea>
+          <textarea id="posts-create-new-comment" rows="4" class="form-control"></textarea>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Post</button>
+        <button type="button" class="btn btn-success" ng-click="comment()" data-dismiss="modal">Post</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>

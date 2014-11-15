@@ -1,7 +1,7 @@
 <div ng-include src='"webapp/views/partials/top-menu.html"'></div>
 
 <div class="col-md-offset-2 col-md-2 userPicture">
-  <img id="account-picture" src="webapp/assets/img/anon_user.png" class="img-rounded">
+  <img id="account-picture" src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded">
   <br>
   <div class="row">
       <button id="account-settings-photo-upload" type="button" class="col-xs-offset-2 col-xs-4 settings-btn btn btn-info">Upload</button>
@@ -12,11 +12,11 @@
 <div class="col-md-4">
 
   <div class="account-settings">
-    <p id="account-username" class="text-center">Username</p>
+    <p id="account-username" class="text-center">{{user.username}}</p>
     <p>
       <div class="input-group">
         <span class="input-group-addon">@</span>
-        <input id="account-usermail" type="text" class="form-control" placeholder="user.email">
+        <input id="account-usermail" type="text" class="form-control" value="{{user.email}}">
       </div>
     </p>
     <p>
@@ -31,18 +31,6 @@
         <input type="password" class="form-control" placeholder="verify password">
       </div>
     </p>
-
-    <div class="row planType">
-      <div class="col-xs-9">
-        <select id="planSelect" class="col-xs-9 selectpicker">
-          <option ng-repeat="plan in plans" value="{{plan.id}}">{{plan.name}}</option>
-        </select>
-      </div>
-      <div class="col-xs-3">
-        <button type="button" class="btn btn-default">Update !</button>
-      </div>
-    </div>
-
     <div class="row settingsSave">
       <div class="col-xs-offset-4 col-xs-4">
         <button id="account-settings-save" type="button" class="btn btn-success">Save</button>

@@ -30,11 +30,10 @@
               <img src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded">
             </div>
             <div class="col-xs-8">
-              <a href="#/{{userid}}/posts/{{post.id}}"><p>{{post.content}}</p></a>
+              <a href="#/users/{{userid}}/posts/{{post.id}}"><p>{{post.content}}</p></a>
             </div>
             <div class="col-xs-2">
-              <p>{{post.date}}</p>
-              <p>{{post.time}}</p>
+              <p>{{post.created_at | date}}</p>
             </div>
           </div>
         </div>
@@ -53,11 +52,11 @@
       <div class="modal-body">
         <p>content :</p>
         <p>
-          <textarea rows="4" class="form-control"></textarea>
+          <textarea id="posts-create-new-post" rows="4" class="form-control"></textarea>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Post</button>
+        <button type="button" class="btn btn-success" ng-click="createPost()">Post</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
