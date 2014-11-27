@@ -16,6 +16,10 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/login.html',
       controller:  'loginCtrl'
     })
+    .when('/logout', {
+      templateUrl: 'webapp/views/logout.html',
+      controller:  'logoutCtrl'
+    })
     .when('/dashboard', {
       templateUrl: 'webapp/views/dashboard.html',
       controller:  'dashboardCtrl'

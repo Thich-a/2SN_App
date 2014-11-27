@@ -1,4 +1,4 @@
-App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $routeParams){
+App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $route, $routeParams){
 
   $scope.userid = $routeParams.user;
 
@@ -44,6 +44,10 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     $scope.galleriesSwitchAlbum(this.value);
   });
 
+  $(document).on('change', '#AlbumSelect', function() {
+    $scope.galleriesSwitchAlbum(this.value);
+  });
+
   // detecting click on photo
   $(document).on('click', '#galleries-photo-album div img', function() {
     $scope.galleriesSwitchPhoto(this.getAttribute('imageId'), 0);
@@ -65,10 +69,16 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
 
   $scope.galleriesSwitchAlbum = function(albumId) {
     $('#galleries-photo-album').html('');
+    $('#galleries-album-delete').prop('disabled', false);
     for (var album in $scope.albums)
     {
       if ($scope.albums[album].id == albumId)
+      {
         $scope.images = $scope.albums[album].content;
+        if ($scope.albums[album].name == 'Wall' || $scope.albums[album].name == 'Profile')
+          $('#galleries-album-delete').prop('disabled', true);
+      }
+
     }
 
     for (var image in $scope.images)
@@ -100,9 +110,74 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     }
   }
 
+  $scope.createAlbum = function() {
+    var albumName = $scope.newAlbumName;
+    $http.post( basePath + 'api/albums', {"name":albumName})
+    .success(function(data){
+      $route.reload();
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.deleteAlbum = function() {
+    var albumId = $('#AlbumSelect').val();
+
+    console.log(albumId);
+    $http.delete( basePath + 'api/albums/' + albumId, {})
+    .success(function(data){
+      $route.reload();
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+
+
+
+
+  // trying to upload image (name and content are static);
+
+  $(function () {
+      $(":file").change(function () {
+        if (this.files && this.files[0])
+        {
+          var reader = new FileReader();
+          reader.readAsDataURL(this.files[0]);
+          $scope.mangeMonZizi(this.files[0]);
+        }
+      });
+  });
+
+  $scope.toto = function(event) {
+    var Uploader = $('#' + event.target.getAttribute('id')).next();
+    Uploader.click();
+  }
+
+  $scope.addPhoto = function(imageFile) {
+    console.log(imageFile);
+    var albumId = $('#AlbumSelect').val();
+
+    // $http.post( basePath + 'api/photos/' + albumId, {"content":"description", "imageFile":imageFile, "imageName":"toto"})
+    // .
+  }
+
+
+
+
+
+
+
+
+
+
+
   // Making sure PhotoAlbums have different names
   $('#galleries-album-create-name').keyup(function() {
     $scope.newAlbumName = $('#galleries-album-create-name').val();
+    $('#shownewAlbumName').html($scope.newAlbumName);
     $("#galleries-album-create").prop('disabled', false);
     if ($scope.newAlbumName != '')
     {

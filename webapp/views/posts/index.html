@@ -21,7 +21,7 @@
       <div class="panel-heading text-center lead">Posts</div>
       <div class="panel-body posts-panel">
         <div id="posts-new-post" class="row">
-          <a href="" data-toggle="modal" data-target="#posts-new">+ New Post</a>
+          <a ng-if="user.id == me.id" href="" data-toggle="modal" data-target="#posts-new">+ New Post</a>
         </div>
         <div id="posts-wrapper" ng-repeat="post in userPosts | filter:searchedText | orderBy:'-id'">
           <hr>

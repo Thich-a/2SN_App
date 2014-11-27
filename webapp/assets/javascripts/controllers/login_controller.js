@@ -20,12 +20,10 @@ App.controller('loginCtrl', function ($scope, $http, $window, $location, AuthSer
   $scope.createUser = function() {
     $http.post(basePath + 'api/register', {"email":$scope.register_mail, "username":$scope.register_username, "plainPassword":{"first":$scope.register_pwd_first,"second":$scope.register_pwd_second}})
       .success(function(data){
+        console.log(data);
         AuthService.setToken(data.token);
         console.log('createUser token :');
         console.log(data.token);
-        // setTimeout(function(){$location.path('/dashboard');}, 3000);
-
-        // $location.path('/dashboard');
       })
       .error(function(data){
         alert("Credentials invalid");

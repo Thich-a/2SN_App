@@ -15,7 +15,7 @@
       <div class="panel-heading text-center lead">Users</div>
       <div class="panel-body posts-panel">
         <div id="users-wrapper" ng-repeat="user in users | filter:searchedText">
-          <div class="row">
+          <div ng-if="user.id != me.id && user.id != 1" class="row">
             <div class="col-xs-2">
               <img src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded">
             </div>
@@ -23,10 +23,11 @@
               <p><a href="#users/{{user.id}}">{{user.username}}</a></p>
             </div>
             <div class="col-xs-2">
-              <a href="#"><p>Send friend request</p></a>
+              <p ng-if="checkIfFriend(user.username) == 1" ng-click="AddFriend(user.id)" >Send friend request</p>
+              <p ng-if="me.id == 1" ng-click="DeleteUser(user.id)" >Delete</p>
             </div>
           </div>
-          <hr>
+          <hr ng-if="user.id != me.id && user.id != 1">
         </div>
       </div>
     </div>

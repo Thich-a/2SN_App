@@ -7,18 +7,40 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     $scope.user = data.user;
     $scope.userPosts = $scope.user.posts;
     $scope.fetchPost();
-    $scope.comments = $scope.currentPost.comments;
   })
   .error(function(data){
     alert("Credentials invalid");
   })
 
+  $http.get( basePath + 'api/user/me', {})
+  .success(function(answer){
+    $scope.me = answer.user.id;
+    if ($scope.userid == $scope.me || $scope.me == 1)
+      $scope.securityFlag = 1;
+    else
+      $scope.securityFlag = 0;
+  })
+  .error(function(answer){
+    console.log('fuck this shit');
+  })
+
+
+
   $scope.fetchPost = function() {
     for (post in $scope.userPosts)
     {
       if ($scope.userPosts[post].id == $routeParams.id)
-        $scope.currentPost = $scope.userPosts[post];
+        $scope.currentPostId = $scope.userPosts[post];
     }
+
+    $http.get(basePath + 'api/blogs/'+ $scope.currentPostId.id, {})
+    .success(function(data){
+      $scope.currentPost = data.post;
+      $scope.comments = data.post.comments;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
   }
 
   $scope.deletePost = function() {
@@ -27,7 +49,7 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
       $location.path('/users/' + $scope.user.id + '/posts');
     })
     .error(function(data){
-      alert("Credentials invalid");
+      alert("Oops ! an error occured");
     })
   }
 
