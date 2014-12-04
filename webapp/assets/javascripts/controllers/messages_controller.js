@@ -27,7 +27,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
   }
 
   $scope.createNewFriendGroup = function() {
-    $http.post( basePath + 'ap/friendlists', {"name":$scope.NewFriendGroupName})
+    $http.post( basePath + 'api/friendlists', {"name":$scope.NewFriendGroupName})
     .success(function(data){
       console.log(data);
     })
@@ -37,7 +37,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
   }
 
   $scope.deleteGroup = function(groupId) {
-    $http.delete( basePath + 'ap/friendlists/'+groupId, {})
+    $http.delete( basePath + 'api/friendlists/'+groupId, {})
     .success(function(data){
       console.log(data);
     })
@@ -47,7 +47,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
   }
 
   $scope.createNewChannel = function() {
-    // $http.post( basePath + 'ap/friendlists/'+groupId, {})
+    // $http.post( basePath + 'api/friendlists/'+groupId, {})
     // .success(function(data){
     //   console.log(data);
     // })
@@ -57,7 +57,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
   }
 
   $scope.deleteChannel = function(groupId) {
-    // $http.post( basePath + 'ap/friendlists/'+groupId, {})
+    // $http.post( basePath + 'api/friendlists/'+groupId, {})
     // .success(function(data){
     //   console.log(data);
     // })

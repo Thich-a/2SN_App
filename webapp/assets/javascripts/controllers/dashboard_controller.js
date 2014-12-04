@@ -66,7 +66,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
   }
 
   $scope.refuseFriend = function(friendId) {
-    $http.delete( basePath + '/api/friends/'+friendId, {})
+    $http.delete( basePath + 'api/friends/'+friendId, {})
     .success(function(data){
       console.log(data);
     })
