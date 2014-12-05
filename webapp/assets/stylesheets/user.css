@@ -1,3 +1,9 @@
 #users-wrapper img {
   width: 100%;
 }
+
+.user_widget_photo a:focus {
+  outline-style:none;
+  box-shadow:none;
+  border-color:transparent;
+}

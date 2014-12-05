@@ -61,7 +61,7 @@
           <div class="row pictures">
             <div ng-repeat="friend in friends | filter:searchedFriend" class="col-md-4 text-center">
               <a href=""><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-              <p>{{friend.name}}</p>
+              <p>{{friend.username}}</p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="row" style="display:-webkit-box; overflow-y:scroll;width: 100%;">
           <div ng-repeat="photo in photos" style="height:70px;margin-left:10px;">
-            <img ng-click="changedDisplayed(photo.url)" ng-src="/web/uploads/{{photo.url}}" style="height:100%;" class="img-rounded">
+            <img ng-click="changedDisplayed(photo.image_name)" ng-src="/web/uploads/{{photo.image_name}}" style="height:100%;" class="img-rounded">
           </div>
         </div>
       </div>
