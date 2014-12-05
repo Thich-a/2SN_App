@@ -39,16 +39,16 @@
       <div class="panel-body">
         <div class="col-xs-12 user_widget_photo">
           <div>
-            <img ng-src="webapp/assets/img/fixtures-pictures/{{ user.image_profile }}" class="img-circle">
+            <img ng-src="/web/uploads/{{ user.image_profile }}" class="img-circle">
           </div>
         </div>
          <h2>{{ user.username }}</h2>
          <br>
       </div>
       <div class="panel-footer">
-          <a href="" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
-          <a href="" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
-          <a href="" class='blue'><i class="glyphicon glyphicon-user"></i></a>
+          <a href="#messages" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
+          <a href="#games" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
+          <a href="#account" class='blue'><i class="glyphicon glyphicon-user"></i></a>
       </div>
     </div>
   </div>
@@ -80,10 +80,10 @@
     <div class="panel panel-default standard" style='border-color: #00A6B6;'>
       <div class="panel-heading text-center lead friend_list">Friends</div>
       <div class="panel-body" style='border-radius:0;'>
-        <input type='text' class='form-control'>
+        <input type='text' ng-model="friendsearch.username" class='form-control'>
         <hr>
         <div class="row pictures">
-          <div ng-repeat="friend in friends" class="col-md-4 text-center">
+          <div ng-repeat="friend in friends | filter:friendsearch" class="col-md-4 text-center">
             <a href=""><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
             <p>{{friend.name}}</p>
           </div>
@@ -97,17 +97,15 @@
     <div class="panel panel-default standard" style='border-color: #CF000F;'>
       <div class="panel-heading text-center lead pictures">Pictures</div>
       <div class="panel-body">
-        <div ng-repeat='album in albums'>
-          <div ng-repeat='pictures in album'>
+          <div ng-repeat='photo in photos'>
             <div class="col-md-6 text-center">
-              <a href="#pictures/{{ picture.id }}"><img ng-src="{{ picture.url }}" class="img-rounded big-picture"></a>
+              <img ng-src="/web/uploads/{{ photo.image_name }}" class="img-rounded big-picture">
             </div>
           </div>
-        </div>
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p style='color: #CF000F;'><b>11</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
+        <p style='color: #CF000F;'><b>{{photos.length}}</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
       </div>
     </div>
   </div>
@@ -118,14 +116,17 @@
       <div class="panel-body">
         <p class='text-center'><a href="" data-toggle="modal" data-target="#dashboard-new-post"> + New Post</a></p>
         <hr>
-        <div class="row" ng-repeat="post in posts">
-          <div class="col-xs-3 col-xs-offset-1">
-            <img ng-src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded small-picture" >
+        <div ng-repeat="post in posts">
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+              <img ng-src="/web/uploads/{{user.image_profile}}" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h4 style='margin-top:4px;'>{{post.content}}</h4>
+              <p><a href="#/users/{{user.id}}/posts/{{post.id}}">See this post</a></p>
+            </div>
           </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>{{post.content}}</h4>
-            <p><a href="#/users/{{user.id}}/posts/{{post.id}}">See this post</a></p>
-          </div>
+          <hr>
         </div>
       </div>
       <div class="panel-footer text-center lead">

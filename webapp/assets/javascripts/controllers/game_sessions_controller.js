@@ -17,51 +17,51 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                         'creator' : {
                                   'id' :       1,
                                   'username' : 'Yinfei',
-                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
+                                  'avatar' :   '/web/uploads/yinfei.png'
                                   },
                         'sheet':{
                                     'id' : 1,
                                     'char_name' : 'Jill Valentine',
                                     'details'   : 'Level 7 Scout',
                                     'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
-                                    'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg'
+                                    'avatar'    : '/web/uploads/jill.jpg'
                                 },
                         'user':[{
                                 'id' :       1,
                                 'username' : 'Yinfei',
-                                'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
+                                'avatar' :   '/web/uploads/yinfei.png',
                                 'charaters':{
                                             'id' : 1,
                                             'char_name' : 'Jill Valentine',
                                             'details'   : 'Level 7 Scout',
                                             'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
-                                            'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
+                                            'avatar'    : '/web/uploads/jill.jpg',
                                             'master'    : true
                                             },
                                 },
                                 {
                                 'id' :       2,
                                 'username' : 'Toinou',
-                                'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                                'avatar' :   '/web/uploads/chopper.jpg',
                                 'charaters':{
                                             'id' : 198,
                                             'char_name' : 'Jin',
                                             'details'   : 'Level 5 Scout',
                                             'story'     : 'Jin Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que Jin a une cousine, Asuka Kazama. Toutefois, ils ne semblent pas être au courant de leur relation. Sa mère lui avoue sa véritable identité dans Tekken 3 lorsqu\'elle sent l\'approche du danger qui lui coûtera la vie, à savoir l\'arrivée du Dieu du combat, l\'Ogre.Toutes ses actions et évènements de sa vie prouvent qu\'il est la quintessence du héros tragique : disparition très tôt et brutale de sa mère, trahison de son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
-                                            'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
+                                            'avatar'    : '/web/uploads/jin.jpg',
                                             'master'    : false
                                             },
                                 },
                                 {
                                 'id' :       3,
                                 'username' : 'Beck Beck',
-                                'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
+                                'avatar' :   '/web/uploads/beck.jpg',
                                 'charaters':{
                                             'id' : 139,
                                             'char_name' : 'Kitty-Fury',
                                             'details'   : 'Level 5 Scout',
                                             'story'     : 'Selon le profil officiel de Hello Kitty, cette dernière se nomme Kitty White (キティ・ホワイト, Kiti Howaito?), et elle est née à Londres, en Angleterre, un 1er novembre. Elle pèse l\'équivalent du poids de cinq pommes. ',
-                                            'avatar'    : 'webapp/assets/img/fixtures-pictures/hellokitty.jpg',
+                                            'avatar'    : '/web/uploads/hellokitty.jpg',
                                             'master'    : false
                                             },
                                 }]
@@ -76,51 +76,51 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                           'creator' : {
                                   'id' :       2,
                                   'username' : 'Toinou',
-                                  'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg'
+                                  'avatar' :   '/web/uploads/chopper.jpg'
                                   },
                           'sheet':{
                                       'id' : 2,
                                       'char_name' : 'Big Boss',
                                       'details'   : 'Level 18 Infiltrator',
                                       'story'     : 'Le Vrai hero de Guerre. Big Boss !!! Il ne rate jamais sont tire...',
-                                      'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png'
+                                      'avatar'    : '/web/uploads/bb.png'
                                   },
                           'user':[{
                                   'id' :       1,
                                   'username' : 'Yinfei',
-                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
+                                  'avatar' :   '/web/uploads/yinfei.png',
                                   'charaters':{
                                               'id' : 2,
                                               'char_name' : 'Big Boss',
                                               'details'   : 'Level 18 Infiltrator',
                                               'story'     : 'Le Vrai hero de Guerre. Big Boss !!! Il ne rate jamais sont tire...',
-                                              'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png',
+                                              'avatar'    : '/web/uploads/bb.png',
                                               'master'    : false
                                               },
                                   },
                                   {
                                   'id' :       2,
                                   'username' : 'Toinou',
-                                  'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                                  'avatar' :   '/web/uploads/chopper.jpg',
                                   'charaters':{
                                               'id' : 132,
                                               'char_name' : 'Jon',
                                               'details'   : 'Level 5 Scout',
                                               'story'     : 'Jon Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que Jin a une cousine, Asuka Kazama. Toutefois, ils ne semblent pas être au courant de leur relation. Sa mère lui avoue sa véritable identité dans Tekken 3 lorsqu\'elle sent l\'approche du danger qui lui coûtera la vie, à savoir l\'arrivée du Dieu du combat, l\'Ogre.Toutes ses actions et évènements de sa vie prouvent qu\'il est la quintessence du héros tragique : disparition très tôt et brutale de sa mère, trahison de son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
-                                              'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
+                                              'avatar'    : '/web/uploads/jin.jpg',
                                               'master'    : true
                                               },
                                   },
                                   {
                                   'id' :       3,
                                   'username' : 'Beck Beck',
-                                  'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
+                                  'avatar' :   '/web/uploads/beck.jpg',
                                   'charaters':{
                                               'id' : 122,
                                               'char_name' : 'Chat-Fury',
                                               'details'   : 'Level 5 Scout',
                                               'story'     : 'Selon le profil officiel de Hello Kitty, cette dernière se nomme Kitty White (キティ・ホワイト, Kiti Howaito?), et elle est née à Londres, en Angleterre, un 1er novembre. Elle pèse l\'équivalent du poids de cinq pommes. ',
-                                              'avatar'    : 'webapp/assets/img/fixtures-pictures/hellokitty.jpg',
+                                              'avatar'    : '/web/uploads/hellokitty.jpg',
                                               'master'    : false
                                               },
                                   }],
@@ -135,64 +135,64 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                               'creator' : {
                                         'id' :       3,
                                         'username' : 'Beck Beck',
-                                        'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg'
+                                        'avatar' :   '/web/uploads/beck.jpg'
                                         },
                               'sheet':{
                                           'id' : 33,
                                           'char_name' : 'Super Mario',
                                           'details'   : 'Level 20 Plumber',
                                           'story'     : 'Mr Video est le premier nom donné par Shigeru Miyamoto à Mario3. Selon le jeune développeur, ce personnage destiné à apparaître dans tous les jeux qu\'il réaliserait se devait de posséder une stature propre, contrairement aux autres jeux de cette époque (PacMan, Space Invaders). ',
-                                          'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif'
+                                          'avatar'    : '/web/uploads/mario.gif'
                                       },
                               'user':[{
                                       'id' :       1,
                                       'username' : 'Yinfei',
-                                      'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
+                                      'avatar' :   '/web/uploads/yinfei.png',
                                       'charaters':{
                                                   'id' : 33,
                                                   'char_name' : 'Super Mario',
                                                   'details'   : 'Level 20 Plumber',
                                                   'story'     : 'Mr Video est le premier nom donné par Shigeru Miyamoto à Mario3. Selon le jeune développeur, ce personnage destiné à apparaître dans tous les jeux qu\'il réaliserait se devait de posséder une stature propre, contrairement aux autres jeux de cette époque (PacMan, Space Invaders). ',
-                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif',
+                                                  'avatar'    : '/web/uploads/mario.gif',
                                                   'master'    : false
                                                   },
                                       },
                                       {
                                       'id' :       2,
                                       'username' : 'Toinou',
-                                      'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                                      'avatar' :   '/web/uploads/chopper.jpg',
                                       'charaters':{
                                                   'id' : 12,
                                                   'char_name' : 'Lee',
                                                   'details'   : 'Level 5 Scout',
                                                   'story'     : 'Lee Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que lee a une cousine, Asuka Kazama. Toutefois, ils ne ................................son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
-                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
+                                                  'avatar'    : '/web/uploads/jin.jpg',
                                                   'master'    : false
                                                   },
                                       },
                                       {
                                       'id' :       221,
                                       'username' : 'Boby',
-                                      'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                                      'avatar' :   '/web/uploads/chopper.jpg',
                                       'charaters':{
                                                   'id' : 127,
                                                   'char_name' : 'SANGOKU',
                                                   'details'   : 'Level 5 Scout',
                                                   'story'     : 'Lee Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que lee a une cousine, Asuka Kazama. Toutefois, ils ne ................................son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
-                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
+                                                  'avatar'    : '/web/uploads/jin.jpg',
                                                   'master'    : false
                                                   },
                                       },
                                       {
                                       'id' :       3,
                                       'username' : 'Beck Beck',
-                                      'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
+                                      'avatar' :   '/web/uploads/beck.jpg',
                                       'charaters':{
                                                   'id' : 18,
                                                   'char_name' : 'CAT',
                                                   'details'   : 'Level 5 Scout',
                                                   'story'     : 'Selon le profil officiel de Hello CAT, cette dernière se nomme Kitty White (キティ・ホワイト, Kiti Howaito?), et elle est née à Londres, en Angleterre, un 1er novembre. Elle pèse l\'équivalent du poids de cinq pommes. ',
-                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/hellokitty.jpg',
+                                                  'avatar'    : '/web/uploads/hellokitty.jpg',
                                                   'master'    : true
                                                   }
                                       }]
@@ -206,7 +206,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                         'creator' : {
                                 'id' : 3,
                                 'username' : 'Beck Beck',
-                                'avatar' : 'webapp/assets/img/fixtures-pictures/beck.jpg'
+                                'avatar' : '/web/uploads/beck.jpg'
                                   }
                       },{
                         'id' : 24,
@@ -215,7 +215,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                         'creator' : {
                                 'id' : 3,
                                 'username' : 'Beck Beck',
-                                'avatar' : 'webapp/assets/img/fixtures-pictures/beck.jpg'
+                                'avatar' : '/web/uploads/beck.jpg'
                                   }
                       },{
                         'id' : 40,
@@ -224,7 +224,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                         'creator' : {
                                 'id' : 2,
                                 'username' : 'Toinou',
-                                'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg'
+                                'avatar' :   '/web/uploads/chopper.jpg'
                                   }
                       }]
 
@@ -233,7 +233,7 @@ $scope.myCharacteres = [{
                         'char_name' : 'Super Mario',
                         'details'   : 'Level 20 Plumber',
                         'story'     : 'Mr Video est le premier nom donné par Shigeru Miyamoto à Mario3. Selon le jeune développeur, ce personnage destiné à apparaître dans tous les jeux qu\'il réaliserait se devait de posséder une stature propre, contrairement aux autres jeux de cette époque (PacMan, Space Invaders). ',
-                        'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif',
+                        'avatar'    : '/web/uploads/mario.gif',
                         'master'    : false,
                         'inGame'    : true
                       },{
@@ -241,7 +241,7 @@ $scope.myCharacteres = [{
                         'char_name' : 'Jill Valentine',
                         'details'   : 'Level 7 Scout',
                         'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
-                        'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
+                        'avatar'    : '/web/uploads/jill.jpg',
                         'master'    : true,
                         'inGame'    : true
                       },{
@@ -249,7 +249,7 @@ $scope.myCharacteres = [{
                         'char_name' : 'Big Boss',
                         'details'   : 'Level 18 Infiltrator',
                         'story'     : 'Le Vrai hero de Guerre. Big Boss !!! Il ne rate jamais sont tire...',
-                        'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png',
+                        'avatar'    : '/web/uploads/bb.png',
                         'master'    : false,
                         'inGame'    : true
                       },{
@@ -257,7 +257,7 @@ $scope.myCharacteres = [{
                         'char_name' : 'Golum',
                         'details'   : 'Level 3 Infiltrator',
                         'story'     : 'Gollum est un personnage fictif du légendaire créé par l\’écrivain britannique J. R. R. Tolkien et qui apparaît dans ses romans Le Hobbit et Le Seigneur des anneaux. Connu en tant que Sméagol à l\'origine, Gollum est un Hobbit de la branche des Forts, qui vivait aux Champs aux Iris vers 2440 T. A.. En 2463 T. A., il s\'empare de l\'Anneau unique après avoir tué son cousin qui vient de découvrir l\'anneau dans le lit de l\'Anduin. Chassé par sa famille, il se réfugie dans une caverne des Monts Brumeux et prend le nom « Gollum » à cause de bruits de déglutition qu\'il fait avec sa gorge. Grâce à l\'Anneau unique, sa vie se voit allongée de plusieurs siècles mais il est obsédé par celui-ci au point d\'en devenir l\'esclave.',
-                        'avatar'    : 'webapp/assets/img/fixtures-pictures/gollum.jpg',
+                        'avatar'    : '/web/uploads/gollum.jpg',
                         'master'    : false,
                         'inGame'    : false
                       },{
@@ -265,7 +265,7 @@ $scope.myCharacteres = [{
                         'char_name' : 'Minion',
                         'details'   : 'Level 100 Kawai',
                         'story'     : 'A l\'origine de simples organismes monocellulaires de couleur jaune, les Minions ont évolué au cours des âges au service de maîtres plus abjectes les une que les autres. Les disparitions répétitives de ceux-ci, des tyrannosaures à Napoléon, ont plongé les Minions dans une profonde dépression. Mais l\'un d\'eux, prénommé Kevin, a une idée. Flanqué de Stuart, l\'adolescent rebelle et de l\'adorable petit Bob, Kevin part à la recherche d\'un nouveau patron malfaisant pour guider les siens. ',
-                        'avatar'    : 'webapp/assets/img/fixtures-pictures/minion.jpg',
+                        'avatar'    : '/web/uploads/minion.jpg',
                         'master'    : false,
                         'inGame'    : false
                       }]

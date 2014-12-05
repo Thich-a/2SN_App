@@ -20,10 +20,10 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
         }
     }
 
-
     // getting friendlists
-    $http.get( basePath + 'api/friendlists/' + data.user.id, {})
+    $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
     .success(function(data){
+      console.log('friendlists');
       console.log(data);
     })
     .error(function(data){
@@ -32,29 +32,13 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
 
 
 
-    // getting profile album
-    for (var album in data.user.albums)
-      if (data.user.albums[album].name == 'Profile')
-      {
-        $http.get( basePath + 'api/albums/'+data.user.albums[album].id, {})
-        .success(function(response){
-          // $scope.photos = response.album.photos;
-          $scope.photos = [
-                          {'id':1, 'name':'Avatar', 'description':'AVATAR POWWWA !', 'date':'19/09/2014' ,'url':'avatar.png'},
-                          {'id':2, 'name':'Avengers', 'description':'AVERGERS dream team', 'date':'18/09/2014' ,'url':'avengers2SN.png'},
-                          {'id':3, 'name':'MERICA !', 'description':'Red White and Blue', 'date':'10/10/2014' ,'url':'AmericaBoy.png'},
-                          {'id':4, 'name':'Ruby', 'description':' lorem ipsum bla bla bla', 'date':'21/09/2014' ,'url':'rubyMan.png'},
-                          {'id':5, 'name':'FatMan', 'description':'and a diet coke please', 'date':'01/04/2014' ,'url':'cookieMonster.png'},
-                          {'id':6, 'name':'#IPSTER', 'description':'I listen to underground music, you probably never heard of it', 'date':'12/03/2013' ,'url':'hipsterMax.png'},
-                          {'id':7, 'name':'Tortues Ninja', 'description':'teenage mutant ninja turtles', 'date':'29/10/2014' ,'url':'ninjaTurtles.png'},
-                          {'id':8, 'name':'Titanic (Now In 3D)', 'description':'And IIIIIIIIIIIIIIIIIIII will always Loooooooooooooooooove youuuuuuuuuuuu', 'date':'19/02/2014' ,'url':'titanic3D.png'},
-                          {'id':9, 'name':'The Lion From Zion', 'description':'Like a lion, from Zion', 'date':'31/12/2013' ,'url':'zionLion.png'}
-                        ]
-        })
-        .error(function(response){
-          alert("Oops ! Unable to load user albums");
-       })
-      }
+    for (var album in $scope.user.albums)
+      if ($scope.user.albums[album].name == 'Profile')
+        $scope.albumId = $scope.user.albums[album].id;
+    $http.get( basePath + 'api/albums/'+ $scope.albumId, {})
+    .success(function(answer){ $scope.photos = answer.album.photos; $scope.currentImage = $scope.photos[0]; })
+    .error(function(answer){ console.log('error !'); })
+
 
     $http.get( basePath + 'api/user/me', {})
     .success(function(answer){
@@ -113,7 +97,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
   }
 
   $scope.changedDisplayed = function(photoUrl) {
-    $('#userProfilPicturesCurrentDisplay').attr('src', '/webapp/assets/img/galleries/'+photoUrl);
+    $('#userProfilPicturesCurrentDisplay').attr('src', '/web/uploads/'+photoUrl);
   }
 
 });

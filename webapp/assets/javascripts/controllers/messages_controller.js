@@ -66,4 +66,17 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
     // })
   }
 
+  $scope.friendChangeGroup = function(friendgroupId) {
+    // console.log('friendgroupId : '+ friendgroupId);
+    // console.log('dragged : ' + $scope.transfertFriendId);
+    $http.post( basePath + 'api/friends/' + $scope.transfertFriendId + '/moves/' + friendgroupId, {})
+    .success(function(data){
+      console.log(data);
+      console.log('delete from one group and put in the other group in front (or refresh you lazy fucker !)');
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
 });

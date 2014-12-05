@@ -49,6 +49,17 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
       }
     }
 
+    $scope.photos = [];
+    for (var album in $scope.user.albums)
+    {
+      $http.get( basePath + 'api/albums/'+ $scope.user.albums[album].id, {})
+      .success(function(answer){
+        for(var photo in answer.album.photos)
+          $scope.photos.push(answer.album.photos[photo]);
+      })
+      .error(function(answer){ console.log('error !'); })
+    }
+
   })
   .error(function(data){
     alert("Credentials invalid");

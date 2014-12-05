@@ -2,11 +2,11 @@
 
 <div class="row">
   <div class="col-md-offset-2 col-md-2 userPicture">
-    <img id="account-picture" ng-src="webapp/assets/img/fixtures-pictures/{{user.image_profile}}" class="img-rounded">
+    <img id="account-picture" ng-src="web/uploads/{{user.image_profile}}" class="img-rounded">
     <br>
     <div class="row">
-        <button id="account-settings-photo-upload" type="button" class="col-xs-offset-2 col-xs-4 settings-btn btn btn-info">Upload</button>
-        <button id="account-settings-photo-change" type="button" class="col-xs-4 settings-btn btn btn-default">Choose</button>
+        <button id="account-settings-photo-upload" data-toggle="modal" data-target="#account-image-new" class="col-xs-offset-2 col-xs-4 settings-btn btn btn-info">Upload</button>
+        <button id="account-settings-photo-change" data-toggle="modal" data-target="#account-image-change" class="col-xs-4 settings-btn btn btn-default">Choose</button>
     </div>
   </div>
 
@@ -45,5 +45,67 @@
 <div class="row">
   <div ng-if="user.id != 1" class="col-xs-offset-6 col-xs-4">
     <button ng-click="DeleteAccount()" type="button" class="btn btn-danger">Delete this account</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="account-image-new">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center modal-header-normal">
+        Uploading new picture
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-offset-7 col-xs-3">
+            <button id="imagefileUploaderCustom" ng-click="clickNextInput($event)" class="btn btn-info">Chose picture</button>
+            <input id="imagefileUploader" enctype="multipart/form-data" type="file" style="display:none;">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>add a description to the picture ?</p>
+          </div>
+          <div class="col-xs-12">
+            <p><textarea rows="5" style="width:100%; resize:none; border: 1px solid #ccc;" ng-model="newImageContent"></textarea></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="upload()" data-dismiss="modal">Upload & set profile picture</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="account-image-change">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center" style="background-color:#00A6B6; border-top-left-radius:4px; border-top-right-radius:4px;">
+        Choose existing photo from Profile Album
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-8" style="height:300px;margin-bottom:10px;">
+            <center style="height:100%;">
+              <img ng-src="/web/uploads/{{currentImage.image_name}}" style="max-height:100%; max-width:100%;" class="img-rounded">
+            </center>
+          </div>
+          <div class="col-xs-offset-7 col-xs-3">
+            <button type="button" ng-click="changeProfilePicture()" class="btn btn-success" data-dismiss="modal">Set as Profil Picture</button>
+          </div>
+        </div>
+        <div class="row" style="display:-webkit-box; overflow-y:scroll;width: 100%;">
+          <div ng-repeat="image in images" style="height:70px;margin-left:10px;">
+            <img ng-click="changedDisplayed(image.id)" ng-src="/web/uploads/{{image.image_name}}" style="height:100%;" class="img-rounded">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

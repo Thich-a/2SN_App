@@ -70,15 +70,16 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     var albumId = $('#AlbumSelect').val();
     $http.delete( basePath + 'api/albums/' + albumId, {})
     .success(function(data){
-      for (var album in $scope.albums)
-        if ($scope.albums[album].id == albumId)
-          delete($scope.albums[album]);
+      // for (var album in $scope.albums)
+      //   if ($scope.albums[album].id == albumId)
+      //     delete($scope.albums[album]);
 
-      $('option').each(function() {
-        $scope.defalutModel = '';
-        if ($(this)[0].getAttribute('value') == '' || $(this)[0].getAttribute('value') == albumId)
-          $(this).remove();
-      });
+      // $('option').each(function() {
+      //   $scope.defalutModel = '';
+      //   if ($(this)[0].getAttribute('value') == '' || $(this)[0].getAttribute('value') == albumId)
+      //     $(this).remove();
+      // });
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -96,7 +97,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
           reader.onload = (function(){
             $scope.fileContent = reader.result;
             $scope.file = file;
-            $('#picture-new').show();
           });
         }
       });
@@ -105,7 +105,7 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
   $scope.deleteImage = function() {
     $http.delete( basePath + 'api/photos/'+ $scope.currentImage.id, {})
     .success(function(data){
-      console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -132,6 +132,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     imageFile = {"file":filecontent, "name":file.name};
     xmlhttp.send('{"content":"' + content + '", "imageFile":'+JSON.stringify(imageFile)+'}');
     $scope.newImageContent = '';
+
+    $route.reload();
   }
 
   $scope.checkUnique = function() {

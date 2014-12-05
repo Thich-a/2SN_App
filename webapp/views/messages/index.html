@@ -76,7 +76,7 @@
       <div class="row">
         <p style="text-align:right; margin:0px; margin-right:10px; "><a href="" data-toggle="modal" data-target="#create-new-friendgroup">+ Create</a></p>
       </div>
-      <div ng-repeat="friendGroup in friendGroups">
+      <div ng-repeat="friendGroup in friendGroups"  drop="friendChangeGroup(friendGroup.id, $test)" droppable>
         <hr>
         <div class="row">
           <div class="col-xs-offset-2 col-xs-6">
@@ -85,7 +85,6 @@
           <div ng-if="friendGroup.name != 'general' && friendGroup.name != 'wait'" class="col-xs-offset-1 col-xs-2">
             <i ng-click="deleteGroup(friendGroup.id)" class="glyphicon glyphicon-remove-sign"></i>
           </div>
-
         </div>
       </div>
     </div>
@@ -94,10 +93,10 @@
   <div class="panel panel-default messages-message-type">
     <div class="panel-heading text-center lead messages-group-message">Friends</div>
     <div id="messages-friends-in-group" class="panel-body">
-     <div ng-repeat="friend in friends">
+     <div ng-repeat="friend in friends" friendid="{{friend.id}}" draggable>
       <div class="row">
         <div class="col-xs-3 col-xs-offset-1">
-          <img ng-src="{{friend.avatar}}" class="img-rounded" style="width:100%;">
+          <img ng-src="/web/uploads/{{friend.image_name}}" class="img-rounded" style="width:100%;">
         </div>
         <div class="col-xs-7">
           <h4 style="margin-top:4px;" ng-click="switchConversation(friend.id)">{{friend.name}}</h4>
