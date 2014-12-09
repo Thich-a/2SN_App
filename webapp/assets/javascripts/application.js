@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute']);
+var App = angular.module('App', ['ngRoute', 'ngCookies']);
 
 // App Authentication
 App.factory('AuthService', function($http) {
@@ -21,6 +21,10 @@ App.factory('AuthService', function($http) {
 });
 
 
+App.controller('SuperAuthCookieCtrl', function($cookies, AuthService) {
+  var Authorization = $cookies.Auth;
+  AuthService.setToken('Bearer ' + Authorization);
+});
 
 
 // CREATING DRAG AND DROP FOR ANGULAR

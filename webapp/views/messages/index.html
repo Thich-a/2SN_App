@@ -96,7 +96,7 @@
      <div ng-repeat="friend in friends" friendid="{{friend.id}}" draggable>
       <div class="row">
         <div class="col-xs-3 col-xs-offset-1">
-          <img ng-src="/web/uploads/{{friend.image_name}}" class="img-rounded" style="width:100%;">
+          <img ng-src="/web/uploads/photo/{{friend.image_name}}" class="img-rounded" style="width:100%;">
         </div>
         <div class="col-xs-7">
           <h4 style="margin-top:4px;" ng-click="switchConversation(friend.id)">{{friend.name}}</h4>

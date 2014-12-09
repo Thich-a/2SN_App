@@ -97,7 +97,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
   }
 
   $scope.changedDisplayed = function(photoUrl) {
-    $('#userProfilPicturesCurrentDisplay').attr('src', '/web/uploads/'+photoUrl);
+    $('#userProfilPicturesCurrentDisplay').attr('src', '/web/uploads/photo/'+photoUrl);
   }
 
 });

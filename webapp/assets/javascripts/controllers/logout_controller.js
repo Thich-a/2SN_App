@@ -6,6 +6,5 @@ App.controller('logoutCtrl', function ($scope, $http, $window, $location, AuthSe
     $scope.user = data.user;
   })
   .error(function(data){
-    alert("Credentials invalid");
   })
 });

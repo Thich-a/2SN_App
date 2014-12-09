@@ -32,6 +32,14 @@
   border-radius: 4px 0px 0px 4px;
 }
 
+.settingsSave {
+  margin-top: 54px;
+}
+
+.settingsSave:last-child {
+  margin-top: 54px;
+}
+
 .settingsSave button {
   width: 100%;
 }

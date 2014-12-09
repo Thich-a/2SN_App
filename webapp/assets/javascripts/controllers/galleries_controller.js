@@ -86,22 +86,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     })
   }
 
-  // Uploading Images
-  $(function () {
-      $(":file").change(function () {
-        if (this.files && this.files[0])
-        {
-          var reader = new FileReader();
-          reader.readAsDataURL(this.files[0]);
-          var file = this.files[0];
-          reader.onload = (function(){
-            $scope.fileContent = reader.result;
-            $scope.file = file;
-          });
-        }
-      });
-  });
-
   $scope.deleteImage = function() {
     $http.delete( basePath + 'api/photos/'+ $scope.currentImage.id, {})
     .success(function(data){
@@ -118,22 +102,17 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
   }
 
   $scope.upload = function() {
-    var filecontent = $scope.fileContent;
-    var file = $scope.file;
-    var albumId = $('#AlbumSelect').val();
     var xmlhttp = new XMLHttpRequest();
+    var formdata = new FormData(document.getElementById('galleriesUploadForm'));
+    var albumId = $('#AlbumSelect').val();
     xmlhttp.open("POST", basePath + 'api/photos/' + albumId, false);
-    xmlhttp.setRequestHeader("Content-Type", "image/*");
-    xmlhttp.setRequestHeader("Authentification", AuthService.getToken());
-    xmlhttp.onload = function() { console.log('YEAH UPLOADING SOMETHING !');}
-    filecontent = filecontent.split(',');
-    filecontent = filecontent[1];
-    var content = $scope.newImageContent;
-    imageFile = {"file":filecontent, "name":file.name};
-    xmlhttp.send('{"content":"' + content + '", "imageFile":'+JSON.stringify(imageFile)+'}');
-    $scope.newImageContent = '';
-
-    $route.reload();
+    xmlhttp.setRequestHeader("Authorization", AuthService.getToken());
+    xmlhttp.onload = function() { console.log('Upload successfull !!!');}
+    xmlhttp.send(formdata);
+    if (xmlhttp.status == 200)
+    {
+      $route.reload();
+    }
   }
 
   $scope.checkUnique = function() {

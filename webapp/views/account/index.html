@@ -1,8 +1,9 @@
 <div ng-include src='"webapp/views/partials/top-menu.html"'></div>
 
+<div id="accountMessageReciever" class="row" style="height:30px;"></div>
 <div class="row">
   <div class="col-md-offset-2 col-md-2 userPicture">
-    <img id="account-picture" ng-src="web/uploads/{{user.image_profile}}" class="img-rounded">
+    <img id="account-picture" ng-src="web/uploads/photo/{{user.image_profile}}" class="img-rounded">
     <br>
     <div class="row">
         <button id="account-settings-photo-upload" data-toggle="modal" data-target="#account-image-new" class="col-xs-offset-2 col-xs-4 settings-btn btn btn-info">Upload</button>
@@ -13,29 +14,47 @@
   <div class="col-md-4">
 
     <div class="account-settings">
-      <p id="account-username" class="text-center">{{user.username}}</p>
       <p>
         <div class="input-group">
           <span class="input-group-addon">@</span>
-          <input id="account-usermail" type="text" class="form-control" value="{{user.email}}">
+          <input id="account-username" type="text" class="form-control" ng-model="user.username">
+        </div>
+      </p>
+      <p>
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input id="account-usermail" type="text" class="form-control" ng-model="user.email">
         </div>
       </p>
       <p>
         <div class="input-group">
           <span class="input-group-addon">**</span>
-          <input type="password" class="form-control" placeholder="input new password">
+          <input type="password" class="form-control" ng-model="CurrentPassword" placeholder="input current password">
         </div>
       </p>
       <p>
         <div class="input-group">
           <span class="input-group-addon">**</span>
-          <input type="password" class="form-control" placeholder="verify password">
+          <input type="password" class="form-control" ng-model="newPassword1" placeholder="input new password">
         </div>
       </p>
-      <div class="row settingsSave">
-        <div class="col-xs-offset-4 col-xs-4">
-          <button id="account-settings-save" type="button" class="btn btn-success">Save</button>
+      <p>
+        <div class="input-group">
+          <span class="input-group-addon">**</span>
+          <input type="password" class="form-control" ng-model="newPassword2" placeholder="verify password">
         </div>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="row settingsSave">
+      <div class="col-xs-6">
+        <button id="account-settings-save" type="button" ng-click="editUser()" class="btn btn-success form-control">Change User</button>
+      </div>
+    </div>
+    <div class="row settingsSave">
+      <div class="col-xs-6">
+        <button id="account-settings-save" type="button" ng-click="editUserPassword()" class="btn btn-success form-control">Change Password</button>
       </div>
     </div>
   </div>
@@ -56,10 +75,11 @@
         Uploading new picture
       </div>
       <div class="modal-body">
+        <form id="beckbeck" enctype="multipart/form-data">
         <div class="row">
           <div class="col-xs-offset-7 col-xs-3">
             <button id="imagefileUploaderCustom" ng-click="clickNextInput($event)" class="btn btn-info">Chose picture</button>
-            <input id="imagefileUploader" enctype="multipart/form-data" type="file" style="display:none;">
+              <input name="imageFile" id="imagefileUploader" enctype="multipart/form-data" type="file" style="display:none;">
           </div>
         </div>
         <div class="row">
@@ -67,9 +87,11 @@
             <p>add a description to the picture ?</p>
           </div>
           <div class="col-xs-12">
-            <p><textarea rows="5" style="width:100%; resize:none; border: 1px solid #ccc;" ng-model="newImageContent"></textarea></p>
+            <p><textarea name="content" rows="5" style="width:100%; resize:none; border: 1px solid #ccc;"></textarea></p>
           </div>
         </div>
+
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" ng-click="upload()" data-dismiss="modal">Upload & set profile picture</button>
@@ -90,7 +112,7 @@
         <div class="row">
           <div class="col-xs-offset-2 col-xs-8" style="height:300px;margin-bottom:10px;">
             <center style="height:100%;">
-              <img ng-src="/web/uploads/{{currentImage.image_name}}" style="max-height:100%; max-width:100%;" class="img-rounded">
+              <img ng-src="/web/uploads/photo/{{currentImage.image_name}}" style="max-height:100%; max-width:100%;" class="img-rounded">
             </center>
           </div>
           <div class="col-xs-offset-7 col-xs-3">
@@ -99,7 +121,7 @@
         </div>
         <div class="row" style="display:-webkit-box; overflow-y:scroll;width: 100%;">
           <div ng-repeat="image in images" style="height:70px;margin-left:10px;">
-            <img ng-click="changedDisplayed(image.id)" ng-src="/web/uploads/{{image.image_name}}" style="height:100%;" class="img-rounded">
+            <img ng-click="changedDisplayed(image.id)" ng-src="/web/uploads/photo/{{image.image_name}}" style="height:100%;" class="img-rounded">
           </div>
         </div>
       </div>

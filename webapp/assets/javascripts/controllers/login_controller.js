@@ -1,4 +1,4 @@
-App.controller('loginCtrl', function ($scope, $http, $window, $location, AuthService){
+App.controller('loginCtrl', function ($scope, $http, $window, $location, AuthService, $cookies){
 
   $scope.username = null;
   $scope.password = null;
@@ -9,7 +9,8 @@ App.controller('loginCtrl', function ($scope, $http, $window, $location, AuthSer
 
     $http.post(basePath + 'api/login_check', {username: username, password: password})
       .success(function(data){
-        AuthService.setToken(data.token);
+        AuthService.setToken('Bearer ' + data.token);
+        $cookies.Auth = data.token;
         $location.path('/dashboard');
       })
       .error(function(data){
@@ -21,13 +22,14 @@ App.controller('loginCtrl', function ($scope, $http, $window, $location, AuthSer
     $http.post(basePath + 'api/register', {"email":$scope.register_mail, "username":$scope.register_username, "plainPassword":{"first":$scope.register_pwd_first,"second":$scope.register_pwd_second}})
       .success(function(data){
         console.log(data);
-        AuthService.setToken(data.token);
-        console.log('createUser token :');
-        console.log(data.token);
+        AuthService.setToken('Bearer ' + data.token);
+        $cookies.Auth = data.token;
+        $location.path('/dashboard');
       })
       .error(function(data){
-        alert("Credentials invalid");
+        console.log('Unable to create User ...');
       })
   }
 
 });
+
