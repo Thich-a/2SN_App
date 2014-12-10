@@ -1,69 +1,82 @@
 App.controller('messagesCtrl', function ($scope, $http, $window, $location){
 
-  $scope.user = {
-                  'id' :       1,
-                  'username' : 'Yinfei',
-                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                  'friendgroups':[{
-                                  'id' : 1,
-                                  'name' : 'ETNA',
-                                  'friends' : [{
-                                                'id' : 1,
-                                                'username' : 'Yinfei',
-                                                'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                },
-                                                {
-                                                  'id' : 2,
-                                                  'username' : 'toto',
-                                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                },
-                                                {
-                                                  'id' : 3,
-                                                  'username' : 'bolo',
-                                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                }]
-                                  },
-                                  {
-                                  'id' : 2,
-                                  'name' : 'Work',
-                                  'friends' : [{
-                                                'id' : 7,
-                                                'username' : 'jeanmichel',
-                                                'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                },
-                                                {
-                                                  'id' : 8,
-                                                  'username' : 'bobby',
-                                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                },
-                                                {
-                                                  'id' : 12,
-                                                  'username' : 'Johnny Haliday',
-                                                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                                }]
-                                  }]
-                };
+  $http.get( basePath + 'api/user/me', {})
+  .success(function(data){
+    console.log(data);
+    $scope.user = data.user;
+    $scope.friendGroups = $scope.user.friend_groups;
+  })
+  .error(function(data){
+    alert("Credentials invalid");
+  })
 
-  $scope.friendGroups = $scope.user.friendgroups;
+  $scope.switchConversation = function(userId) {
+    for(var friend in $scope.friends)
+      if ($scope.friends[friend].id == userId)
+        $scope.activeFriend = $scope.friends[friend];
 
-  switchConversation = function(userId) {
-    for(var friend in $scope.activeGroup.friends)
-      if ($scope.activeGroup.friends[friend].id == userId)
-        $scope.activeFriend = $scope.activeGroup.friends[friend];
-
-    $('.messages-message-board .panel-heading').html($scope.activeFriend.username);
+    $('.messages-message-board .panel-heading').html($scope.activeFriend.name);
   }
 
-  switchGroups = function(groupId) {
-    for(var group in $scope.user.friendgroups)
-      if ($scope.user.friendgroups[group].id == groupId)
-        $scope.activeGroup = $scope.user.friendgroups[group];
+  $scope.switchGroups = function(groupId) {
+    for(var group in $scope.friendGroups)
+      if ($scope.friendGroups[group].id == groupId)
+        $scope.activeGroup = $scope.friendGroups[group];
+    $scope.friends = $scope.activeGroup.friends;
+    console.log($scope.friends[0]);
+  }
 
-    $('#messages-friends-in-group').html('');
-    for (var friend in $scope.activeGroup.friends)
-    {
-      $('#messages-friends-in-group').append('<div class="row"><div class="col-xs-3 col-xs-offset-1"><img src="' + $scope.activeGroup.friends[friend].avatar + '" class="img-rounded small-picture"></div><div class="col-xs-7"><h4 style="margin-top:4px;" name="' + $scope.activeGroup.friends[friend].id + '" onclick="switchConversation(this.getAttribute(\'name\'))">' + $scope.activeGroup.friends[friend].username + '</h4></div></div><hr>');
-    }
+  $scope.createNewFriendGroup = function() {
+    $http.post( basePath + 'api/friendlists', {"name":$scope.NewFriendGroupName})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.deleteGroup = function(groupId) {
+    $http.delete( basePath + 'api/friendlists/'+groupId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.createNewChannel = function() {
+    // $http.post( basePath + 'api/friendlists/'+groupId, {})
+    // .success(function(data){
+    //   console.log(data);
+    // })
+    // .error(function(data){
+    //   alert("Credentials invalid");
+    // })
+  }
+
+  $scope.deleteChannel = function(groupId) {
+    // $http.post( basePath + 'api/friendlists/'+groupId, {})
+    // .success(function(data){
+    //   console.log(data);
+    // })
+    // .error(function(data){
+    //   alert("Credentials invalid");
+    // })
+  }
+
+  $scope.friendChangeGroup = function(friendgroupId) {
+    // console.log('friendgroupId : '+ friendgroupId);
+    // console.log('dragged : ' + $scope.transfertFriendId);
+    $http.post( basePath + 'api/friends/' + $scope.transfertFriendId + '/moves/' + friendgroupId, {})
+    .success(function(data){
+      console.log(data);
+      console.log('delete from one group and put in the other group in front (or refresh you lazy fucker !)');
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
   }
 
 });

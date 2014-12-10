@@ -1,113 +1,106 @@
 App.controller('userCtrl', function ($scope, $http, $window, $location, $routeParams){
 
-  $scope.userid = $routeParams.user;
-  $scope.user = $routeParams.id;
+  $scope.profileId = $routeParams.id;
+  $http.get( basePath + 'api/users/'+$scope.profileId, {})
+  .success(function(data){
+    $scope.user = data.user;
+    $scope.posts = $scope.user.posts;
+    $scope.friends = [];
 
-  $scope.users = [{
-                  'id' : 1,
-                  'username' : 'Yinfei',
-                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                  'usermail':'swagster@skyblog.web',
-                  'plan': 2
-                }];
+    // getting friends
+    var i = 0;
+    for (var friendGroup in data.user.friend_groups)
+    {
+      var friends = data.user.friend_groups[friendGroup].friends;
+      for (var friend in friends)
+        if (data.user.friend_groups[friendGroup].name != 'wait')
+        {
+          $scope.friends[i] = friends[friend];
+          i++;
+        }
+    }
+
+    // getting friendlists
+    $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
+    .success(function(data){
+      console.log('friendlists');
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
 
 
-  $scope.sheets = [{
-                      'id' : 1,
-                      'char_name' : 'Jill Valentine',
-                      'details'   : 'Level 7 Scout',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
-                      'game_session' : {
-                                       'id' : 1,
-                                       'name' : 'Arkhlay Manor adventures'
-                                     }
-                  },{
-                      'id' : 2,
-                      'char_name' : 'Big Boss',
-                      'details'   : 'Level 18 Infiltrator',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png',
-                      'game_session' : {
-                                       'id' : 2,
-                                       'name' : 'Operation Snake Eater'
-                                     }
-                  },{
-                      'id' : 3,
-                      'char_name' : 'Super Mario',
-                      'details'   : 'Level 20 Plumber',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif',
-                      'game_session' : {
-                                       'id' : 3,
-                                       'name' : 'Mushroom Kingdom'
-                                     }
-                  }]
 
-  $scope.sessions = [{
-                        'id' : 1,
-                        'name' : 'Arkhlay Manor adventures',
-                        'created_at' : '12 June 1998',
-                        'last_log' :   'A zombie opened the door !',
-                        'new_logs' :   true
-                     },{
-                        'id' : 2,
-                        'name' : 'Operation Snake Eater',
-                        'created_at' : '6 August 1956',
-                        'last_log' :   'Critical hit ! Shagohod explodes !',
-                        'new_logs' :   false
-                     },{
-                        'id' : 3,
-                        'name' : 'Mushroom Kingdom',
-                        'created_at' : '2 Febuary 1983',
-                        'last_log' : 'IT\'S A-ME MARIOOOOO !',
-                        'new_logs' :   true
-                     }]
+    for (var album in $scope.user.albums)
+      if ($scope.user.albums[album].name == 'Profile')
+        $scope.albumId = $scope.user.albums[album].id;
+    $http.get( basePath + 'api/albums/'+ $scope.albumId, {})
+    .success(function(answer){ $scope.photos = answer.album.photos; $scope.currentImage = $scope.photos[0]; })
+    .error(function(answer){ console.log('error !'); })
 
-  $scope.albums = [
-                    {
-                      'id': 1,
-                      'title' : 'my album',
-                      'pictures' :
-                        [{
-                          'id' : 1,
-                          'url' : 'webapp/assets/img/galleries/AmericaBoy.png'
-                          },{
-                            'id' : 2,
-                            'url' : 'webapp/assets/img/galleries/avatar.png'
-                          },{
-                            'id' : 3,
-                            'url' : 'webapp/assets/img/galleries/avengers2SN.png'
-                          },{
-                            'id' : 4,
-                            'url' : 'webapp/assets/img/galleries/cookieMonster.png'
-                          },{
-                            'id' : 5,
-                            'url' : 'webapp/assets/img/galleries/hipsterMax.png'
-                          },{
-                          'id' : 6,
-                          'url' : 'webapp/assets/img/galleries/ninjaTurtles.png'
-                        }]
-                    },{
-                      'id': 2,
-                      'title': 'my other album',
-                      'pictures' :
-                        [{
-                          'id' : 7,
-                          'url' : 'webapp/assets/img/galleries/rubyMan.png'
-                        },{
-                          'id' : 8,
-                          'url' : 'webapp/assets/img/galleries/titanic3D.png'
-                        },{
-                          'id' : 9,
-                          'url' : 'webapp/assets/img/galleries/zionLion.png'
-                        }]
-                  }]
 
-  $scope.getUser = function() {
-    for (var user in $scope.users)
-      if ($scope.users[user].id == $scope.user)
-        $scope.currentUser = $scope.users[user];
-    if (typeof $scope.currentUser == 'undefined')
-      $('#user-show-profil').html('<p style="text-align: center;">Sorry, user with id ' + $scope.user + ' does not exist</p>');
+    $http.get( basePath + 'api/user/me', {})
+    .success(function(answer){
+      $scope.me = answer.user;
+      $scope.checkIfFriend($scope.me);
+    })
+    .error(function(answer){
+      alert("Oops ! unable to fetch current logged user");
+    })
+  })
+  .error(function(data){
+    alert("Oops ! an error occured !");
+  })
+
+  $scope.checkIfFriend = function(user) {
+    for (var friendGroup in user.friend_groups)
+    {
+      var friends = user.friend_groups[friendGroup].friends;
+      for (var friend in friends)
+      {
+        if (friends[friend].id == $scope.user.id)
+          $scope.isFriend = 1;
+      }
+    }
+    $scope.isFriend = 0;
   }
 
-  $scope.getUser();
+  $scope.AddFriend = function(userId) {
+    $http.post( basePath + 'api/friends/'+ userId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.UnFriend = function(userId) {
+    $http.delete( basePath + 'api/friend/'+ friendId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.deleteUser = function(userId) {
+    $http.delete( basePath + 'api/users/'+ userId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.changedDisplayed = function(photoUrl) {
+    $('#userProfilPicturesCurrentDisplay').attr('src', '/web/uploads/photo/'+photoUrl);
+  }
+
 });
+
+
+

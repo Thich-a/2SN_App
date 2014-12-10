@@ -6,24 +6,30 @@
     <div id="posts-wrapper">
       <div class="posts-post row">
         <div class="col-xs-2">
-          <img src="{{user.avatar}}" class="img-rounded">
+          <img ng-src="/web/uploads/photo/{{user.image_profile}}" class="img-rounded">
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-6">
           <p>{{currentPost.content}}</p>
         </div>
-        <div class="col-xs-2">
-          <p>{{currentPost.date}}</p>
-          <p>{{currentPost.time}}</p>
+        <div class="col-xs-offset-1 col-xs-1">
+          <p>{{currentPost.created_at | date:'dd/MM/yyyy'}}</p>
+          <p>{{currentPost.created_at | date:'HH:mm:ss'}}</p>
+        </div>
+        <div class="col-xs-offset-1 col-xs-1">
+          <i ng-if="securityFlag == 1" ng-click="deletePost()" class="glyphicon glyphicon-remove"></i>
         </div>
       </div>
-      <div class="posts-comments row" ng-repeat="answer in answers">
+      <div class="posts-comments row" ng-repeat="comment in comments">
         <div class="col-xs-offset-2 col-xs-8">
           <div class="row">
             <div class="col-xs-2">
-              <img src="{{answer.user.avatar}}" class="img-rounded">
+              <img ng-src="/web/uploads/photo/{{comment.user.image_profile}}" class="img-rounded">
             </div>
             <div class="col-xs-8">
-              <p>{{answer.content}}</p>
+              <p>{{comment.content}}</p>
+            </div>
+            <div class="col-xs-offset-1 col-xs-1">
+              <i ng-if="securityFlag = 1" ng-click="deleteComment($event)" name="{{comment.id}}" class="glyphicon glyphicon-remove"></i>
             </div>
           </div>
         </div>
@@ -47,11 +53,11 @@
       <div class="modal-body">
         <p>content :</p>
         <p>
-          <textarea rows="4" class="form-control"></textarea>
+          <textarea id="posts-create-new-comment" rows="4" class="form-control"></textarea>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Post</button>
+        <button type="button" class="btn btn-success" ng-click="comment()" data-dismiss="modal">Post</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>

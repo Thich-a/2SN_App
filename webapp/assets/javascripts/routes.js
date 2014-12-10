@@ -16,6 +16,10 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/login.html',
       controller:  'loginCtrl'
     })
+    .when('/logout', {
+      templateUrl: 'webapp/views/logout.html',
+      controller:  'logoutCtrl'
+    })
     .when('/dashboard', {
       templateUrl: 'webapp/views/dashboard.html',
       controller:  'dashboardCtrl'
@@ -32,7 +36,7 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/account/index.html',
       controller:  'accountCtrl'
     })
-    .when('/:user/galleries', {
+    .when('/users/:user/galleries', {
       templateUrl: 'webapp/views/galleries/index.html',
       controller:  'galleriesCtrl'
     })
@@ -40,11 +44,11 @@ App.config(function($routeProvider) {
       templateUrl: 'webapp/views/game_sessions/session-game.html',
       controller:  'gameSessionsShowCtrl'
     })
-    .when('/:user/posts', {
+    .when('/users/:user/posts', {
       templateUrl: 'webapp/views/posts/index.html',
       controller:  'postsCtrl'
     })
-    .when('/:user/posts/:id', {
+    .when('/users/:user/posts/:id', {
       templateUrl: 'webapp/views/posts/show.html',
       controller:  'postShowCtrl'
     })

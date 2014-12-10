@@ -17,8 +17,10 @@
   <link rel="stylesheet" type="text/css" href="webapp/assets/stylesheets/galleries.css">
   <link rel="stylesheet" type="text/css" href="webapp/assets/stylesheets/games/gameSession.css">
   <link rel="stylesheet" type="text/css" href="webapp/assets/stylesheets/posts/posts.css">
-  <link rel="stylesheet" type="text/css" href="webapp/assets/stylesheets/contact/contactAdmin.css">
   <!-- JavaScript -->
+  <script type="text/javascript">
+  var basePath = 'http://127.0.0.1:8888/web/app_dev.php/';
+  </script>
   <script src="webapp/assets/javascripts/lib/jquery-1.11.1.min.js"></script>
   <script src="webapp/assets/javascripts/lib/angular.min.js"></script>
   <script src="webapp/assets/javascripts/lib/angular-route.min.js"></script>
@@ -29,6 +31,8 @@
   <script src="webapp/assets/javascripts/routes.js"></script>
   <script src="webapp/assets/javascripts/controllers/index_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/login_controller.js"></script>
+  <script src="webapp/assets/javascripts/controllers/menu_controller.js"></script>
+  <script src="webapp/assets/javascripts/controllers/logout_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/users/index_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/users/show_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/dashboard_controller.js"></script>
@@ -39,9 +43,9 @@
   <script src="webapp/assets/javascripts/controllers/game_sessions_show_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/posts/index_controller.js"></script>
   <script src="webapp/assets/javascripts/controllers/posts/show_controller.js"></script>
-  <script src="webapp/assets/javascripts/controllers/contact_admin_controller.js"></script>
 </head>
 <body>
+  <div ng-controller="SuperAuthCookieCtrl"></div>
   <div class="container" ng-view style='background-color: #ecf0f1; padding:20px; border-radius: 4px'>
   </div>
 </body>

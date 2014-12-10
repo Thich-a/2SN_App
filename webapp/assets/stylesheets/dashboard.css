@@ -1,7 +1,6 @@
 /* ------------------------------- Pannels ------------------------------- */
 .standard > .panel-body {
-  min-height: 380px;
-  max-height: 380px;
+  height: 380px;
   overflow-y: scroll;
 }
 

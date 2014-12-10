@@ -10,7 +10,7 @@
         <div ng-repeat="sheet in sheets">
           <div class="row">
             <div class="col-xs-3 col-xs-offset-1">
-              <img src="{{ sheet.avatar }}" class="img-rounded small-picture" >
+              <img ng-src="{{ sheet.image_profile }}" class="img-rounded small-picture" >
             </div>
             <div class="col-xs-7">
               <h3 style='margin-top:4px;'>{{ sheet.char_name }}</h3>
@@ -39,16 +39,16 @@
       <div class="panel-body">
         <div class="col-xs-12 user_widget_photo">
           <div>
-            <img src="{{ user.avatar }}" class="img-circle">
+            <img ng-src="/web/uploads/photo/{{ user.image_profile }}" class="img-circle">
           </div>
         </div>
          <h2>{{ user.username }}</h2>
          <br>
       </div>
       <div class="panel-footer">
-          <a href="" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
-          <a href="" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
-          <a href="" class='blue'><i class="glyphicon glyphicon-user"></i></a>
+          <a href="#messages" class='green'><i class="glyphicon glyphicon-envelope"></i></a>
+          <a href="#games" class='orange'><i class="glyphicon glyphicon-list-alt"></i></a>
+          <a href="#account" class='blue'><i class="glyphicon glyphicon-user"></i></a>
       </div>
     </div>
   </div>
@@ -80,54 +80,16 @@
     <div class="panel panel-default standard" style='border-color: #00A6B6;'>
       <div class="panel-heading text-center lead friend_list">Friends</div>
       <div class="panel-body" style='border-radius:0;'>
-        <input type='text' class='form-control'>
+        <input type='text' ng-model="friendsearch.username" class='form-control'>
         <hr>
         <div class="row pictures">
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-        </div>
-        <div class="row pictures">
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-        </div>
-        <div class="row pictures">
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-        </div>
-        <div class="row pictures">
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href=""><img src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+          <div ng-repeat="friend in friends | filter:friendsearch" class="col-md-4 text-center">
+            <a href=""><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded friend_pic picture"></a>
+            <p>{{friend.name}}</p>
           </div>
         </div>
       </div>
-      <div class="panel-footer text-center lead" style='color: #00A6B6;'><br> <p><b>9001</b> Friends - <b>666</b> Groups</p></div>
+      <div class="panel-footer text-center lead" style='color: #00A6B6;'><br><p><b>{{friends.length}}</b> Friends - <b>{{friendGroups.length - 2}}</b> Groups - <b style="cursor: pointer; cursor: hand;" data-toggle="modal" data-target="#pending-requests">{{pending.length}}</b> Pending</p></div>
     </div>
   </div>
   <!-- PICTURES_WIDGET -->
@@ -135,19 +97,15 @@
     <div class="panel panel-default standard" style='border-color: #CF000F;'>
       <div class="panel-heading text-center lead pictures">Pictures</div>
       <div class="panel-body">
-        <div ng-repeat='album in albums'>
-          <div ng-repeat='pictures in album'>
-            <div ng-repeat='picture in filtered = (pictures)'>
-              <div class="col-md-6 text-center">
-                <a href="#pictures/{{ picture.id }}"><img src="{{ picture.url }}" class="img-rounded big-picture"></a>
-              </div>
+          <div ng-repeat='photo in photos'>
+            <div class="col-md-6 text-center">
+              <img ng-src="/web/uploads/photo/{{ photo.image_name }}" class="img-rounded big-picture">
             </div>
           </div>
-        </div>
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p style='color: #CF000F;'><b>11</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
+        <p style='color: #CF000F;'><b>{{photos.length}}</b> Pictures - <b>{{ albums.length }}</b> Albums</p>
       </div>
     </div>
   </div>
@@ -156,44 +114,77 @@
     <div class="panel panel-default standard" style='border-color: #674172;'>
       <div class="panel-heading text-center lead posts">Posts</div>
       <div class="panel-body">
-        <p class='text-center'><a href=""> + New Post</a></p>
+        <p class='text-center'><a href="" data-toggle="modal" data-target="#dashboard-new-post"> + New Post</a></p>
         <hr>
-        <div class="row">
-          <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-          </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>Hello world !</h4>
-            <p class='text-muted'>"<i>This is my first post</i>"</p>
-            <p><a href="">Read more</a></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
+        <div ng-repeat="post in posts">
+          <div class="row">
             <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
+              <img ng-src="/web/uploads/photo/{{user.image_profile}}" class="img-rounded small-picture" >
+            </div>
+            <div class="col-xs-7">
+              <h4 style='margin-top:4px;'>{{post.content}}</h4>
+              <p><a href="#/users/{{user.id}}/posts/{{post.id}}">See this post</a></p>
+            </div>
           </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>One, two, one, two...</h4>
-            <p class='text-muted'>"<i>...It's a test.</i>"<br></p>
-            <p><a href="">Read more</a></p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
-            <img src="webapp/assets/img/anon_user.png" class="img-rounded small-picture" >
-          </div>
-          <div class="col-xs-7">
-            <h4 style='margin-top:4px;'>Another test</h4>
-            <p class='text-muted'>"<i>Becase we can.</i>"</p>
-            <p><a href="">Read more</a></p>
-          </div>
+          <hr>
         </div>
       </div>
       <div class="panel-footer text-center lead">
         <br>
-        <p style='color: #674172;'><b>42</b> Posts</p>
+        <p style='color: #674172;'><b>{{posts.length}}</b> Posts</p>
       </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pending-requests">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center" style="background-color:#00A6B6; border-top-left-radius:4px; border-top-right-radius:4px;">
+        Pending Friends requests
+      </div>
+      <div class="modal-body">
+        <div ng-if="pendingRecieved.length != 0" class="row">
+          <div class="row" style="margin:0px">
+            <div class="col-xs-offset-2 col-xs-8">Awaiting your answer :</div>
+          </div>
+          <div class="row" style="margin:0px" ng-repeat="friend in pendingRecieved">
+            <div class="col-xs-offset-2 col-xs-6">{{friend.name}}</div>
+            <div class="col-xs-1"><a href="" ng-click="acceptFriend(friend.id)"><i class="glyphicon glyphicon-ok"></i></a></div>
+            <div class="col-xs-1"><a href="" ng-click="refuseFriend(friend.id)"><i class="glyphicon glyphicon-remove"></i></a></div>
+          </div>
+        </div>
+        <hr ng-if="pendingRecieved.length != 0 && pendingSent.length != 0">
+        <div ng-if="pendingSent.length != 0" class="row">
+          <p>Friend requests sent :</p>
+          <div class="row" style="margin:0px" ng-repeat="friend in pendingSent">
+            <div class="col-xs-offset-2 col-xs-6">{{friend.name}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dashboard-new-post">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        New Post
+      </div>
+      <div class="modal-body">
+        <p>content :</p>
+        <p>
+          <textarea ng-model="dashboardNewPost" rows="4" class="form-control"></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="createPost()">Post</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,40 +2,31 @@
 
 <div class="col-md-3">
 
-  <!-- private messages -->
   <div class="panel panel-default messages-message-type">
-    <div class="panel-heading text-center lead messages-private-message">Friend Groups</div>
+    <div class="panel-heading text-center lead messages-private-message">Channels</div>
     <div class="panel-body">
       <div class="row">
-        <p style="text-align:right; margin:0px; margin-right:10px; "><a href="">+ Create</a></p>
+        <p style="text-align:right; margin:0px; margin-right:10px; "><a href="" data-toggle="modal" data-target="#create-new-channel">+ Create</a></p>
       </div>
-      <div ng-repeat="friendGroup in friendGroups">
+      <div ng-repeat="channel in channels">
         <hr>
         <div class="row">
           <div class="col-xs-offset-2 col-xs-7">
-            <h4 style='margin-top:4px;' name="{{friendGroup.id}}" onclick="switchGroups(this.getAttribute('name'))">{{friendGroup.name}}</h4>
+            <h4>{{channel.name}}</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- group messages -->
-  <div class="panel panel-default messages-message-type">
-    <div class="panel-heading text-center lead messages-group-message">Friends</div>
-    <div id="messages-friends-in-group" class="panel-body">
-    </div>
-  </div>
-
 </div>
 
-<div class="col-md-9">
+<div class="col-md-6">
 
   <div class="panel panel-default messages-message-board">
     <div class="panel-heading text-center lead">Beckosaurus Rex</div>
     <div class="panel-body">
       <div class="row messages-message-board-message-me">
-        <div class="col-xs-2"><img src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
+        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
         <div class="col-xs-10">
           Salut ! comment ca va depuis le temps ?
         </div>
@@ -45,11 +36,11 @@
         <div class="col-xs-10">
           pas trop mal et toi ?
         </div>
-        <div class="col-xs-2"><img src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
+        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
       </div><!-- close messages-message-board-message-other -->
       <hr>
       <div class="row messages-message-board-message-me">
-        <div class="col-xs-2"><img src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
+        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
         <div class="col-xs-10">
           ca va ca va ... une petite partie du coup ?
         </div>
@@ -59,14 +50,14 @@
         <div class="col-xs-10">
           attend je vais manger et je reviens.
         </div>
-        <div class="col-xs-2"><img src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
+        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
       </div><!-- close messages-message-board-message-other -->
       <hr>
       <div class="row messages-message-board-message-other">
         <div class="col-xs-10">
           c'est bon je suis pret !
         </div>
-        <div class="col-xs-2"><img src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
+        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
       </div><!-- close messages-message-board-message-other -->
     </div>
     <div class="row panel-footer messages-message-board-new">
@@ -76,3 +67,81 @@
   </div>
 
 </div>
+
+<div class="col-md-3">
+
+  <div class="panel panel-default messages-message-type">
+    <div class="panel-heading text-center lead messages-private-message">Friend Groups</div>
+    <div class="panel-body">
+      <div class="row">
+        <p style="text-align:right; margin:0px; margin-right:10px; "><a href="" data-toggle="modal" data-target="#create-new-friendgroup">+ Create</a></p>
+      </div>
+      <div ng-repeat="friendGroup in friendGroups"  drop="friendChangeGroup(friendGroup.id, $test)" droppable>
+        <hr>
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-6">
+            <h4 style='margin-top:4px;' ng-click="switchGroups(friendGroup.id)">{{friendGroup.name}}</h4>
+          </div>
+          <div ng-if="friendGroup.name != 'general' && friendGroup.name != 'wait'" class="col-xs-offset-1 col-xs-2">
+            <i ng-click="deleteGroup(friendGroup.id)" class="glyphicon glyphicon-remove-sign"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default messages-message-type">
+    <div class="panel-heading text-center lead messages-group-message">Friends</div>
+    <div id="messages-friends-in-group" class="panel-body">
+     <div ng-repeat="friend in friends" friendid="{{friend.id}}" draggable>
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-1">
+          <img ng-src="/web/uploads/photo/{{friend.image_name}}" class="img-rounded" style="width:100%;">
+        </div>
+        <div class="col-xs-7">
+          <h4 style="margin-top:4px;" ng-click="switchConversation(friend.id)">{{friend.name}}</h4>
+        </div>
+      </div>
+      <hr>
+     </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="create-new-friendgroup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        Create friendgroup
+      </div>
+      <div class="modal-body">
+        <p>name : <input type="text" ng-model="NewFriendGroupName"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="createNewFriendGroup()" data-dismiss="modal">Create</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="create-new-channel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        Create channel
+      </div>
+      <div class="modal-body">
+        Add user ........
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="createNewChannel()" data-dismiss="modal">Create</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,96 +1,99 @@
 App.controller('dashboardCtrl', function ($scope, $http, $window, $location, AuthService){
 
-  $scope.user = {
-                  'id' :       1,
-                  'username' : 'Yinfei',
-                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
-                }
-  $scope.sheets = [{
-                      'id' : 1,
-                      'char_name' : 'Jill Valentine',
-                      'details'   : 'Level 7 Scout',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
-                      'game_session' : {
-                                       'id' : 1,
-                                       'name' : 'Arkhlay Manor adventures'
-                                     }
-                  },{
-                      'id' : 2,
-                      'char_name' : 'Big Boss',
-                      'details'   : 'Level 18 Infiltrator',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/bb.png',
-                      'game_session' : {
-                                       'id' : 2,
-                                       'name' : 'Operation Snake Eater'
-                                     }
-                  },{
-                      'id' : 3,
-                      'char_name' : 'Super Mario',
-                      'details'   : 'Level 20 Plumber',
-                      'avatar'    : 'webapp/assets/img/fixtures-pictures/mario.gif',
-                      'game_session' : {
-                                       'id' : 3,
-                                       'name' : 'Mushroom Kingdom'
-                                     }
-                  }]
+  $http.get( basePath + 'api/user/me', {})
+  .success(function(data){
+    $scope.user = data.user;
+    // $scope.sheets = $scope.user.sheets;
+    // $scope.sessions = $scope.user.games;
+    $scope.albums = $scope.user.albums;
+    $scope.posts = $scope.user.posts;
+    $scope.friendGroups = $scope.user.friend_groups;
 
-  $scope.sessions = [{
-                        'id' : 1,
-                        'name' : 'Arkhlay Manor adventures',
-                        'created_at' : '12 June 1998',
-                        'last_log' :   'A zombie opened the door !',
-                        'new_logs' :   true
-                     },{
-                        'id' : 2,
-                        'name' : 'Operation Snake Eater',
-                        'created_at' : '6 August 1956',
-                        'last_log' :   'Critical hit ! Shagohod explodes !',
-                        'new_logs' :   false
-                     },{
-                        'id' : 3,
-                        'name' : 'Mushroom Kingdom',
-                        'created_at' : '2 Febuary 1983',
-                        'last_log' : 'IT\'S A-ME MARIOOOOO !',
-                        'new_logs' :   true
-                     }]
+    $scope.friends = [];
+    $scope.pending = [];
+    var i = 0;
+    var j = 0;
+    for (var friendGroup in data.user.friend_groups)
+    {
+      var friends = data.user.friend_groups[friendGroup].friends;
+      for (var friend in friends)
+      {
+        if (data.user.friend_groups[friendGroup].name != 'wait')
+        {
+          $scope.friends[i] = friends[friend];
+          i++;
+        }
+        else
+        {
+          $scope.pending[j] = friends[friend];
+          j++;
+        }
+      }
+    }
 
-  $scope.albums = [
-                    {
-                      'id': 1,
-                      'title' : 'my album',
-                      'pictures' :
-                        [{
-                          'id' : 1,
-                          'url' : 'webapp/assets/img/galleries/AmericaBoy.png'
-                          },{
-                            'id' : 2,
-                            'url' : 'webapp/assets/img/galleries/avatar.png'
-                          },{
-                            'id' : 3,
-                            'url' : 'webapp/assets/img/galleries/avengers2SN.png'
-                          },{
-                            'id' : 4,
-                            'url' : 'webapp/assets/img/galleries/cookieMonster.png'
-                          },{
-                            'id' : 5,
-                            'url' : 'webapp/assets/img/galleries/hipsterMax.png'
-                          },{
-                          'id' : 6,
-                          'url' : 'webapp/assets/img/galleries/ninjaTurtles.png'
-                        }]
-                    },{
-                      'id': 2,
-                      'title': 'my other album',
-                      'pictures' :
-                        [{
-                          'id' : 7,
-                          'url' : 'webapp/assets/img/galleries/rubyMan.png'
-                        },{
-                          'id' : 8,
-                          'url' : 'webapp/assets/img/galleries/titanic3D.png'
-                        },{
-                          'id' : 9,
-                          'url' : 'webapp/assets/img/galleries/zionLion.png'
-                        }]
-                  }]
+    i = 0;
+    j = 0;
+    $scope.pendingSent = [];
+    $scope.pendingRecieved = [];
+    for (var friend in $scope.pending)
+    {
+      if ($scope.pending[friend].sender == $scope.user.name)
+      {
+        $scope.pendingSent[i] = $scope.pending[friend];
+        i++;
+      }
+      else
+      {
+        $scope.pendingRecieved[j] = $scope.pending[friend];
+        j++;
+      }
+    }
+
+    $scope.photos = [];
+    for (var album in $scope.user.albums)
+    {
+      $http.get( basePath + 'api/albums/'+ $scope.user.albums[album].id, {})
+      .success(function(answer){
+        for(var photo in answer.album.photos)
+          $scope.photos.push(answer.album.photos[photo]);
+      })
+      .error(function(answer){ console.log('error !'); })
+    }
+
+  })
+  .error(function(data){
+    alert("Credentials invalid");
+    $location.path('/');
+  })
+
+  $scope.acceptFriend = function(friendId) {
+    $http.post( basePath + 'api/validfriends/'+friendId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.refuseFriend = function(friendId) {
+    $http.delete( basePath + 'api/friends/'+friendId, {})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.createPost = function() {
+    $http.post( basePath + 'api/blogs', {"content":$scope.dashboardNewPost})
+    .success(function(data){
+      console.log(data);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    });
+  }
+
 });

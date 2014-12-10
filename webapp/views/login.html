@@ -6,12 +6,12 @@
 
     <div class="tabs-content">
       <div id="signup-tab-content" class="login-connexion-content active">
-        <form class="signup-form" action="http://192.168.201.4/web/app_dev.php/api/users" method="post">
-          <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email" name="fos_user_registration_form[email]">
-          <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username" name='fos_user_registration_form[username]'>
-          <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password" name="fos_user_registration_form[plainPassword][first]">
-          <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password confirm" name="fos_user_registration_form[plainPassword][second]">
-          <input type="submit" class="button" value="Register">
+        <form class="signup-form" method="post">
+          <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email" ng-model="register_mail">
+          <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username" ng-model="register_username">
+          <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password" ng-model="register_pwd_first">
+          <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password confirm" ng-model="register_pwd_second">
+          <input type="submit" class="button" value="Register" ng-click="createUser()">
         </form><!--.login-form-->
         <div class="help-text">
           <p>By signing up, you agree to our</p>

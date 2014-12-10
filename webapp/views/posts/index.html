@@ -21,20 +21,19 @@
       <div class="panel-heading text-center lead">Posts</div>
       <div class="panel-body posts-panel">
         <div id="posts-new-post" class="row">
-          <a href="" data-toggle="modal" data-target="#posts-new">+ New Post</a>
+          <a ng-if="user.id == me.id" href="" data-toggle="modal" data-target="#posts-new">+ New Post</a>
         </div>
         <div id="posts-wrapper" ng-repeat="post in userPosts | filter:searchedText | orderBy:'-id'">
           <hr>
           <div class="posts-post row">
             <div class="col-xs-2">
-              <img src="{{user.avatar}}" class="img-rounded">
+              <img ng-src="/web/uploads/photo/{{user.image_profile}}" class="img-rounded">
             </div>
             <div class="col-xs-8">
-              <a href="#/{{userid}}/posts/{{post.id}}"><p>{{post.content}}</p></a>
+              <a href="#/users/{{userid}}/posts/{{post.id}}"><p>{{post.content}}</p></a>
             </div>
             <div class="col-xs-2">
-              <p>{{post.date}}</p>
-              <p>{{post.time}}</p>
+              <p>{{post.created_at | date}}</p>
             </div>
           </div>
         </div>
@@ -53,11 +52,11 @@
       <div class="modal-body">
         <p>content :</p>
         <p>
-          <textarea rows="4" class="form-control"></textarea>
+          <textarea id="posts-create-new-post" rows="4" class="form-control"></textarea>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Post</button>
+        <button type="button" class="btn btn-success" ng-click="createPost()">Post</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
