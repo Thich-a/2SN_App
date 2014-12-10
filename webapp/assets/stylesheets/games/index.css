@@ -51,6 +51,11 @@
 
 /* ----- Game_invitation : Modal -------- */
 
+/*.charModalEdit{
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}*/
+
 .modal-game-palyer {
   background-color: #00D2A5;
   color: white;
@@ -65,7 +70,7 @@
   color: white;
   font-weight: 200;
   letter-spacing: 1px;
-   border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
@@ -83,11 +88,11 @@ font-size: 18px;
   min-height: 230px;
 }
 
-.thumbnail{
+.thumbnail-game{
   border: 2px solid #00A6B6;
 }
 
-.thumbnail:hover{
+.thumbnail-game:hover{
   border: 2px solid #F39C12;
 }
 
@@ -102,7 +107,7 @@ font-size: 18px;
   color: #ffbd55;
 }
 
-.widgetGameCreate .thumbnail {
+.widgetGameCreate .thumbnail-game {
   font-size: 25px;
 }
 
@@ -161,16 +166,38 @@ font-size: 18px;
   text-decoration: none;
 }
 
-/*li.list-group-item.game-creat-join:hover {
-background-color: #ecf0f1;
-}*/
 
-/*.collapse-game{
+/* ------------------------------- Creat-Game ------------------------------- */
+
+#creatGameBoard {
   background-color: white;
   border: 2px solid #00A6B6;
   border-radius: 4px;
-  margin: 5px;
-  padding: 5px;
-}*/
+  padding: 20px;
+}
 
+.badge-denied{
+  margin-top: -123px;
+  margin-left: 26px;
+  position: absolute;
+}
 
+.shearchDiv{
+  max-height: 380px;
+  overflow-y: scroll;
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid #00A6B6;
+  box-shadow: 8px 8px 0px #ecf0f1;
+}
+
+.imgWaitAdd{
+  opacity:0.5;
+}
+
+.badge-quit{
+  background-color: white;
+  margin-top: 5px;
+  margin-left: 189px;
+  position: absolute;
+}

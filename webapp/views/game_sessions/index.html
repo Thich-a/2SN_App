@@ -8,88 +8,203 @@
         Invitation
       </div>
       <div ng-repeat="invite in invitations"> <!--               Ng-Repeat           -->
-      <div class="panel-body panel-invite">
-        <div class="row">
-          <div class="col-xs-3 ">
-            <a href=""><img src="{{ invite.creator.avatar }}" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
-          </div>
-          <div class="col-xs-9">
+        <div class="panel-body panel-invite">
+          <div class="row">
+            <div class="col-xs-3 ">
+              <a href=""><img src="{{ invite.creator.avatar }}" class="img-rounded" style='max-height:60px; border: 1px solid black;'></a>
+            </div>
+            <div class="col-xs-9">
 
-            <p class="text-center"><span><b><a href="" class="name-invite">{{ invite.creator.username }}</a></b></span><br>
-            <span class="game-invit-i">Send you an invitation for :</span></p>
-          </div><br><!-- end col-9 -->
+              <p class="text-center"><span><b><a href="" class="name-invite">{{ invite.creator.username }}</a></b></span><br>
+              <span class="game-invit-i">Send you an invitation for :</span></p>
+            </div><br><!-- end col-9 -->
 
-          <div>
-            <p class="text-center">
-            <a href="" data-toggle="modal" data-target="#myinvite{{ invite.id }}" class="name-game"><b>{{ invite.game_name }}</b></a></p>
-            <!-- Modal -->
-            <div class="modal fade" id="myinvite{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header modal-game-invt">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">{{ invite.game_name }}</h4>
-                  </div>
-                  <div class="modal-body">
-                    {{ invite.story }}
-                  </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
-                    <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
-                  </div> -->
-                </div>
-              </div>
-            </div><!-- END Modal -->
-          </div>
-        </div><!-- end row -->
-        <div class="pull-right btn-choose">
-
-          <button type="button" class="btn btn-invit-a btn-sm" data-toggle="modal" data-target="#myJoinChar{{ invite.id }}">Join</button>
-          <!-- Modal -->
-            <div class="modal fade" id="myJoinChar{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header modal-game-palyer">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title text-center" id="myModalLabel">Select a character to Join<br>{{ invite.game_name }}</h3>
-                  </div>
-
-                  <div class="modal-body" class="radio">
-                    <div ng-repeat="char in liste_Char_Join">
-                      <div class="row">
-                        <div class="col-xs-1" style="margin-top: 10px;">
-                          <br><input class="pull-right" type="radio" name="optionsRadios" id="optionsRadios{{ char.id }}"  value="{{ char.id }}" checked>
-                        </div>
-                        <div class="col-xs-3">
-                          <a href=""><img src="{{ char.avatar }}" class="img-rounded" style='max-height:100px; border: 1px solid black;'></a>
-                        </div>
-                        <div class="col-xs-8">
-                          <h2 class="text-center">- {{ char.char_name }} -</h2>
-                          <p class="text-center"><i>{{ char.details }}</i></p>
-                          <p ng-hide="storyGame">"{{ char.story | limitTo: 120 }}..."<a href=""> <i class="glyphicon glyphicon-chevron-down" ng-click="storyGame = !storyGame"></i></a></p>
-                          <p ng-show="storyGame">"{{ char.story }}"<a href=""> <i class="glyphicon glyphicon-chevron-up" ng-click="storyGame = !storyGame"></i></a></p>
-                        </div>
-                      </div>
-                      <hr>
+            <div>
+              <p class="text-center">
+              <a href="" data-toggle="modal" data-target="#myinvite{{ invite.id }}" class="name-game"><b>{{ invite.game_name }}</b></a></p>
+              <!-- Modal -->
+              <div class="modal fade" id="myinvite{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header modal-game-invt">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title text-center" id="myModalLabel">{{ invite.game_name }}</h4>
+                    </div>
+                    <div class="modal-body">
+                      {{ invite.story }}
                     </div>
                   </div>
+                </div>
+              </div><!-- END Modal -->
+            </div>
+          </div><!-- end row -->
+          <div class="pull-right btn-choose">
 
-                  <div>
-                    <a href=""><h2 class="text-center">+ Create Character</h2></a><br><br>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
-                    <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
+            <button type="button" class="btn btn-invit-a btn-sm" data-toggle="modal" data-target="#myJoinChar{{ invite.id }}">Join</button>
+            <!-- Modal -->
+              <div class="modal fade" id="myJoinChar{{ invite.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header modal-game-palyer">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h3 class="modal-title text-center" id="myModalLabel">Select a character to Join<br>{{ invite.game_name }}</h3>
+                    </div>
+
+                    <div class="modal-body" class="radio collapse" id="col_hideChar">
+                      <div ng-repeat="(key, char) in liste_Char_Join">
+                        <div class="row">
+                          <div class="col-xs-1" style="margin-top: 10px;">
+                            <br><input class="pull-right" type="radio" name="optionsRadios" id="optionsRadios{{ char.id }}"  value="{{ char.id }}" checked>
+                          </div>
+                          <div class="col-xs-3">
+                            <div class="row">
+                            <a href="" class="col-md-offset-2"><img src="{{ char.avatar }}" class="img-rounded" style='max-height:100px; border: 1px solid black;'></a>
+                            </div>
+
+
+
+                            <div class="col-md-offset-2" style="padding-left:9px; padding-top:10px;">
+                              <a href="" ng-click="collapsfunc(2, this.key);"><em>- Edit -</em></a>
+                            </div>
+
+
+                          </div>
+                          <div class="col-xs-8">
+                            <h2 class="text-center">- {{ char.char_name }} -</h2>
+                            <p class="text-center"><i>{{ char.details }}</i></p>
+                            <p ng-hide="storyGame">"{{ char.story | limitTo: 120 }}..."<a href=""> <i class="glyphicon glyphicon-chevron-down" ng-click="storyGame = !storyGame"></i></a></p>
+                            <p ng-show="storyGame">"{{ char.story }}"<a href=""> <i class="glyphicon glyphicon-chevron-up" ng-click="storyGame = !storyGame"></i></a></p>
+                          </div>
+                        </div>
+                        <hr>
+
+                      </div>
+                      <div>
+                        <a href="" ng-click="collapsfunc(1, 0);"><h2 class="text-center CreatCharAction">+ Create Character</h2></a>
+                      </div>
+                    </div>
+
+
+                    <div class="creatCharhide hide"><!--               Collapse CreatChar           -->
+                      <div>
+                        <h2 class="text-center CreatCharAction">Create New Character</h2>
+                        <br><br>
+                      </div>
+                      <form class="form-horizontal">
+                        <fieldset class="row">
+                          <div class="col-md-offset-3 col-md-3 userPicture">
+                            <img id="account-picture" src="webapp/assets/img/anon_user.png" class="img-rounded">
+                            <br>
+                            <div class="text-center">
+                                <button id="account-settings-photo-change" type="button" class="settings-btn btn btn-info">Upload avatar</button>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="account-settings">
+                              <p>
+                                <div class="input-group">
+                                  <span class="input-group-addon">Name </span>
+                                  <input id="creatCharName" type="text" class="form-control" placeholder="Character name">
+                                </div>
+                              </p>
+                              <p>
+                                <div class="input-group">
+                                  <span class="input-group-addon">Details</span>
+                                  <input id="creatCharDetail" type="text" class="form-control" placeholder="Class or level">
+                                </div>
+                              </p>
+                              <p>
+                                <div class="control-group">
+                                  <label class="control-label" for="textarea">Story :</label>
+                                  <div class="controls">
+                                    <textarea id="textarea" name="textarea" placeholder="Character Story ..." class="form-control"></textarea>
+                                  </div>
+                                </div>
+                              </p>
+                              <div class="row settingsSave">
+                                <div class="col-xs-offset-4 col-xs-4">
+                                  <button id="account-settings-save" type="button" class="btn btn btn-invit-a">Create</button>
+                                </div>
+                                <div class="col-xs-4">
+                                  <button id="account-settings-save" type="button" class="btn btn-invit-d" ng-click="collapsfunc(0, 0);">Cancel</button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </fieldset>
+                      </form>
+                      <br>
+                    </div>
+
+                    <div ng-repeat="(key, char) in liste_Char_Join">
+                      <div class="editCharhide{{key}} hide"> <!-- Collapse Edit Char -->
+                        <div>
+                          <h2 class="text-center CreatCharAction">Create New Character</h2>
+                          <br><br>
+                        </div>
+                          <form class="form-horizontal">
+                            <fieldset class="row">
+                              <div class="col-md-offset-3 col-md-3 userPicture">
+                                <img src="{{ char.avatar }}" class="img-rounded">
+                                <br>
+                                <div class="text-center">
+                                    <button id="account-settings-photo-change" type="button" class="settings-btn btn btn-info">Upload avatar</button>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="account-settings">
+                                  <p>
+                                    <div class="input-group">
+                                      <span class="input-group-addon">Name </span>
+                                      <input id="creatCharName" type="text" class="form-control" value="{{ char.char_name }}">
+                                    </div>
+                                  </p>
+                                  <p>
+                                    <div class="input-group">
+                                      <span class="input-group-addon">Details</span>
+                                      <input id="creatCharDetail" type="text" class="form-control" value="{{ char.details }}">
+                                    </div>
+                                  </p>
+                                  <p>
+                                    <div class="control-group">
+                                      <label class="control-label" for="textarea">Story :</label>
+                                      <div class="controls">
+                                        <textarea id="textarea" name="textarea" class="form-control">{{ char.story }}</textarea>
+                                      </div>
+                                    </div>
+                                  </p>
+                                  <div class="row settingsSave">
+                                    <div class="col-xs-offset-4 col-xs-4">
+                                      <button id="account-settings-save" type="button" class="btn btn btn-invit-a">Update</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                      <button id="account-settings-save" type="button" class="btn btn-invit-d" ng-click="collapsfunc(0, this.key);">Cancel</button>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </fieldset>
+                          </form>
+                          <br>
+                        </div> <!-- End Edit Char -->
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-invit-a" data-dismiss="modal">Join</button>
+                      <button type="button" class="btn btn-invit-d" data-dismiss="modal">Denied</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div><!-- END Modal -->
+              </div><!-- END Modal -->
 
-          <button type="button" class="btn btn-invit-d btn-sm">Denied</button>
+            <button type="button" class="btn btn-invit-d btn-sm">Denied</button>
 
-        </div>
-      </div> <!-- end panel body -->
-      </div>
+          </div>
+        </div> <!-- end panel body -->
+      </div><!--                                    END  Ng-Repeat                              -->
       <div class="panel-body">
         <h6 class="lead" >Search Friends :</h6>
         <input type='text' class='form-control'>
@@ -107,14 +222,14 @@
       </div>
     </div>
 
-    <div>                                <!--- GAME CREATE -->
+    <div class="SelectGameBoard">                                <!--- GAME CREATE -->
       <div>
         <h3 class="page-header">- Game Create -</h3>
       </div>
 
       <div class="row">
         <div class="col-sm-8 col-md-6 selectGameCreate" ng-repeat="creatG in Game_Creat">
-          <div class="thumbnail">
+          <div class="thumbnail thumbnail-game">
             <div class="caption">
                 <a href="#games/{{ creatG.id }}">
                   <div class="row">
@@ -161,8 +276,131 @@
 
               <div class="text-center">
                 <button type="button" class="btn btn-join-conf btn-sm">
-                  <a href=""><span class="glyphicon glyphicon-cog"></span> Config</a>
+                  <a href="" data-toggle="modal" data-target="#Modal_EditGame{{ creatG.id }}" ng-click="SelectEditGame(this.creatG.id);"><span class="glyphicon glyphicon-cog"></span> Edit </a>
                 </button>
+
+                <!-- Modal-EDIT GAME SESSION -->
+                <div class="modal fade" id="Modal_EditGame{{ creatG.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header modal-game-palyer">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title text-center" id="myModalLabel2">EDIT : {{ creatG.name }} </h4>
+                      </div>
+                      <div class="modal-body">
+
+                        <div>                                  <!--- EDIT game session -->
+                          <form class="form-horizontal">
+                            <fieldset class="row">
+                              <div class="col-md-offset-2 col-md-8">
+                                <div class="game-settings">
+                                  <p>
+                                    <div class="input-group">
+                                      <span class="input-group-addon">Game Name </span>
+                                      <input id="" type="text" class="form-control" value="{{ creatG.name }}">
+                                    </div>
+                                  </p>
+                                  <p>
+                                    <div class="control-group">
+                                      <label class="control-label" for="textarea">Game Story :</label>
+                                      <div class="controls">
+                                        <textarea id="textarea" name="textarea" class="form-control">{{ creatG.story }}</textarea>
+                                      </div>
+                                    </div>
+                                  </p>
+                                  <p>
+                                    <div>
+                                      <div class="text-center">
+                                        <h3>The Game Master :</h3><br>
+                                        <div>
+                                          <img src="{{ currentUser.avatar }}" class="img-rounded" style='max-height:80px; border: 1px solid black;'>
+                                          <p>{{currentUser.username}}</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </p>
+                                  <hr>
+
+                                  <div>
+                                    <h3 class="text-center">Player Join:</h3>
+                                    <br>
+                                    <div class="col-md-4" ng-repeat="player in creatG.user">
+
+                                          <div class="text-center">
+                                            <img src="{{player.avatar}}" class="img-rounded" style='max-height:80px; border: 1px solid black; position:relative;'>
+                                            <p>{{player.username}}</p>
+                                            <div  class="badge btn-join-d badge-denied">
+                                              <a href="" ng-click="removeToGameCreate(this.user.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                                            </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="col-md-4" ng-repeat="user in liste_UserDemande2">
+
+                                          <div class="text-center">
+                                            <img src="{{user.avatar}}" class="img-rounded imgWaitAdd" style='max-height:80px; border: 1px solid black; position:relative;'>
+                                            <p>{{user.username}}</p>
+                                            <div  class="badge btn-join-d badge-denied">
+                                              <a href="" ng-click="removeToGameEdite(this.user.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                                            </div>
+                                          </div>
+
+                                      </div>
+                                  </div><br>
+
+                                  <div ng-hide="addPlayerEdit" class="row">
+                                    <span class="col-xs-offset-2 col-md-8"><a href="" ng-click="addPlayerEdit = !addPlayerEdit"><h3>+Add Player</h3></a></span>
+                                  </div>
+
+                                  <div ng-show="addPlayerEdit">
+                                    <div class="row">
+                                      <div class="col-xs-offset-2 col-md-8">
+                                        <div class="badge badge-quit">
+                                          <a href="" ng-click="removeToGameCreate(this.user.id); addPlayerEdit = !addPlayerEdit"><span class="glyphicon glyphicon-remove"></span></a>
+                                        </div>
+                                        <div class="input-group" style="position:relative;">
+                                          <span class="input-group-addon">Invite Players</span>
+                                          <input type="text" class="form-control" ng-model="searchedText">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row shearchDiv">
+                                      <div id="users-list-Join" ng-repeat="user in liste_UserInviteEdit | filter:searchedText | orderBy:'username'" class="col-md-3">
+                                        <div class="text-center">
+                                            <img src="{{user.avatar}}" class="img-rounded" style='width:70px; border: 1px solid black;'>
+                                            <p>{{user.username}}</p>
+                                            <button id="btn_modif_css{{user.id}}" type="button" class="btn btn-join-conf btn-sm" style="margin-bottom:20px; margin-top:-10px;">
+                                              <a href="" ng-click="liste_UserAskJoinEdite(this.user.id); addToGameEdite();"> Invite </a>
+                                            </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <br>
+
+                                  <div class="row settingsSave modal-footer">
+                                    <div class="col-xs-offset-4 col-xs-4">
+                                      <button  type="button" class="btn btn btn-invit-a">Edit</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                      <button ng-click="CleanTabGameSession();" type="button" class="btn btn-invit-d" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </fieldset>
+                          </form>
+                        </div><!--- END EDIT game session -->
+
+                      </div> <!-- Modal-body end -->
+
+                    </div>
+                  </div>
+                </div><!-- END Modal-EDIT GAME SESSION -->
+
+
                 <button type="button" class="btn btn-join-d btn-sm">
                   <a href=""><span class="glyphicon glyphicon-remove"></span> Delete</a>
                 </button>
@@ -174,10 +412,10 @@
         </div>
 
         <div class="col-sm-8 col-md-6 widget-CreatGame selectGameCreate widgetGameCreate">
-            <div class="thumbnail">
+            <div class="thumbnail thumbnail-game">
               <div class="caption text-center">
                 <br><br>
-                <a href="">
+                <a href="" ng-click="creatGameSessionDiv(1);">
                   <i class="glyphicon glyphicon-plus"></i><strong> Create Game Session</strong>
                 </a>
               </div>
@@ -186,7 +424,7 @@
       </div>
     </div>  <!-- CREATE GAME end -->
 
-    <div>
+    <div class="SelectGameBoard">
       <div class="row">
         <div class="col-lg-6">
             <h3 class="page-header">- Game Join -</h3>
@@ -195,7 +433,7 @@
 
       <div class="row">
         <div class="col-sm-8 col-md-6 selectGameJoin" ng-repeat="joinG in Game_Join">
-          <div class="thumbnail">
+          <div class="thumbnail thumbnail-game">
             <div class="caption">
               <a href="#games/{{ joinG.id }}">
                 <div class="row">
@@ -246,10 +484,89 @@
           </div>
         </div>
       </div>
-
-
-
     </div>
+
+    <div id="creatGameBoard" class="hide">                                  <!--- CREATE game session -->
+      <h2 class="text-center">Create a New Game Session</h2><br>
+      <form class="form-horizontal">
+        <fieldset class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div class="game-settings">
+              <p>
+                <div class="input-group">
+                  <span class="input-group-addon">Game Name </span>
+                  <input id="" type="text" class="form-control">
+                </div>
+              </p>
+              <p>
+                <div class="control-group">
+                  <label class="control-label" for="textarea">Game Story :</label>
+                  <div class="controls">
+                    <textarea id="textarea" name="textarea" class="form-control"></textarea>
+                  </div>
+                </div>
+              </p>
+              <p>
+                <div>
+                  <div class="text-center">
+                    <h3>The Game Master :</h3><br>
+                    <div>
+                      <img src="{{ currentUser.avatar }}" class="img-rounded" style='max-height:80px; border: 1px solid black;'>
+                      <p>{{currentUser.username}}</p>
+                    </div>
+                  </div>
+                </div>
+              </p>
+              <hr>
+              <div>
+                <h3 class="text-center">Player Invite:</h3>
+                <br>
+                  <div class="col-md-4" ng-repeat="user in liste_UserDemande">
+                      <div >
+                        <div class="text-center">
+                          <img src="{{user.avatar}}" class="img-rounded imgWaitAdd" style='max-height:80px; border: 1px solid black; position:relative;'>
+                          <p>{{user.username}}</p>
+                          <div  class="badge btn-join-d badge-denied">
+                            <a href="" ng-click="removeToGameCreate(this.user.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-offset-2 col-md-8">
+                  <div class="input-group">
+                    <span class="input-group-addon">Invite Players</span>
+                    <input type="text" class="form-control" ng-model="searchedText">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row shearchDiv">
+                <div id="users-list-Join" ng-repeat="user in liste_UserInvite | filter:searchedText | orderBy:'username'" class="col-md-3">
+                  <div class="text-center">
+                      <img src="{{user.avatar}}" class="img-rounded" style='width:70px; border: 1px solid black; position:relative;'>
+                      <p>{{user.username}}</p>
+                      <button id="btn_modif_css{{user.id}}" type="button" class="btn btn-join-conf btn-sm" style="margin-bottom:20px; margin-top:-10px;">
+                        <a href="" ng-click="liste_UserAskJoin(this.user.id); addToGameCreate();"> Invite </a>
+                      </button>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row settingsSave">
+                <div class="col-xs-offset-4 col-xs-4">
+                  <button  type="button" class="btn btn btn-invit-a">Create</button>
+                </div>
+                <div class="col-xs-4">
+                  <button  type="button" class="btn btn-invit-d" ng-click="creatGameSessionDiv(2); CleanTabGameSession()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div><!--- END CREATE game session -->
 
   </div> <!--- end Row 9 game session -->
 
@@ -286,4 +603,14 @@
 //         placement : 'top'
 //     });
 // });
+
+$(document).ready(function(){
+    $('#myCollapsible').collapse({
+    toggle: false
+    });
+});
+
+$('#myCollapsible').collapse({
+  toggle: false
+})
 </script>

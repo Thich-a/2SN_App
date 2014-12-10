@@ -5,6 +5,22 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
   $scope.Liste_player_Game = [];
   $scope.currentGameSel = [];
   $scope.liste_Char_Join = [];
+  $scope.liste_UserInvite = [];
+
+  $scope.liste_UserDemande = [];
+  $scope.liste_UserDemande2 = [];
+  $scope.incDemande = 0;
+  $scope.incDemande2 = 0;
+
+  $scope.currentGame;
+  $scope.liste_UserInviteEdit = [];
+
+  $scope.currentUser = {
+                'id' :       1,
+                'username' : 'Yinfei',
+                'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
+                }
+
 
   $scope.sessions = [{
                         'id' : 1,
@@ -19,26 +35,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                                   'username' : 'Yinfei',
                                   'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png'
                                   },
-                        'sheet':{
-                                    'id' : 1,
-                                    'char_name' : 'Jill Valentine',
-                                    'details'   : 'Level 7 Scout',
-                                    'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
-                                    'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg'
-                                },
-                        'user':[{
-                                'id' :       1,
-                                'username' : 'Yinfei',
-                                'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
-                                'charaters':{
-                                            'id' : 1,
-                                            'char_name' : 'Jill Valentine',
-                                            'details'   : 'Level 7 Scout',
-                                            'story'     : 'Jill Valentine, de l\'équipe Alpha, faisait partie de ceux partis à la recherche de l\'équipe Bravo, qui ne donnait pas signe de vie. Descendue à terre pour examiner l\'hélicoptère abandonné de l\'équipe Bravo, elle assiste à la mort de son coéquipier Joseph Frost et se réfugie avec ses compagnons dans le manoir Spencer.',
-                                            'avatar'    : 'webapp/assets/img/fixtures-pictures/jill.jpg',
-                                            'master'    : true
-                                            },
-                                },
+                        'user':[
                                 {
                                 'id' :       2,
                                 'username' : 'Toinou',
@@ -169,21 +166,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location){
                                                   'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
                                                   'master'    : false
                                                   },
-                                      },
-                                      {
-                                      'id' :       221,
-                                      'username' : 'Boby',
-                                      'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
-                                      'charaters':{
-                                                  'id' : 127,
-                                                  'char_name' : 'SANGOKU',
-                                                  'details'   : 'Level 5 Scout',
-                                                  'story'     : 'Lee Kazama est le fils de Jun Kazama et Kazuya Mishima. Dans Tekken 5, il est révélé que lee a une cousine, Asuka Kazama. Toutefois, ils ne ................................son grand-père en qui il avait placé sa confiance et ses espoirs; héritage du devil gene... enfin, le retour de son arrière-grand-père, Jinpachi Mishima, qui l\'a empêché de perdre son combat avec le Diable intérieur. Tous les grands événements traumatiques qui se produisent dans la vie du héros sont totalement hors de son contrôle.',
-                                                  'avatar'    : 'webapp/assets/img/fixtures-pictures/jin.jpg',
-                                                  'master'    : false
-                                                  },
-                                      },
-                                      {
+                                      },{
                                       'id' :       3,
                                       'username' : 'Beck Beck',
                                       'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
@@ -271,6 +254,33 @@ $scope.myCharacteres = [{
                       }]
 
 
+$scope.users = [{
+                  'id' : 1,
+                  'username' : 'Yinfei',
+                  'avatar' :   'webapp/assets/img/fixtures-pictures/yinfei.png',
+                  'usermail':'swagster@skyblog.web',
+                  'plan': 2
+                },{
+                  'id' : 2,
+                  'username' : 'Toinou',
+                  'avatar' :   'webapp/assets/img/fixtures-pictures/chopper.jpg',
+                  'usermail':'swagster@skyblog.web',
+                  'plan': 2
+                },{
+                  'id' : 3,
+                  'username' : 'Beck Beck',
+                  'avatar' :   'webapp/assets/img/fixtures-pictures/beck.jpg',
+                  'usermail':'swagster@skyblog.web',
+                  'plan': 2
+                },{
+                  'id' : 4,
+                  'username' : 'bolo',
+                  'avatar' :   'webapp/assets/img/fixtures-pictures/gollum.jpg',
+                  'usermail':'swagster@skyblog.web',
+                  'plan': 2
+                }];
+
+
 $scope.selectCreatGame = function(){
   var i = 0;
   var j = 0;
@@ -290,22 +300,6 @@ $scope.selectCreatGame = function(){
 }
 $scope.selectCreatGame();
 
-$scope.countPlayerGame = function(GameId){
-  var i = 0;
-  $scope.nb_player = 0;
-  for (session in $scope.sessions){
-    if ($scope.sessions[session].id == GameId)
-    {
-      $scope.currentGameSel = $scope.sessions[session];
-    }
-  }
-  for (game in $scope.currentGameSel.user){
-    i++;
-  }
-  if (i > 0)
-    $scope.nb_player = i;
-}
-
 $scope.selectCharJoin = function(){
   var i = 0;
   for(charJoin in $scope.myCharacteres)
@@ -318,5 +312,171 @@ $scope.selectCharJoin = function(){
   }
 }
 $scope.selectCharJoin();
+
+$scope.collapsfunc = function(nb, key){
+  $(".modal-body").toggle(500);
+  $scope.coll_hide = nb;
+  key = key.toString();
+
+  var creatClass = document.getElementsByClassName('creatCharhide');
+  var editClass = document.getElementsByClassName('editCharhide'+key);
+
+  if($scope.coll_hide == 1)
+  {
+    $(".CreatCharAction").html("Create New Character");
+    for (var i = 0 ; i<creatClass.length ; i++)
+        creatClass[i].className= "creatCharhide show";
+  }
+  if ($scope.coll_hide == 0)
+  {
+    $(".CreatCharAction").html("+ Create Character");
+    for (var i = 0 ; i<creatClass.length ; i++)
+        creatClass[i].className= "creatCharhide hide";
+    for (var i = 0 ; i<editClass.length ; i++)
+        editClass[i].className= "editCharhide"+key+" hide";
+  }
+  if($scope.coll_hide == 2)
+  {
+    $(".CreatCharAction").html("Edit your Character");
+    for (var i = 0 ; i<editClass.length ; i++)
+        editClass[i].className= "editCharhide"+key+" show";
+  }
+}
+
+// ------------------------------------------------------------- CREATE GAME SESSION
+
+$scope.creatGameSessionDiv = function(nb){
+  $(".SelectGameBoard").toggle(500);
+  var gameCreatDiv = document.getElementById('creatGameBoard');
+  if (nb == 1)
+    gameCreatDiv.className = "show";
+  if (nb == 2)
+    gameCreatDiv.className = "hide";
+}
+
+$scope.liste_UserClean = function(){
+  var i = 0;
+  for(user in $scope.users)
+  {
+    if ($scope.users[user].id != $scope.currentUser.id)
+    {
+      $scope.liste_UserInvite[i] = $scope.users[user];
+      i++;
+    }
+  }
+}
+$scope.liste_UserClean();
+
+$scope.liste_UserAskJoin = function(id){
+  for(user in $scope.liste_UserInvite)
+  {
+    if($scope.liste_UserInvite[user].id == id)
+    {
+      $scope.liste_UserDemande[$scope.incDemande] = $scope.liste_UserInvite[user];
+      $scope.incDemande++;
+    }
+  }
+}
+
+
+$scope.addToGameCreate = function(){
+  var i = 0;
+  for(user in $scope.liste_UserInvite)
+  {
+    for(player in $scope.liste_UserDemande)
+    {
+      if($scope.liste_UserInvite[user].id == $scope.liste_UserDemande[player].id)
+      {
+        $scope.liste_UserInvite.splice(i, 1);
+      }
+    }
+    i++;
+  }
+}
+
+$scope.removeToGameCreate = function(id){
+  var i = 0;
+  for(player in $scope.liste_UserDemande)
+  {
+    if ($scope.liste_UserDemande[player].id == id)
+    {
+      $scope.liste_UserInvite.splice(0, 0, $scope.liste_UserDemande[player]);
+      $scope.liste_UserDemande.splice(i, 1);
+      $scope.incDemande--;
+    }
+    i++;
+  }
+}
+
+// ------------------------------------------------------------- EDIT GAME SESSION
+
+$scope.SelectEditGame = function(id){
+  for(session in $scope.sessions){
+    if ($scope.sessions[session].id == id)
+      $scope.currentGame = $scope.sessions[session];
+  }
+  var i = 0;
+  for (player in $scope.liste_UserInvite)
+  {
+    nb = 0;
+    for (invite in $scope.currentGame.user)
+    {
+      if($scope.liste_UserInvite[player].id == $scope.currentGame.user[invite].id)
+        nb++;
+    }
+    if(nb == 0)
+    {
+      $scope.liste_UserInviteEdit[i] = $scope.liste_UserInvite[player];
+      i++;
+    }
+  }
+}
+
+$scope.liste_UserAskJoinEdite = function(id){
+  for(user in $scope.liste_UserInviteEdit)
+  {
+    if($scope.liste_UserInviteEdit[user].id == id)
+    {
+      $scope.liste_UserDemande2[$scope.incDemande2] = $scope.liste_UserInviteEdit[user];
+      $scope.incDemande2++;
+    }
+  }
+}
+
+
+$scope.addToGameEdite = function(){
+  var i = 0;
+  for(user in $scope.liste_UserInviteEdit)
+  {
+    for(player in $scope.liste_UserDemande2)
+    {
+      if($scope.liste_UserInviteEdit[user].id == $scope.liste_UserDemande2[player].id)
+      {
+        $scope.liste_UserInviteEdit.splice(i, 1);
+      }
+    }
+    i++;
+  }
+}
+
+$scope.removeToGameEdite = function(id){
+  var i = 0;
+  for(player in $scope.liste_UserDemande2)
+  {
+    if ($scope.liste_UserDemande2[player].id == id)
+    {
+      $scope.liste_UserInviteEdit.splice(0, 0, $scope.liste_UserDemande2[player]);
+      $scope.liste_UserDemande2.splice(i, 1);
+      $scope.incDemande2--;
+    }
+    i++;
+  }
+}
+
+$scope.CleanTabGameSession = function(){
+  $scope.liste_UserDemande2=[];
+  $scope.incDemande2 = 0;
+}
+
 
 });
