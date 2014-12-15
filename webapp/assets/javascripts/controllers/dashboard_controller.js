@@ -37,7 +37,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     $scope.pendingRecieved = [];
     for (var friend in $scope.pending)
     {
-      if ($scope.pending[friend].sender == $scope.user.name)
+      if ($scope.pending[friend].sender == $scope.user.username)
       {
         $scope.pendingSent[i] = $scope.pending[friend];
         i++;
@@ -66,8 +66,26 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     $location.path('/');
   })
 
+  $scope.clickNextInput = function(event) {
+    var Uploader = $('#' + event.target.getAttribute('id')).next();
+    Uploader.click();
+  }
+
+  $scope.createCharacter = function() {
+    var xmlhttp = new XMLHttpRequest();
+    var formdata = new FormData(document.getElementById('dashboardNewCharacter'));
+    xmlhttp.open("POST", basePath + 'api/character', false);
+    xmlhttp.setRequestHeader("Authorization", AuthService.getToken());
+    xmlhttp.onload = function() { console.log('Upload successfull !!!');}
+    xmlhttp.send(formdata);
+    if (xmlhttp.status == 200)
+    {
+      console.log(xmlhttp);
+    }
+  }
+
   $scope.acceptFriend = function(friendId) {
-    $http.post( basePath + 'api/validfriends/'+friendId, {})
+    $http.post( basePath + 'api/users/' + $scope.user.id + '/validfriends/'+friendId, {})
     .success(function(data){
       console.log(data);
     })
@@ -77,7 +95,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
   }
 
   $scope.refuseFriend = function(friendId) {
-    $http.delete( basePath + 'api/friends/'+friendId, {})
+    $http.delete( basePath + 'api/users/' + $scope.user.id + '/friends/'+friendId, {})
     .success(function(data){
       console.log(data);
     })

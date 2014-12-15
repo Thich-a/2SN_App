@@ -1,4 +1,4 @@
-App.controller('postsCtrl', function ($scope, $http, $window, $location, $routeParams){
+App.controller('postsCtrl', function ($scope, $http, $window, $location, $route, $routeParams){
 
   $scope.userid = $routeParams.user;
 
@@ -27,6 +27,7 @@ App.controller('postsCtrl', function ($scope, $http, $window, $location, $routeP
     $http.post( basePath + 'api/blogs', {"content":post})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");

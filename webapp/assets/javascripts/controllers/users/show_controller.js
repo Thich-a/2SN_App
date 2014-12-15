@@ -1,34 +1,13 @@
-App.controller('userCtrl', function ($scope, $http, $window, $location, $routeParams){
+App.controller('userCtrl', function ($scope, $http, $window, $location, $route, $routeParams){
 
   $scope.profileId = $routeParams.id;
   $http.get( basePath + 'api/users/'+$scope.profileId, {})
   .success(function(data){
     $scope.user = data.user;
     $scope.posts = $scope.user.posts;
-    $scope.friends = [];
+    $scope.friends = data.user.friends;
 
     // getting friends
-    var i = 0;
-    for (var friendGroup in data.user.friend_groups)
-    {
-      var friends = data.user.friend_groups[friendGroup].friends;
-      for (var friend in friends)
-        if (data.user.friend_groups[friendGroup].name != 'wait')
-        {
-          $scope.friends[i] = friends[friend];
-          i++;
-        }
-    }
-
-    // getting friendlists
-    $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
-    .success(function(data){
-      console.log('friendlists');
-      console.log(data);
-    })
-    .error(function(data){
-      alert("Credentials invalid");
-    })
 
 
 
@@ -43,7 +22,8 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
     $http.get( basePath + 'api/user/me', {})
     .success(function(answer){
       $scope.me = answer.user;
-      $scope.checkIfFriend($scope.me);
+      $scope.isFriend = 0;
+      $scope.checkIfFriend();
     })
     .error(function(answer){
       alert("Oops ! unable to fetch current logged user");
@@ -53,33 +33,34 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
     alert("Oops ! an error occured !");
   })
 
-  $scope.checkIfFriend = function(user) {
-    for (var friendGroup in user.friend_groups)
+  $scope.checkIfFriend = function() {
+    for (var friend in $scope.friends)
     {
-      var friends = user.friend_groups[friendGroup].friends;
-      for (var friend in friends)
-      {
-        if (friends[friend].id == $scope.user.id)
-          $scope.isFriend = 1;
-      }
+      if ($scope.friends[friend].user.id == $scope.me.id)
+        $scope.isFriend = 1;
     }
-    $scope.isFriend = 0;
   }
 
-  $scope.AddFriend = function(userId) {
-    $http.post( basePath + 'api/friends/'+ userId, {})
+  $scope.AddFriend = function() {
+    $http.post( basePath + 'api/users/' + $scope.me.id + '/friends/'+$scope.user.id, {})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
     })
   }
 
-  $scope.UnFriend = function(userId) {
-    $http.delete( basePath + 'api/friend/'+ friendId, {})
+  $scope.UnFriend = function() {
+    for (var friend in $scope.friends)
+      if ($scope.friends[friend].user.id == $scope.me.id)
+        var friendId = $scope.friends[friend].id;
+
+    $http.delete( basePath + 'api/users/' + $scope.user.id + '/friends/' + friendId, {})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -90,6 +71,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $routePa
     $http.delete( basePath + 'api/users/'+ userId, {})
     .success(function(data){
       console.log(data);
+      $route.location('#users');
     })
     .error(function(data){
       alert("Credentials invalid");

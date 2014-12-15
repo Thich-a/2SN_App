@@ -75,6 +75,7 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
     $http.post( basePath + 'api/profiles/' + $scope.currentImage.id, {})
     .success(function(data){
       $scope.user.image_profile = $scope.currentImage.image_name;
+      $scope.images.push(data.photo);
     })
     .error(function(data){
       alert("Credentials invalid");
