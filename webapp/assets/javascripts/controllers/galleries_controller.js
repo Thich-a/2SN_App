@@ -8,7 +8,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
 
     $http.get( basePath + 'api/albums/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.albums = data.albums;
       $scope.defalutModel = $scope.albums[0].id;
       $scope.defalutNameModel = '';
@@ -21,7 +20,6 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
   })
   .error(function(data){
     alert("Credentials invalid");
-    console.log(data);
   })
 
   $scope.galleriesArrows = function(direction) {
