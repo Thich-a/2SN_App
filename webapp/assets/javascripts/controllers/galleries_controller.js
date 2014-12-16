@@ -2,7 +2,7 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
 
   $scope.userid = $routeParams.user;
 
-  $http.get( basePath + 'api/users/'+$scope.userid, {})
+  $http.get( basePath + 'api/user/'+$scope.userid, {})
   .success(function(data){
     $scope.user = data.user;
 
@@ -14,16 +14,14 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
       $scope.defalutNameModel = '';
       $scope.galleriesSwitchAlbum($scope.albums[0].id);
     })
-    .error(function(data){
-      alert("Credentials invalid");
-    })
 
-    $http.get( basePath + 'api/user/me', {})
+    $http.get( basePath + 'api/me', {})
     .success(function(answer){ $scope.me = answer.user; })
     .error(function(answer){ console.log('Oh no ! something went wrong ...'); })
   })
   .error(function(data){
     alert("Credentials invalid");
+    console.log(data);
   })
 
   $scope.galleriesArrows = function(direction) {
@@ -63,10 +61,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     var albumName = $scope.newAlbumName;
     $http.post( basePath + 'api/albums', {"name":albumName})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
@@ -74,20 +70,16 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     var albumId = $('#AlbumSelect').val();
     $http.delete( basePath + 'api/albums/' + albumId, {})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
   $scope.deleteImage = function() {
     $http.delete( basePath + 'api/photos/'+ $scope.currentImage.id, {})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
@@ -107,7 +99,7 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     if (xmlhttp.status == 200)
     {
       $('.modal-backdrop.fade.in').hide();
-      $route.reload();
+      window.location.reload()
     }
   }
 

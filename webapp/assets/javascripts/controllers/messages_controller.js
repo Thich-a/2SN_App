@@ -1,34 +1,24 @@
 App.controller('messagesCtrl', function ($scope, $http, $window, $route, $location){
 
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(data){
-    console.log(data);
     $scope.user = data.user;
     $scope.NewChannelFriends = [];
 
     // getting friendlists
     $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.friendGroups = data.friendLists;
-    })
-    .error(function(data){
-      alert("Credentials invalid");
     })
 
     // getting friendlists
     $http.get( basePath + 'api/friends/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.friends = data.friends;
-    })
-    .error(function(data){
-      alert("Credentials invalid");
     })
 
     $http.get( basePath + 'api/channels/'+$scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.channels = data.channels;
     })
     .error(function(data){
@@ -49,21 +39,16 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
   }
 
   $scope.createNewFriendGroup = function() {
-    $http.post( basePath + 'api/users/' + $scope.user.id + '/friendlists', {"name":$scope.NewFriendGroupName})
+    $http.post( basePath + 'api/friendlists/' + $scope.user.id, {"name":$scope.NewFriendGroupName})
     .success(function(data){
-      console.log(data);
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
     })
   }
 
   $scope.deleteGroup = function(groupId) {
     $http.delete( basePath + 'api/users/' + $scope.user.id + '/friendlists/'+groupId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -77,7 +62,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
 
 
 
-  $scope.toggleInArray = function(userName, userId) {
+  $scope.toggleInArray = function(userName, userId, $event) {
     var flag = 0;
     for (var friend in $scope.NewChannelFriends)
       if ($scope.NewChannelFriends[friend].id == userId)
@@ -87,6 +72,8 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
       }
     if (flag == 0)
       $scope.NewChannelFriends.push({"username":userName, "id":userId});
+    if (typeof $event != 'undefined')
+      $($event.target).hide();
   }
 
   $scope.createNewChannel = function() {
@@ -94,19 +81,17 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
     {
       $http.post( basePath + 'api/channels/'+$scope.NewChannelFriends[0].id, {})
       .success(function(data){
-        console.log(data);
         var channelId = data.data.id;
         for (var i = 1; i < $scope.NewChannelFriends.length; i++)
         {
           $http.post( basePath + 'api/participants/' + channelId + '/friends/'+$scope.NewChannelFriends[i].id, {})
           .success(function(answer){
-            console.log(answer);
           })
           .error(function(answer){
             alert("Credentials invalid");
           })
         }
-        $route.reload();
+        window.location.reload()
       })
       .error(function(data){
         alert("Credentials invalid");
@@ -127,7 +112,6 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
 
     $http.get( basePath + 'api/messages/'+channelId, {})
     .success(function(data){
-      console.log(data);
       $scope.messages = data.messages;
     })
     .error(function(data){
@@ -138,8 +122,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
   $scope.sendMessage = function() {
     $http.post( basePath + 'api/messages/'+$scope.activeChannel.id, {"contents":$scope.channelNewMessage})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -149,8 +132,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
   $scope.deleteChannel = function(channelId) {
     $http.delete( basePath + 'api/channels/'+channelId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       console.log('error with delete channels');
@@ -163,24 +145,49 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
       if ($scope.channels[channel].id == channelId)
       {
         $scope.currentChannel = $scope.channels[channel];
-        for (var user in $scope.channels[channel].users)
-          $scope.EditChannelFriends.push($scope.channels[channel].users[user]);
+        for (var user in $scope.currentChannel.users)
+          $scope.EditChannelFriends.push($scope.currentChannel.users[user]);
       }
+  }
+
+  $scope.checkInList = function(userId) {
+    for (var user in $scope.currentChannel.users)
+      if ($scope.currentChannel.users[user].id == userId)
+        return 1;
+    return 0;
   }
 
   $scope.AddToCurrentChannel = function(friendId) {
     for (var friend in $scope.friends)
       if ($scope.friends[friend].id == friendId)
-        var addedFriend = $scope.friends[friend];
+        var addedFriend = $scope.friends[friend].user;
 
-    $scope.EditChannelFriends.push(addedFriend);
+    $http.post( basePath + 'api/participants/' + $scope.currentChannel.id + '/friends/' + addedFriend.id, {})
+    .success(function(data){
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+  }
+
+  $scope.deleteFromCurrentChannel = function(participantId) {
+    $http.delete( basePath + 'api/fromchannels/' + $scope.currentChannel.id + '/participants/' + participantId, {})
+    .success(function(data){
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
   }
 
   $scope.friendChangeGroup = function(friendgroupId) {
     $http.post( basePath + 'api/friends/' + $scope.transfertFriendId + '/moves/' + friendgroupId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
     .error(function(data){
       alert("Credentials invalid");

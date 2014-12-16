@@ -1,5 +1,5 @@
 App.controller('menuCtrl', function ($scope, $http, $window, $location){
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(data){
     $scope.userid = data.user.id;
   })

@@ -3,14 +3,13 @@ App.controller('usersCtrl', function ($scope, $http, $window, $route, $location)
   .success(function(data){
     $scope.users = data.users;
 
-    $http.get( basePath + 'api/user/me', {})
+    $http.get( basePath + 'api/me', {})
     .success(function(data){
       $scope.me = data.user;
 
       // getting friendlists
       $http.get( basePath + 'api/friends/' + $scope.me.id, {})
       .success(function(data){
-        console.log(data);
         $scope.friends = data.friends;
       })
     })
@@ -24,8 +23,7 @@ App.controller('usersCtrl', function ($scope, $http, $window, $route, $location)
   {
     $http.post( basePath + 'api/users/'+ $scope.me.id + '/friends/' + userid, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -44,8 +42,7 @@ App.controller('usersCtrl', function ($scope, $http, $window, $route, $location)
   $scope.DeleteUser = function(userId) {
     $http.delete( basePath + 'api/users/' + userId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");

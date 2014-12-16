@@ -2,13 +2,12 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
 
   $scope.userid = $routeParams.user;
 
-  $http.get( basePath + 'api/users/'+ $scope.userid, {})
+  $http.get( basePath + 'api/user/'+ $scope.userid, {})
   .success(function(data){
     $scope.user = data.user;
 
     $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.userPosts = data.posts;
       $scope.fetchPost();
     })
@@ -17,16 +16,13 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     alert("Credentials invalid");
   })
 
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(answer){
     $scope.me = answer.user.id;
     if ($scope.userid == $scope.me || $scope.me == 1)
       $scope.securityFlag = 1;
     else
       $scope.securityFlag = 0;
-  })
-  .error(function(answer){
-    console.log('fuck this shit');
   })
 
   $scope.fetchPost = function() {
@@ -45,19 +41,13 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     .success(function(data){
       $location.path('/users/' + $scope.user.id + '/posts');
     })
-    .error(function(data){
-      alert("Oops ! an error occured");
-    })
   }
 
   $scope.comment = function() {
     var comment = $('#posts-create-new-comment').val();
     $http.post( basePath + 'api/comments/'+ $scope.currentPost.id, {'content':comment})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
     })
   }
 
@@ -65,10 +55,7 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     var commentId = event.target.getAttribute('name');
     $http.delete( basePath + 'api/comments/'+ commentId, {})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
     })
   }
 });

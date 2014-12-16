@@ -9,13 +9,14 @@
         <hr>
         <div ng-repeat="sheet in sheets">
           <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
-              <img ng-src="{{ sheet.image_profile }}" class="img-rounded small-picture" >
+            <div class="col-xs-3">
+              <img ng-src="/web/uploads/photo/{{ sheet.image_name }}" class="img-rounded small-picture" >
             </div>
             <div class="col-xs-7">
-              <h3 style='margin-top:4px;'>{{ sheet.char_name }}</h3>
+              <h3 style='margin-top:4px;'>{{ sheet.full_name }}</h3>
               <p><b>{{ sheet.details }}</b></p>
             </div>
+            <div class="col-xs-1"><i class="glyphicon glyphicon-remove-sign" ng-click="deleteCharacterSheet(sheet.id)"></i></div>
           </div>
           <br>
           <div class="row">
@@ -198,19 +199,36 @@
       </div>
       <div class="modal-body">
         <form id="dashboardNewCharacter" enctype="multipart/form-data">
-        <div class="row">
-          <div class="col-xs-offset-7 col-xs-3">
-            <button id="dashboardCharacterImage" ng-click="clickNextInput($event)" class="btn btn-info">Chose picture</button>
-            <input name="imageFile" id="dashboardcharacterimagefileUploader" enctype="multipart/form-data" type="file" style="display:none;">
+          <div class="row">
+            <div class="col-xs-offset-2 col-xs-8">
+              <div class="row">
+                <div class="col-xs-6" style="text-align:right;">Character Name : </div>
+                <div class="col-xs-6"><input type="text" name="fullName"></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6" style="text-align:right;">Character Class : </div>
+                <div class="col-xs-6"><input type="text" name="details"></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6" style="text-align:right;">Background Story : </div>
+                <div class="col-xs-6"><textarea name="background"></textarea></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6" style="text-align:right;">image for character : </div>
+                <div class="col-xs-6">
+                  <button id="dashboardCharacterImage" ng-click="clickNextInput($event)" class="btn btn-info">Chose picture</button>
+                  <input name="imageFile" id="dashboardcharacterimagefileUploader" enctype="multipart/form-data" type="file" style="display:none;">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6" style="text-align:right;">character PDF : </div>
+                <div class="col-xs-6">
+                  <button id="dashboardCharacterFile" ng-click="clickNextInput($event)" class="btn btn-info">Chose file</button>
+                  <input name="sheetFile" id="dashboardcharacterfileUploader" enctype="multipart/form-data" type="file" style="display:none;">
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-offset-7 col-xs-3">
-            <button id="dashboardCharacterFile" ng-click="clickNextInput($event)" class="btn btn-info">Chose file</button>
-            <input name="contentFile" id="dashboardcharacterfileUploader" enctype="multipart/form-data" type="file" style="display:none;">
-          </div>
-        </div>
-
         </form>
       </div>
       <div class="modal-footer">

@@ -1,6 +1,6 @@
 App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $route, AuthService){
 
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(data){
     $scope.user = data.user;
     // $scope.sheets = $scope.user.sheets;
@@ -9,27 +9,24 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
     // getting user posts
     $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.posts  = data.posts;
-    })
-    .error(function(data){
-      alert("Credentials invalid");
     })
 
     // getting user sheets
     $http.get( basePath + 'api/sheets/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
-      $scope.sheets = data.sheets;
+      $scope.sheets = data.character_sheets;
     })
-    .error(function(data){
-      alert("Credentials invalid");
+
+    // getting game sessions
+    $http.get( basePath + 'api/games/' + $scope.user.id, {})
+    .success(function(data){
+      $scope.sheets = data.sheets;
     })
 
     // getting user albums
     $http.get( basePath + 'api/albums/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.albums = data.albums;
 
       $scope.photos = [];
@@ -37,14 +34,10 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
         for (var photo in $scope.albums[album].photos)
           $scope.photos.push($scope.albums[album].photos[photo]);
     })
-    .error(function(data){
-      alert("Credentials invalid");
-    })
 
     // getting friendlists
     $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.friendGroups = data.friendLists;
 
 
@@ -88,9 +81,6 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
         }
       }
     })
-    .error(function(data){
-      alert("Credentials invalid");
-    })
 
   })
   .error(function(data){
@@ -106,22 +96,32 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
   $scope.createCharacter = function() {
     var xmlhttp = new XMLHttpRequest();
     var formdata = new FormData(document.getElementById('dashboardNewCharacter'));
-    xmlhttp.open("POST", basePath + 'api/character', false);
+    xmlhttp.open("POST", basePath + 'api/sheets', false);
     xmlhttp.setRequestHeader("Authorization", AuthService.getToken());
     xmlhttp.onload = function() { console.log('Upload successfull !!!');}
     xmlhttp.send(formdata);
     if (xmlhttp.status == 200)
     {
-      console.log(xmlhttp);
-      $route.reload();
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     }
+  }
+
+  $scope.deleteCharacterSheet = function(sheetId) {
+    $http.delete( basePath + 'api/sheets/' + sheetId, {})
+    .success(function(data){
+      window.location.reload()
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
   }
 
   $scope.acceptFriend = function(friendId) {
     $http.post( basePath + 'api/users/' + $scope.user.id + '/validfriends/'+friendId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -131,8 +131,8 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
   $scope.refuseFriend = function(friendId) {
     $http.delete( basePath + 'api/users/' + $scope.user.id + '/friends/'+friendId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -142,8 +142,8 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
   $scope.createPost = function() {
     $http.post( basePath + 'api/blogs', {"content":$scope.dashboardNewPost})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
     .error(function(data){
       alert("Credentials invalid");

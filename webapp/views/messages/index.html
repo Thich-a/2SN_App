@@ -121,12 +121,17 @@
 
         <div class="row">
           <div  class="col-xs-6">
-            <div ng-repeat="friend in NewChannelFriends" ng-click="toggleInArray(friend.username, friend.id)" >
-              {{friend.username}}
+            <p>Friends to add to channel :</p>
+            <div class="row" ng-repeat="friend in NewChannelFriends">
+              <div class="col-xs-offset-2 col-xs-6">{{friend.username}}</div>
+              <div class="col-xs-1" ng-click="toggleInArray(friend.username, friend.id, $event)">x</div>
             </div>
           </div>
           <div class="col-xs-6">
-            <select ng-model="selected" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            <p>All friends :</p>
+            <div class="AlbumSelector">
+              <select ng-model="selected" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            </div>
             <hr>
             <div class="row">
               <div class="col-xs-offset-2 col-xs-8" ng-click="toggleInArray(friend.user.username, friend.user.id)" ng-repeat="friend in selected.friends">{{friend.user.username}}</div>
@@ -153,15 +158,20 @@
 
         <div class="row">
           <div  class="col-xs-6">
-            <div ng-repeat="friend in EditChannelFriends" ng-click="">
-              {{friend.username}}
+            <p>Friends in Channel :</p>
+            <div class="row" ng-repeat="friend in EditChannelFriends">
+              <div class="col-xs-offset-2 col-xs-6">{{friend.username}}</div>
+              <div class="col-xs-1" ng-click="deleteFromCurrentChannel(friend.id)">x</div>
             </div>
           </div>
           <div class="col-xs-6">
-            <select ng-model="selectedFriendGroup" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            <p>All friends :</p>
+            <div class="AlbumSelector">
+              <select ng-model="selectedFriendGroup" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            </div>
             <hr>
             <div class="row">
-              <div class="col-xs-offset-2 col-xs-8" ng-click="AddToCurrentChannel(friend.id)" ng-repeat="friend in selectedFriendGroup.friends">{{friend.user.username}}</div>
+              <div class="col-xs-offset-2 col-xs-8" ng-if="checkInList(friend.user.id) == 0" ng-click="AddToCurrentChannel(friend.id)" ng-repeat="friend in selectedFriendGroup.friends" style="cursor:pointer;">{{friend.user.username}}</div>
             </div>
           </div>
         </div>

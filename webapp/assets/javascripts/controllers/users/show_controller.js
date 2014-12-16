@@ -1,25 +1,22 @@
 App.controller('userCtrl', function ($scope, $http, $window, $location, $route, $routeParams){
 
   $scope.profileId = $routeParams.id;
-  $http.get( basePath + 'api/users/'+$scope.profileId, {})
+  $http.get( basePath + 'api/user/'+$scope.profileId, {})
   .success(function(data){
     $scope.user = data.user;
 
     $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.posts  = data.posts;
     })
 
     $http.get( basePath + 'api/friends/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.friends = data.friends;
     })
 
     $http.get( basePath + 'api/albums/' + $scope.user.id, {})
     .success(function(data){
-      console.log(data);
       $scope.albums = data.albums;
 
       $scope.photos = [];
@@ -31,7 +28,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
       alert("Credentials invalid");
     })
 
-    $http.get( basePath + 'api/user/me', {})
+    $http.get( basePath + 'api/me', {})
     .success(function(answer){
       $scope.me = answer.user;
       $scope.isFriend = 0;
@@ -56,11 +53,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
   $scope.AddFriend = function() {
     $http.post( basePath + 'api/users/' + $scope.me.id + '/friends/'+$scope.user.id, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
     })
   }
 
@@ -71,8 +64,7 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
 
     $http.delete( basePath + 'api/users/' + $scope.user.id + '/friends/' + friendId, {})
     .success(function(data){
-      console.log(data);
-      $route.reload();
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -82,7 +74,6 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
   $scope.deleteUser = function(userId) {
     $http.delete( basePath + 'api/users/'+ userId, {})
     .success(function(data){
-      console.log(data);
       $route.location('#users');
     })
     .error(function(data){
