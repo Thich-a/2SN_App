@@ -1,15 +1,23 @@
-App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthService, $cookies){
+App.controller('accountCtrl', function ($scope, $http, $window, $location, $route, AuthService, $cookies){
 
   $http.get( basePath + 'api/user/me', {})
   .success(function(data){
     $scope.user = data.user;
 
-    for (var album in $scope.user.albums)
-      if ($scope.user.albums[album].name == 'Profile')
-        $scope.albumId = $scope.user.albums[album].id;
-    $http.get( basePath + 'api/albums/'+$scope.albumId, {})
-    .success(function(answer){ $scope.images = answer.album.photos; $scope.currentImage = $scope.images[0]; })
-    .error(function(answer){ console.log('error !'); })
+
+    $http.get( basePath + 'api/albums/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.albums = data.albums;
+
+      $scope.photos = [];
+      for (var album in $scope.albums)
+        if ($scope.albums[album].name == 'Profile')
+        {
+          $scope.albumId = $scope.albums[album].id;
+          $scope.photos = $scope.albums[album].photos;
+        }
+    })
 
   })
   .error(function(data){
@@ -75,7 +83,7 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
     $http.post( basePath + 'api/profiles/' + $scope.currentImage.id, {})
     .success(function(data){
       $scope.user.image_profile = $scope.currentImage.image_name;
-      $scope.images.push(data.photo);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -83,9 +91,9 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
   }
 
   $scope.changedDisplayed = function(imageId) {
-    for (var image in $scope.images)
-      if ($scope.images[image].id == imageId)
-        $scope.currentImage = $scope.images[image];
+    for (var image in $scope.photos)
+      if ($scope.photos[image].id == imageId)
+        $scope.currentImage = $scope.photos[image];
   }
 
   $scope.clickNextInput = function(event) {

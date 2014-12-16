@@ -6,14 +6,13 @@ App.controller('usersCtrl', function ($scope, $http, $window, $route, $location)
     $http.get( basePath + 'api/user/me', {})
     .success(function(data){
       $scope.me = data.user;
-      $scope.friendGroups = data.user.friend_groups;
-      $scope.friends = data.user.friends;
-      if ($scope.me.id == 1)
-        $scope.friendGroups = false;
-      console.log($scope.me);
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+
+      // getting friendlists
+      $http.get( basePath + 'api/friends/' + $scope.me.id, {})
+      .success(function(data){
+        console.log(data);
+        $scope.friends = data.friends;
+      })
     })
 
   })
@@ -36,7 +35,7 @@ App.controller('usersCtrl', function ($scope, $http, $window, $route, $location)
   $scope.checkIfFriend = function(username) {
     for (var friend in $scope.friends)
     {
-      if ($scope.me.friends[friend].user.username == username)
+      if ($scope.friends[friend].user.username == username)
         return 0;
     }
     return 1;

@@ -4,20 +4,32 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
   $http.get( basePath + 'api/users/'+$scope.profileId, {})
   .success(function(data){
     $scope.user = data.user;
-    $scope.posts = $scope.user.posts;
-    $scope.friends = data.user.friends;
 
-    // getting friends
+    $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.posts  = data.posts;
+    })
 
+    $http.get( basePath + 'api/friends/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.friends = data.friends;
+    })
 
+    $http.get( basePath + 'api/albums/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.albums = data.albums;
 
-    for (var album in $scope.user.albums)
-      if ($scope.user.albums[album].name == 'Profile')
-        $scope.albumId = $scope.user.albums[album].id;
-    $http.get( basePath + 'api/albums/'+ $scope.albumId, {})
-    .success(function(answer){ $scope.photos = answer.album.photos; $scope.currentImage = $scope.photos[0]; })
-    .error(function(answer){ console.log('error !'); })
-
+      $scope.photos = [];
+      for (var album in $scope.albums)
+        if ($scope.albums[album].name == 'Profile')
+          $scope.photos = $scope.albums[album].photos;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
 
     $http.get( basePath + 'api/user/me', {})
     .success(function(answer){

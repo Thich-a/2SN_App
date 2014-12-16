@@ -5,9 +5,15 @@ App.controller('postsCtrl', function ($scope, $http, $window, $location, $route,
   $http.get( basePath + 'api/users/'+ $scope.userid, {})
   .success(function(data){
     $scope.user = data.user;
-    console.log($scope.user);
-    console.log($scope.user.posts);
-    $scope.userPosts = $scope.user.posts;
+
+    $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.userPosts = data.posts;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
 
     $http.get( basePath + 'api/user/me', {})
     .success(function(data){

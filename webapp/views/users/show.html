@@ -56,11 +56,11 @@
       <div class="panel panel-default standard" style='border-color: #00A6B6;'>
         <div class="panel-heading text-center lead friend_list">Friends</div>
         <div class="panel-body" style='border-radius:0;'>
-          <input type='text' ng-model="searchedFriend.username" class='form-control'>
+          <input type='text' ng-model="searchedFriend.user.username" class='form-control'>
           <hr>
           <div class="row pictures">
             <div ng-repeat="friend in friends | filter:searchedFriend" class="col-md-4 text-center">
-              <a href=""><img ng-src="web/uploads/photo/{{friend.user.image_profile}}" class="img-rounded friend_pic picture"></a>
+              <a href="#users/{{friend.user.id}}"><img ng-src="web/uploads/photo/{{friend.user.image_profile}}" class="img-rounded friend_pic picture"></a>
               <p>{{friend.user.username}}</p>
             </div>
           </div>

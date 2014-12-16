@@ -5,8 +5,13 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
   $http.get( basePath + 'api/users/'+ $scope.userid, {})
   .success(function(data){
     $scope.user = data.user;
-    $scope.userPosts = $scope.user.posts;
-    $scope.fetchPost();
+
+    $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.userPosts = data.posts;
+      $scope.fetchPost();
+    })
   })
   .error(function(data){
     alert("Credentials invalid");
@@ -24,23 +29,15 @@ App.controller('postShowCtrl', function ($scope, $http, $window, $location, $rou
     console.log('fuck this shit');
   })
 
-
-
   $scope.fetchPost = function() {
-    for (post in $scope.userPosts)
+    for (var post in $scope.userPosts)
     {
       if ($scope.userPosts[post].id == $routeParams.id)
-        $scope.currentPostId = $scope.userPosts[post];
+      {
+        $scope.currentPost = $scope.userPosts[post];
+        $scope.comments = $scope.currentPost.comments;
+      }
     }
-
-    $http.get(basePath + 'api/blogs/'+ $scope.currentPostId.id, {})
-    .success(function(data){
-      $scope.currentPost = data.post;
-      $scope.comments = data.post.comments;
-    })
-    .error(function(data){
-      alert("Credentials invalid");
-    })
   }
 
   $scope.deletePost = function() {

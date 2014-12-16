@@ -1,16 +1,45 @@
-App.controller('messagesCtrl', function ($scope, $http, $window, $location){
+App.controller('messagesCtrl', function ($scope, $http, $window, $route, $location){
 
   $http.get( basePath + 'api/user/me', {})
   .success(function(data){
     console.log(data);
     $scope.user = data.user;
-    $scope.friendGroups = $scope.user.friend_groups;
     $scope.NewChannelFriends = [];
-    $scope.channels = data.user.channels;
+
+    // getting friendlists
+    $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.friendGroups = data.friendLists;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+
+    // getting friendlists
+    $http.get( basePath + 'api/friends/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.friends = data.friends;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+
+    $http.get( basePath + 'api/channels/'+$scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.channels = data.channels;
+    })
+    .error(function(data){
+      console.log('error with delete channels');
+    })
   })
   .error(function(data){
     alert("Credentials invalid");
   })
+
+
 
   $scope.switchGroups = function(groupId) {
     for(var group in $scope.friendGroups)
@@ -20,7 +49,7 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
   }
 
   $scope.createNewFriendGroup = function() {
-    $http.post( basePath + 'api/users/' + $scope.user.id + '/friendlists/'+ $scope.user.id, {"name":$scope.NewFriendGroupName})
+    $http.post( basePath + 'api/users/' + $scope.user.id + '/friendlists', {"name":$scope.NewFriendGroupName})
     .success(function(data){
       console.log(data);
       $route.reload();
@@ -64,12 +93,6 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
     if ($scope.NewChannelFriends != '')
     {
       $http.post( basePath + 'api/channels/'+$scope.NewChannelFriends[0].id, {})
-      // remove from channel
-      // DELETE /api/fromchannels/{channelId}/participants/{participantId}.
-
-      // get all messages
-      // api/messages/{channelId}
-
       .success(function(data){
         console.log(data);
         var channelId = data.data.id;
@@ -90,6 +113,11 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
       })
     }
   }
+
+
+  // remove from channel
+  // DELETE /api/fromchannels/{channelId}/participants/{participantId}.
+
 
 
   $scope.switchConversation = function(channelId) {
@@ -129,9 +157,26 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $location){
     })
   }
 
+  $scope.editChannel = function(channelId) {
+    $scope.EditChannelFriends = [];
+    for (var channel in $scope.channels)
+      if ($scope.channels[channel].id == channelId)
+      {
+        $scope.currentChannel = $scope.channels[channel];
+        for (var user in $scope.channels[channel].users)
+          $scope.EditChannelFriends.push($scope.channels[channel].users[user]);
+      }
+  }
+
+  $scope.AddToCurrentChannel = function(friendId) {
+    for (var friend in $scope.friends)
+      if ($scope.friends[friend].id == friendId)
+        var addedFriend = $scope.friends[friend];
+
+    $scope.EditChannelFriends.push(addedFriend);
+  }
+
   $scope.friendChangeGroup = function(friendgroupId) {
-    // console.log('friendgroupId : '+ friendgroupId);
-    // console.log('dragged : ' + $scope.transfertFriendId);
     $http.post( basePath + 'api/friends/' + $scope.transfertFriendId + '/moves/' + friendgroupId, {})
     .success(function(data){
       console.log(data);

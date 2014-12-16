@@ -1,64 +1,96 @@
-App.controller('dashboardCtrl', function ($scope, $http, $window, $location, AuthService){
+App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $route, AuthService){
 
   $http.get( basePath + 'api/user/me', {})
   .success(function(data){
     $scope.user = data.user;
     // $scope.sheets = $scope.user.sheets;
     // $scope.sessions = $scope.user.games;
-    $scope.albums = $scope.user.albums;
-    $scope.posts = $scope.user.posts;
-    $scope.friendGroups = $scope.user.friend_groups;
 
-    $scope.friends = [];
-    $scope.pending = [];
-    var i = 0;
-    var j = 0;
-    for (var friendGroup in data.user.friend_groups)
-    {
-      var friends = data.user.friend_groups[friendGroup].friends;
-      for (var friend in friends)
+    // getting user posts
+    $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.posts  = data.posts;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+
+    // getting user sheets
+    $http.get( basePath + 'api/sheets/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.sheets = data.sheets;
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+
+    // getting user albums
+    $http.get( basePath + 'api/albums/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.albums = data.albums;
+
+      $scope.photos = [];
+      for (var album in $scope.albums)
+        for (var photo in $scope.albums[album].photos)
+          $scope.photos.push($scope.albums[album].photos[photo]);
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
+
+    // getting friendlists
+    $http.get( basePath + 'api/friendlists/' + $scope.user.id, {})
+    .success(function(data){
+      console.log(data);
+      $scope.friendGroups = data.friendLists;
+
+
+      $scope.friends = [];
+      $scope.pending = [];
+      var i = 0;
+      var j = 0;
+      for (var friendGroup in $scope.friendGroups)
       {
-        if (data.user.friend_groups[friendGroup].name != 'wait')
+        var friends = $scope.friendGroups[friendGroup].friends;
+        for (var friend in friends)
         {
-          $scope.friends[i] = friends[friend];
+          if ($scope.friendGroups[friendGroup].name != 'wait')
+          {
+            $scope.friends[i] = friends[friend];
+            i++;
+          }
+          else
+          {
+            $scope.pending[j] = friends[friend];
+            j++;
+          }
+        }
+      }
+
+      i = 0;
+      j = 0;
+      $scope.pendingSent = [];
+      $scope.pendingRecieved = [];
+      for (var friend in $scope.pending)
+      {
+        if ($scope.pending[friend].sender == $scope.user.username)
+        {
+          $scope.pendingSent[i] = $scope.pending[friend];
           i++;
         }
         else
         {
-          $scope.pending[j] = friends[friend];
+          $scope.pendingRecieved[j] = $scope.pending[friend];
           j++;
         }
       }
-    }
-
-    i = 0;
-    j = 0;
-    $scope.pendingSent = [];
-    $scope.pendingRecieved = [];
-    for (var friend in $scope.pending)
-    {
-      if ($scope.pending[friend].sender == $scope.user.username)
-      {
-        $scope.pendingSent[i] = $scope.pending[friend];
-        i++;
-      }
-      else
-      {
-        $scope.pendingRecieved[j] = $scope.pending[friend];
-        j++;
-      }
-    }
-
-    $scope.photos = [];
-    for (var album in $scope.user.albums)
-    {
-      $http.get( basePath + 'api/albums/'+ $scope.user.albums[album].id, {})
-      .success(function(answer){
-        for(var photo in answer.album.photos)
-          $scope.photos.push(answer.album.photos[photo]);
-      })
-      .error(function(answer){ console.log('error !'); })
-    }
+    })
+    .error(function(data){
+      alert("Credentials invalid");
+    })
 
   })
   .error(function(data){
@@ -81,6 +113,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     if (xmlhttp.status == 200)
     {
       console.log(xmlhttp);
+      $route.reload();
     }
   }
 
@@ -88,6 +121,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     $http.post( basePath + 'api/users/' + $scope.user.id + '/validfriends/'+friendId, {})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -98,6 +132,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     $http.delete( basePath + 'api/users/' + $scope.user.id + '/friends/'+friendId, {})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -108,6 +143,7 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, Aut
     $http.post( basePath + 'api/blogs', {"content":$scope.dashboardNewPost})
     .success(function(data){
       console.log(data);
+      $route.reload();
     })
     .error(function(data){
       alert("Credentials invalid");
