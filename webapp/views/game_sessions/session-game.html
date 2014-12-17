@@ -6,9 +6,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="Character_widget_photo">
-          <img ng-src="{{ sheet.avatar }}" class="img-circle">
+          <img ng-src="/web/uploads/photo/{{ myCharAvatar }}" class="img-circle">
         </div>
-         <h2 class="Character_widget_name">{{ sheet.char_name }}</h2>
+         <h2 class="Character_widget_name">{{ myCharName }}</h2>
          <a href=""><span><i>- Info -</i></span></a><br>
          <a href=""><span class="label label-primary btn-join-conf pull-right">EDIT</span></a>
       </div>
@@ -19,12 +19,12 @@
     <div class="panel panel-default standard" style='border-color: #F39C12;'>
       <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
       <div class="panel-body">
-        <div ng-repeat='game in listGameSessions'>
+        <div ng-repeat='game in gameUser'>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-              <a href="#games/{{ game.id }}"><h4 style='margin-top:4px;'>{{ game.name }}<span class='pull-right' ng-show="{{ game.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
-              <p><small><b>Started {{ game.created_at }}</b></small></p>
-              <p><i class='text-muted'>{{ game.last_log }}</i></p>
+              <a href="#games/{{ game.id }}"><h4 style='margin-top:4px;'>{{ game.name }}</a><br>
+              <small><b>By {{ game.master.username }}</b></small><br>
+              <p><small>"{{ game.description |limitTo: 25 }} ..."</small></p>
             </div>
           </div>
           <hr ng-if="!$last">
@@ -54,7 +54,7 @@
             </div>
             <div class="modal-body">
               <div class="text-justify">
-                {{ currentGame.story }}
+                {{ currentGame.description }}
               </div>
             </div>
           </div>
@@ -115,60 +115,24 @@
         <br>
         <div class="row"> <!-- Game Players Charactere -->
           <div class="col-xs-3">
-            <img ng-src="{{ playerMaster.charaters.avatar }}" class="img-rounded small-picture pic_master" >
+            <img ng-src="/web/uploads/photo/{{ currentGame.master.image_profile }}" class="img-rounded small-picture pic_master" >
           </div>
           <div class="col-xs-8 text-center">
-            <span class="char-name-GS" style="color:#F39C12;">{{ playerMaster.charaters.char_name }}</span><br>
-            <span>- {{ playerMaster.username }} -</span><br>
-            <div class="row">
-              <a href=""><span class="glyphicon glyphicon-envelope col-xs-4 col-xs-offset-1"></span></a>
-              <a href="" data-toggle="modal" data-target="#modalMaster" class="name-game"><span class="col-xs-4 col-xs-offset-2"><i>Info</i></span></a>
-              <!-- Modal Info Game Players Charactere -->
-                <div class="modal fade" id="modalMaster" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header modal-game-invt">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title text-center" id="myModalLabel">{{ playerMaster.charaters.char_name }}</h4>
-                      </div>
-                      <div class="modal-body">
-                        <div>
-                          <img ng-src="{{ playerMaster.charaters.avatar }}" class="img-circle modal-img-GS"><br>
-                          <span class="text-center">{{ playerMaster.charaters.details }}</span>
-                        </div>
-                        <hr>
-                        <small>Story :</small><br>
-                        <div class="text-justify">
-                          {{ playerMaster.charaters.story }}
-                        </div>
-                        <hr>
-                        <div class="text-center">
-                            <p>Character of :</p>
-                            <img ng-src="{{ playerMaster.avatar }}" class="img-rounded small-picture" ><br>
-                            <span>{{ playerMaster.username }}</span>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal Info Game Players Charactere END -->
-
-            </div>
+            <span class="char-name-GS" style="color:#F39C12;">{{ currentGame.master.username }}</span>
           </div>
         </div> <!-- Game Players end Charactere -->
         <hr style="border-top: 2px solid #F39C12;">
 
         <h3 class="text-center" style="color:#00A6B6;">The Characters</h3>
         <br>
-        <div ng-repeat='player in playerOther'><!-- NG-REPEAT -->
+        <div ng-repeat='player in currentGame.players'><!-- NG-REPEAT -->
           <div class="row"> <!-- Game Players Charactere -->
             <div class="col-xs-3">
-              <img ng-src="{{ player.charaters.avatar }}" class="img-rounded small-picture pic_character" >
+              <img ng-src="/web/uploads/photo/{{ player.character_sheet.image_name }}" class="img-rounded small-picture pic_character" >
             </div>
             <div class="col-xs-8 text-center">
-              <span class="char-name-GS">{{ player.charaters.char_name }}</span><br>
-              <span>- {{ player.username }} -</span><br>
+              <span class="char-name-GS">{{ player.character_sheet.full_name }}</span><br>
+              <span>- {{ player.user.username }} -</span><br>
               <div class="row">
                 <a href=""><span class="glyphicon glyphicon-envelope col-xs-4 col-xs-offset-1"></span></a>
                 <a href="" data-toggle="modal" data-target="#modal{{ player.charaters.id }}" class="name-game"><span class="col-xs-4 col-xs-offset-2"><i>Info</i></span></a>
@@ -178,23 +142,23 @@
                     <div class="modal-content">
                       <div class="modal-header modal-game-story">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title text-center" id="myModalLabel">{{ player.charaters.char_name }}</h4>
+                        <h4 class="modal-title text-center" id="myModalLabel">{{ player.character_sheet.full_name }}</h4>
                       </div>
                       <div class="modal-body">
                         <div>
-                          <img ng-src="{{ player.charaters.avatar }}" class="img-circle modal-img-GS"><br>
-                          <span class="text-center">{{ player.charaters.details }}</span>
+                          <img ng-src="/web/uploads/photo/{{ player.character_sheet.image_name }}" class="img-circle modal-img-GS"><br>
+                          <span class="text-center">{{ player.character_sheet.details }}</span>
                         </div>
                         <hr>
                         <small>Story :</small><br>
                         <div class="text-justify">
-                          {{ player.charaters.story }}
+                          {{ player.character_sheet.background }}
                         </div>
                         <hr>
                         <div class="text-center">
                             <p>Character of :</p>
-                            <img ng-src="{{ player.avatar }}" class="img-rounded small-picture" ><br>
-                            <span>{{ player.username }}</span>
+                            <img ng-src="/web/uploads/photo/{{ player.user.image_profile }}" class="img-rounded small-picture" ><br>
+                            <span>{{ player.user.username }}</span>
                         </div>
                       </div>
                     </div>

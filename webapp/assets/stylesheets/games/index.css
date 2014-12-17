@@ -182,6 +182,12 @@ font-size: 18px;
   position: absolute;
 }
 
+.badge-Wait{
+  margin-top: -58px;
+  margin-left: -23px;
+  position: absolute;
+}
+
 .shearchDiv{
   max-height: 380px;
   overflow-y: scroll;
