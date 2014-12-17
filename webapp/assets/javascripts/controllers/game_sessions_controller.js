@@ -9,7 +9,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location, 
   $scope.incDemande = 0;
   $scope.incDemande2 = 0;
 
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(data){
     $scope.user = data.user;
     // console.log($scope.user);
@@ -32,7 +32,7 @@ App.controller('gameSessionsCtrl', function ($scope, $http, $window, $location, 
       $scope.invites = data.listInvitation;
     })
 
-    $http.get( basePath + 'api/sheets', {})
+    $http.get( basePath + 'api/sheets/' + $scope.user.id, {})
     .success(function(data){
       $scope.sheets = data.character_sheets;
     })
@@ -56,9 +56,10 @@ $scope.liste_UserClean = function(){
 $scope.liste_UserNot = function(idGame){
 
   $scope.playIndispo = [];
-  $http.get( basePath + 'api/details/' + idGame + '/games', {})
+  $http.get( basePath + 'api/game/'+idGame, {})
   .success(function(data)
     {
+      console.log(data);
       $scope.playerJoinEdit = data.GameSession.players;
       $scope.playerGuestEdit = data.GameSession.guests;
       var i = 0;
@@ -246,7 +247,6 @@ var charid = $('input[name=optionsRadios]:checked', '#col_hideChar').val()
 
 $http.post(basePath + 'api/games/'+ idGame +'/validations/'+ idInvite, { "CharacterSheet": charid })
         .success(function(data){
-          console.log(data);
           window.location.reload();
         })
         .error(function(data){
@@ -260,8 +260,7 @@ $scope.joinGameSession = function(idGame, idInvite) {
 
  $http.post(basePath + 'api/games/'+ idGame +'/validations/'+ idInvite, { "CharacterSheet": charid })
          .success(function(data){
-           console.log(data);
-           // window.location.reload();
+           window.location.reload();
          })
          .error(function(data){
            console.log('Unable to denied invitation ...');

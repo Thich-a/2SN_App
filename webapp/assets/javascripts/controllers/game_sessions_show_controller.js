@@ -2,7 +2,7 @@ App.controller('gameSessionsShowCtrl', function ($scope, $http, $window, $locati
 
     $scope.gameUser = [];
 
-    $http.get( basePath + 'api/user/me', {})
+    $http.get( basePath + 'api/me', {})
     .success(function(data){
       $scope.user = data.user;
       // console.log($scope.user);
@@ -16,17 +16,35 @@ App.controller('gameSessionsShowCtrl', function ($scope, $http, $window, $locati
 
       if ( $scope.verification == true)
       {
-        $http.get( basePath + 'api/details/' + $routeParams.id + '/games', {})
+        $http.get( basePath + 'api/game/' + $routeParams.id, {})
         .success(function(data){
+
           $scope.currentGame = data.GameSession;
           $scope.setUserAvatar();
-          // console.log($scope.myChar);
+
+          $http.get( basePath + 'api/messages/'+ $scope.currentGame.channels[0].id, {})
+          .success(function(answer){
+            $scope.messages = answer.messages;
+            $scope.channelNewMessage = '';
+          })
         })
       }
       else
         document.location.href="/#/games";
     })
   });
+
+
+  $scope.sendMessage = function() {
+    $http.post( basePath + 'api/messages/'+ $scope.currentGame.channels[0].id, {"contents":$scope.channelNewMessage})
+    .success(function(data){
+      $http.get( basePath + 'api/messages/'+ data.data.id, {})
+      .success(function(answer){
+        $scope.messages = answer.messages;
+        $scope.channelNewMessage = '';
+      })
+    })
+  }
 
 $scope.getUserGame = function(){
   var i = 0;
