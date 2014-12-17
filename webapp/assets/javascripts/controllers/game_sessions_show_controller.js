@@ -25,6 +25,12 @@ App.controller('gameSessionsShowCtrl', function ($scope, $http, $window, $locati
           $http.get( basePath + 'api/messages/'+ $scope.currentGame.channels[0].id, {})
           .success(function(answer){
             $scope.messages = answer.messages;
+
+            for (var message in $scope.messages)
+              for (var player in $scope.currentGame.players)
+                if ($scope.messages[message].sender.id == $scope.currentGame.players[player].user.id)
+                  $scope.messages[message].sender.image_profile = $scope.currentGame.players[player].character_sheet.image_name;
+
             $scope.channelNewMessage = '';
           })
         })
@@ -40,7 +46,14 @@ App.controller('gameSessionsShowCtrl', function ($scope, $http, $window, $locati
     .success(function(data){
       $http.get( basePath + 'api/messages/'+ data.data.id, {})
       .success(function(answer){
+        console.log(answer);
         $scope.messages = answer.messages;
+
+        for (var message in $scope.messages)
+          for (var player in $scope.currentGame.players)
+            if ($scope.messages[message].sender.id == $scope.currentGame.players[player].user.id)
+              $scope.messages[message].sender.image_profile = $scope.currentGame.players[player].character_sheet.image_name;
+
         $scope.channelNewMessage = '';
       })
     })

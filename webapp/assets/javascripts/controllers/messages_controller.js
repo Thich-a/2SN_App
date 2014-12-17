@@ -37,8 +37,6 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
     return 1;
   }
 
-
-
   $scope.switchGroups = function(groupId) {
     for(var group in $scope.friendGroups)
       if ($scope.friendGroups[group].id == groupId)
