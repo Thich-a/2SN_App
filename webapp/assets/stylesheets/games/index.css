@@ -188,6 +188,12 @@ font-size: 18px;
   position: absolute;
 }
 
+.badge-deletSheet{
+  margin-top: -5px;
+  margin-left: -17px;
+  position: absolute;
+}
+
 .shearchDiv{
   max-height: 380px;
   overflow-y: scroll;

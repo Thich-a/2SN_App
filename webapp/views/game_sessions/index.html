@@ -57,6 +57,9 @@
                           <div class="col-xs-3">
                             <div class="row">
                             <a href="" class="col-md-offset-2"><img ng-src="/web/uploads/photo/{{ char.image_name }}" class="img-rounded" style='max-height:100px; border: 1px solid black;'></a>
+                            <div  class="badge btn-join-d badge-deletSheet">
+                              <a href="" ng-click="DeletPlayerSheet(this.char.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
                             </div>
                             <div class="col-md-offset-2" style="padding-left:9px; padding-top:10px;">
                               <a href="" ng-click="collapsfunc(2, this.key);"><em>- Edit -</em></a>
@@ -199,13 +202,13 @@
 
                     <div class="modal-footer">
                       <button class="btn btn-invit-a" data-dismiss="modal" ng-click="joinGameSession(this.invite.game_session.id, this.invite.id)">Join</button>
-                      <button class="btn btn-invit-d" data-dismiss="modal">Denied</button>
+                      <button class="btn btn-invit-d" data-dismiss="modal" ng-click="DeletPlayerInvit(this.invite.game_session.id)">Denied</button>
                     </div>
                   </div>
                 </div>
               </div><!-- END Modal -->
 
-            <button type="button" class="btn btn-invit-d btn-sm">Denied</button>
+            <button type="button" class="btn btn-invit-d btn-sm" ng-click="DeletPlayerInvit(this.invite.game_session.id)">Denied</button>
 
           </div>
         </div> <!-- end panel body -->
@@ -335,7 +338,7 @@
                                           <img ng-src="/web/uploads/photo/{{player.user.image_profile}}" class="img-rounded" style='max-height:80px; border: 1px solid black; position:relative;'>
                                           <p>{{player.user.username}}</p>
                                           <div  class="badge btn-join-d badge-denied">
-                                            <a href="" ng-click="DeletPlayer(this.creatG.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                                            <a href="" ng-click="DeletPlayer(this.creatG.id, player.id)"><span class="glyphicon glyphicon-remove"></span></a>
                                           </div>
                                         </div>
                                     </div>
@@ -552,42 +555,6 @@
                 </div>
               </p>
               <hr>
-              <!-- <div>
-                <h3 class="text-center">Player Invite:</h3>
-                <br>
-                  <div class="col-md-4" ng-repeat="user in liste_UserDemande">
-                      <div >
-                        <div class="text-center">
-                          <img ng-src="/web/uploads/photo/{{user.image_profile}}" class="img-rounded imgWaitAdd" style='max-height:80px; border: 1px solid black; position:relative;'>
-                          <p>{{user.username}}</p>
-                          <div  class="badge btn-join-d badge-denied">
-                            <a href="" ng-click="removeToGameCreate(this.user.id)"><span class="glyphicon glyphicon-remove"></span></a>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-offset-2 col-md-8">
-                  <div class="input-group">
-                    <span class="input-group-addon">Invite Players</span>
-                    <input type="text" class="form-control" ng-model="searchedText">
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="row shearchDiv">
-                <div id="users-list-Join" ng-repeat="user in liste_UserInvite | filter:searchedText | orderBy:'username'" class="col-md-3">
-                  <div class="text-center">
-                      <img ng-src="/web/uploads/photo/{{user.image_profile}}" class="img-rounded" style='width:70px; border: 1px solid black; position:relative;'>
-                      <p>{{user.username}}</p>
-                      <button id="btn_modif_css{{user.id}}" type="button" class="btn btn-join-conf btn-sm" style="margin-bottom:20px; margin-top:-10px;">
-                        <a href="" ng-click="liste_UserAskJoin(this.user.id); addToGameCreate();"> Invite </a>
-                      </button>
-                  </div>
-                </div>
-              </div>
-              <br> -->
               <div class="row settingsSave">
                 <div class="col-xs-offset-4 col-xs-4">
                   <button  class="btn btn btn-invit-a" ng-click="CreatGameSession()">Create</button>

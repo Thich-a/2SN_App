@@ -212,9 +212,9 @@ $scope.EditGameSession = function(idgame){
   }
 }
 
-$scope.DeletPlayer = function(idgame){
+$scope.DeletPlayer = function(idgame, idPlayer){
 
-$http.delete(basePath + 'api/invitations/'+ idgame, {})
+$http.delete(basePath + 'api/games/'+ idgame +'/players/'+ idPlayer, {})
       .success(function(data){
         console.log(data);
         window.location.reload();
@@ -254,20 +254,29 @@ $http.post(basePath + 'api/games/'+ idGame +'/validations/'+ idInvite, { "Charac
         })
 }
 
-$scope.joinGameSession = function(idGame, idInvite) {
+$scope.DeletPlayerInvit = function(idgame){
 
- var charid = $('input[name=optionsRadios]:checked', '#col_hideChar').val()
+$http.delete(basePath + 'api/invitations/'+ idgame, {})
+      .success(function(data){
+        console.log(data);
+        window.location.reload();
+      })
+      .error(function(data){
+        console.log('Unable to delete Invitation ...');
+      })
+}
 
- $http.post(basePath + 'api/games/'+ idGame +'/validations/'+ idInvite, { "CharacterSheet": charid })
-         .success(function(data){
-           window.location.reload();
-         })
-         .error(function(data){
-           console.log('Unable to denied invitation ...');
-         })
- }
+$scope.DeletPlayerSheet = function(idSheet){
 
-
+$http.delete(basePath + 'api/sheets/'+ idSheet, {})
+      .success(function(data){
+        console.log(data);
+        window.location.reload();
+      })
+      .error(function(data){
+        console.log('Unable to delete Sheet ...');
+      })
+}
 
 
 

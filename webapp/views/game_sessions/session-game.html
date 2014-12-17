@@ -152,8 +152,8 @@
         </div>
       </div>
       <div class="panel-footer text-center"><!-- Game EXIT -->
-        <button type="button" class="btn btn-invit-d">
-          <a href="">Quit Game Session</a>
+        <button ng-if="user.id != currentGame.master.id " type="button" class="btn btn-invit-d">
+          <a href="" ng-click="quitGameSession(this.currentGame.id, this.user.id)">Quit Game Session</a>
         </button>
       </div>
     </div><!-- Panel-body -->

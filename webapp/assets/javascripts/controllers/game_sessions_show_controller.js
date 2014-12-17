@@ -82,6 +82,7 @@ $scope.setUserAvatar = function(){
     {
       $scope.myCharName = $scope.currentGame.players[userMe].character_sheet.full_name;
       $scope.myCharAvatar = $scope.currentGame.players[userMe].character_sheet.image_name;
+      $scope.myCharid = $scope.currentGame.players[userMe].character_sheet.id;
       check++;
     }
   }
@@ -90,9 +91,27 @@ $scope.setUserAvatar = function(){
     $scope.myChar = $scope.currentGame.master;
     $scope.myCharName = $scope.currentGame.master.username;
     $scope.myCharAvatar = $scope.currentGame.master.image_profile;
+    $scope.myCharid = $scope.currentGame.master.id;
   }
 }
 
+$scope.quitGameSession = function(idGame, idUser){
+
+  for ( play in $scope.currentGame.players)
+  {
+    if ( idUser == $scope.currentGame.players[play].user.id )
+      $scope.idPlayer = $scope.currentGame.players[play].id;
+  }
+
+  $http.delete(basePath + 'api/games/'+ idGame +'/players/'+ $scope.idPlayer, {})
+        .success(function(data){
+          console.log(data);
+          document.location.href="/#/games";
+        })
+        .error(function(data){
+          console.log('Unable to QUIT Game Session ...');
+        })
+}
 
 
 });
