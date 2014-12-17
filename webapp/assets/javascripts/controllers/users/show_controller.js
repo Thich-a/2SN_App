@@ -13,6 +13,13 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
     $http.get( basePath + 'api/friends/' + $scope.user.id, {})
     .success(function(data){
       $scope.friends = data.friends;
+
+      $http.get( basePath + 'api/me', {})
+      .success(function(answer){
+        $scope.me = answer.user;
+        $scope.isFriend = 0;
+        $scope.checkIfFriend();
+      })
     })
 
     $http.get( basePath + 'api/albums/' + $scope.user.id, {})
@@ -26,16 +33,6 @@ App.controller('userCtrl', function ($scope, $http, $window, $location, $route, 
     })
     .error(function(data){
       alert("Credentials invalid");
-    })
-
-    $http.get( basePath + 'api/me', {})
-    .success(function(answer){
-      $scope.me = answer.user;
-      $scope.isFriend = 0;
-      $scope.checkIfFriend();
-    })
-    .error(function(answer){
-      alert("Oops ! unable to fetch current logged user");
     })
   })
   .error(function(data){

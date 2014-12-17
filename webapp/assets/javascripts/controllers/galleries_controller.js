@@ -9,8 +9,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     $http.get( basePath + 'api/albums/' + $scope.user.id, {})
     .success(function(data){
       $scope.albums = data.albums;
-      $scope.defalutModel = $scope.albums[0].id;
-      $scope.defalutNameModel = '';
+      $scope.defaultModel = $scope.albums[0].id;
+      $scope.defaultNameModel = '';
       $scope.galleriesSwitchAlbum($scope.albums[0].id);
     })
 
@@ -43,6 +43,7 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
       {
         $scope.currentAlbum = $scope.albums[album];
         $scope.images = $scope.currentAlbum.photos;
+        $scope.currentImage = $scope.images[0];
         if ($scope.albums[album].name == 'Wall' || $scope.albums[album].name == 'Profile')
           $('#galleries-album-delete').prop('disabled', true);
       }

@@ -87,23 +87,11 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
           $http.post( basePath + 'api/participants/' + channelId + '/friends/'+$scope.NewChannelFriends[i].id, {})
           .success(function(answer){
           })
-          .error(function(answer){
-            alert("Credentials invalid");
-          })
         }
         window.location.reload()
       })
-      .error(function(data){
-        alert("Credentials invalid");
-      })
     }
   }
-
-
-  // remove from channel
-  // DELETE /api/fromchannels/{channelId}/participants/{participantId}.
-
-
 
   $scope.switchConversation = function(channelId) {
     for(var channel in $scope.channels)
@@ -122,10 +110,12 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
   $scope.sendMessage = function() {
     $http.post( basePath + 'api/messages/'+$scope.activeChannel.id, {"contents":$scope.channelNewMessage})
     .success(function(data){
-      window.location.reload()
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      console.log(data);
+      $http.get( basePath + 'api/messages/'+ data.data.id, {})
+      .success(function(answer){
+        $scope.messages = answer.messages;
+        $scope.channelNewMessage = '';
+      })
     })
   }
 

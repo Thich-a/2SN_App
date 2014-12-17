@@ -61,15 +61,14 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, $rout
       {
         $('#accountMessageReciever').html('<p style="text-align:center;">user edited</p>');
         $('#accountMessageReciever').css('color', 'green');
+        AuthService.setToken('Bearer ' + data.token);
+        $cookies.Auth = data.token;
       }
       else
       {
         $('#accountMessageReciever').html('<p style="text-align:center;">please specify username, usermail and current password</p>');
         $('#accountMessageReciever').css('color', 'red');
       }
-
-      AuthService.setToken('Bearer ' + data.token);
-      $cookies.Auth = data.token;
     })
     .error(function(data){
       console.log('Unable to delete User ...');
