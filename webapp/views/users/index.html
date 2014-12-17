@@ -23,7 +23,7 @@
               <p><a href="#users/{{user.id}}">{{user.username}}</a></p>
             </div>
             <div class="col-xs-2">
-              <p ng-if="checkIfFriend(user.username) == 1" ng-click="AddFriend(user.id)" >Send friend request</p>
+              <p ng-if="checkIfFriend(user.username) == 1 && me.id != 1" ng-click="AddFriend(user.id)" >Send friend request</p>
               <p ng-if="me.id == 1" ng-click="DeleteUser(user.id)" >Delete</p>
             </div>
           </div>

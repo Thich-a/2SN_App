@@ -1,19 +1,26 @@
-App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthService, $cookies){
+App.controller('accountCtrl', function ($scope, $http, $window, $location, $route, AuthService, $cookies){
 
-  $http.get( basePath + 'api/user/me', {})
+  $http.get( basePath + 'api/me', {})
   .success(function(data){
     $scope.user = data.user;
 
-    for (var album in $scope.user.albums)
-      if ($scope.user.albums[album].name == 'Profile')
-        $scope.albumId = $scope.user.albums[album].id;
-    $http.get( basePath + 'api/albums/'+$scope.albumId, {})
-    .success(function(answer){ $scope.images = answer.album.photos; $scope.currentImage = $scope.images[0]; })
-    .error(function(answer){ console.log('error !'); })
+
+    $http.get( basePath + 'api/albums/' + $scope.user.id, {})
+    .success(function(data){
+      $scope.albums = data.albums;
+
+      $scope.photos = [];
+      for (var album in $scope.albums)
+        if ($scope.albums[album].name == 'Profile')
+        {
+          $scope.albumId = $scope.albums[album].id;
+          $scope.photos = $scope.albums[album].photos;
+        }
+    })
 
   })
   .error(function(data){
-    console.log('Unable to get current User ...');
+    alert('undalid user');
   })
 
   $scope.DeleteAccount = function() {
@@ -22,9 +29,6 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
       AuthService.deleteToken();
       $cookies.Auth = '';
       $location.path('/');
-    })
-    .error(function(data){
-      console.log('Unable to delete User ...');
     })
   }
 
@@ -51,14 +55,14 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
   }
 
   $scope.editUser = function() {
-    // { "email":"test@mail.com", "username":"test", "plainPassword":{"first":"test","second":"test"} }
-
     $http.put( basePath + 'api/users/' + $scope.user.id, {"email":$scope.user.email, "username":$scope.user.username, "current_password":$scope.CurrentPassword})
     .success(function(data){
       if (data.code == 200)
       {
         $('#accountMessageReciever').html('<p style="text-align:center;">user edited</p>');
         $('#accountMessageReciever').css('color', 'green');
+        AuthService.setToken('Bearer ' + data.token);
+        $cookies.Auth = data.token;
       }
       else
       {
@@ -75,6 +79,7 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
     $http.post( basePath + 'api/profiles/' + $scope.currentImage.id, {})
     .success(function(data){
       $scope.user.image_profile = $scope.currentImage.image_name;
+      window.location.reload()
     })
     .error(function(data){
       alert("Credentials invalid");
@@ -82,9 +87,9 @@ App.controller('accountCtrl', function ($scope, $http, $window, $location, AuthS
   }
 
   $scope.changedDisplayed = function(imageId) {
-    for (var image in $scope.images)
-      if ($scope.images[image].id == imageId)
-        $scope.currentImage = $scope.images[image];
+    for (var image in $scope.photos)
+      if ($scope.photos[image].id == imageId)
+        $scope.currentImage = $scope.photos[image];
   }
 
   $scope.clickNextInput = function(event) {

@@ -2,15 +2,19 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
 
   $scope.userid = $routeParams.user;
 
-  $http.get( basePath + 'api/users/'+$scope.userid, {})
+  $http.get( basePath + 'api/user/'+$scope.userid, {})
   .success(function(data){
     $scope.user = data.user;
-    $scope.albums = $scope.user.albums;
-    $scope.defalutModel = $scope.user.albums[0].id;
-    $scope.defalutNameModel = '';
-    $scope.galleriesSwitchAlbum($scope.user.albums[0].id);
 
-    $http.get( basePath + 'api/user/me', {})
+    $http.get( basePath + 'api/albums/' + $scope.user.id, {})
+    .success(function(data){
+      $scope.albums = data.albums;
+      $scope.defaultModel = $scope.albums[0].id;
+      $scope.defaultNameModel = '';
+      $scope.galleriesSwitchAlbum($scope.albums[0].id);
+    })
+
+    $http.get( basePath + 'api/me', {})
     .success(function(answer){ $scope.me = answer.user; })
     .error(function(answer){ console.log('Oh no ! something went wrong ...'); })
   })
@@ -37,12 +41,9 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     for (var album in $scope.albums)
       if ($scope.albums[album].id == albumId)
       {
-        // Getting the current Album from API
-        $http.get( basePath + 'api/albums/'+albumId, {})
-        .success(function(data){ $scope.currentAlbum = data.album; $scope.images = data.album.photos; })
-        .error(function(data){ console.log('error !'); })
-
-        // Adding Security WHAT WHAT !
+        $scope.currentAlbum = $scope.albums[album];
+        $scope.images = $scope.currentAlbum.photos;
+        $scope.currentImage = $scope.images[0];
         if ($scope.albums[album].name == 'Wall' || $scope.albums[album].name == 'Profile')
           $('#galleries-album-delete').prop('disabled', true);
       }
@@ -59,10 +60,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     var albumName = $scope.newAlbumName;
     $http.post( basePath + 'api/albums', {"name":albumName})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
@@ -70,29 +69,16 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     var albumId = $('#AlbumSelect').val();
     $http.delete( basePath + 'api/albums/' + albumId, {})
     .success(function(data){
-      // for (var album in $scope.albums)
-      //   if ($scope.albums[album].id == albumId)
-      //     delete($scope.albums[album]);
-
-      // $('option').each(function() {
-      //   $scope.defalutModel = '';
-      //   if ($(this)[0].getAttribute('value') == '' || $(this)[0].getAttribute('value') == albumId)
-      //     $(this).remove();
-      // });
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
   $scope.deleteImage = function() {
     $http.delete( basePath + 'api/photos/'+ $scope.currentImage.id, {})
     .success(function(data){
-      $route.reload();
-    })
-    .error(function(data){
-      alert("Credentials invalid");
+      window.location.reload()
+      $('.modal-backdrop.fade.in').hide();
     })
   }
 
@@ -111,7 +97,8 @@ App.controller('galleriesCtrl', function ($scope, $http, $window, $location, $ro
     xmlhttp.send(formdata);
     if (xmlhttp.status == 200)
     {
-      $route.reload();
+      $('.modal-backdrop.fade.in').hide();
+      window.location.reload()
     }
   }
 

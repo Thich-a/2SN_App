@@ -12,8 +12,10 @@
         <hr>
         <div class="row">
           <div class="col-xs-offset-2 col-xs-7">
-            <h4>{{channel.name}}</h4>
+            <h4 ng-click="switchConversation(channel.id)">{{channel.name.split('Private_Channel_')[1]}}</h4>
           </div>
+          <div class="col-xs-1"><i data-toggle="modal" data-target="#edit-existing-channel" ng-click="editChannel(channel.id)" class="glyphicon glyphicon-info-sign"></i></div>
+          <div class="col-xs-1" ng-click="deleteChannel(channel.id)"><i class="glyphicon glyphicon-remove-sign"></i></div>
         </div>
       </div>
     </div>
@@ -23,46 +25,27 @@
 <div class="col-md-6">
 
   <div class="panel panel-default messages-message-board">
-    <div class="panel-heading text-center lead">Beckosaurus Rex</div>
+    <div class="panel-heading text-center lead">{{activeChannel.name.split('Private_Channel_')[1]}}</div>
     <div class="panel-body">
-      <div class="row messages-message-board-message-me">
-        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
-        <div class="col-xs-10">
-          Salut ! comment ca va depuis le temps ?
+      <div ng-repeat="message in messages">
+        <div ng-if="message.sender.id != user.id" class="row messages-message-board-message-other" >
+          <div class="col-xs-10">
+            {{message.contents}}
+          </div>
+          <div class="col-xs-2"><img ng-src="web/uploads/photo/{{message.sender.image_profile}}" class="img-rounded"></div>
         </div>
-      </div><!-- close messages-message-board-message-me -->
-      <hr>
-      <div class="row messages-message-board-message-other">
-        <div class="col-xs-10">
-          pas trop mal et toi ?
+        <div ng-if="message.sender.id == user.id" class="row messages-message-board-message-other" >
+          <div class="col-xs-2"><img ng-src="web/uploads/photo/{{message.sender.image_profile}}" class="img-rounded"></div>
+          <div class="col-xs-10">
+            {{message.contents}}
+          </div>
         </div>
-        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
-      </div><!-- close messages-message-board-message-other -->
-      <hr>
-      <div class="row messages-message-board-message-me">
-        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
-        <div class="col-xs-10">
-          ca va ca va ... une petite partie du coup ?
-        </div>
-      </div><!-- close messages-message-board-message-me -->
-      <hr>
-      <div class="row messages-message-board-message-other">
-        <div class="col-xs-10">
-          attend je vais manger et je reviens.
-        </div>
-        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
-      </div><!-- close messages-message-board-message-other -->
-      <hr>
-      <div class="row messages-message-board-message-other">
-        <div class="col-xs-10">
-          c'est bon je suis pret !
-        </div>
-        <div class="col-xs-2"><img ng-src="webapp/assets/img/anon_user.png" class="img-rounded"></div>
-      </div><!-- close messages-message-board-message-other -->
+        <hr>
+      </div>
     </div>
     <div class="row panel-footer messages-message-board-new">
-      <div class="col-xs-10"><textarea></textarea></div>
-      <div class="col-xs-2"><p><button type="button" class="btn btn-default">SEND</button></p></div>
+      <div class="col-xs-10"><textarea ng-model="channelNewMessage"></textarea></div>
+      <div class="col-xs-2"><p><button type="button" class="btn btn-default" ng-click="sendMessage()">SEND</button></p></div>
     </div>
   </div>
 
@@ -96,10 +79,10 @@
      <div ng-repeat="friend in friends" friendid="{{friend.id}}" draggable>
       <div class="row">
         <div class="col-xs-3 col-xs-offset-1">
-          <img ng-src="/web/uploads/photo/{{friend.image_name}}" class="img-rounded" style="width:100%;">
+          <img ng-src="/web/uploads/photo/{{friend.user.image_profile}}" class="img-rounded" style="width:100%;">
         </div>
         <div class="col-xs-7">
-          <h4 style="margin-top:4px;" ng-click="switchConversation(friend.id)">{{friend.name}}</h4>
+          <h4 style="margin-top:4px;" ng-click="switchConversation(friend.id)">{{friend.user.username}}</h4>
         </div>
       </div>
       <hr>
@@ -135,7 +118,26 @@
         Create channel
       </div>
       <div class="modal-body">
-        Add user ........
+
+        <div class="row">
+          <div  class="col-xs-6">
+            <p>Friends to add to channel :</p>
+            <div class="row" ng-repeat="friend in NewChannelFriends">
+              <div class="col-xs-offset-2 col-xs-6">{{friend.username}}</div>
+              <div class="col-xs-1" ng-click="toggleInArray(friend.username, friend.id, $event)">x</div>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <p>All friends :</p>
+            <div class="AlbumSelector">
+              <select ng-model="selected" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-offset-2 col-xs-8" ng-click="toggleInArray(friend.user.username, friend.user.id)" ng-repeat="friend in selected.friends">{{friend.user.username}}</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" ng-click="createNewChannel()" data-dismiss="modal">Create</button>
@@ -144,4 +146,43 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="edit-existing-channel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header lead text-center">
+        Edit channel
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div  class="col-xs-6">
+            <p>Friends in Channel :</p>
+            <div class="row" ng-repeat="friend in EditChannelFriends">
+              <div class="col-xs-offset-2 col-xs-6">{{friend.username}}</div>
+              <div class="col-xs-1" ng-click="deleteFromCurrentChannel(friend.id)">x</div>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <p>All friends :</p>
+            <div class="AlbumSelector">
+              <select ng-model="selectedFriendGroup" ng-options="friendGroup.name for friendGroup in friendGroups"></select>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-offset-2 col-xs-8" ng-if="checkInList(friend.user.id) == 0" ng-click="AddToCurrentChannel(friend.id)" ng-repeat="friend in selectedFriendGroup.friends" style="cursor:pointer;">{{friend.user.username}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
