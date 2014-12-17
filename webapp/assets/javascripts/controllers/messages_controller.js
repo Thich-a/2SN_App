@@ -29,6 +29,14 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
     alert("Credentials invalid");
   })
 
+  $scope.checkIfGame = function(channelId) {
+    for (var channel in $scope.channels)
+      if ($scope.channels[channel].id == channelId)
+        if (typeof $scope.channels[channel].game_session == 'undefined')
+          return 0;
+    return 1;
+  }
+
 
 
   $scope.switchGroups = function(groupId) {
@@ -110,7 +118,6 @@ App.controller('messagesCtrl', function ($scope, $http, $window, $route, $locati
   $scope.sendMessage = function() {
     $http.post( basePath + 'api/messages/'+$scope.activeChannel.id, {"contents":$scope.channelNewMessage})
     .success(function(data){
-      console.log(data);
       $http.get( basePath + 'api/messages/'+ data.data.id, {})
       .success(function(answer){
         $scope.messages = answer.messages;

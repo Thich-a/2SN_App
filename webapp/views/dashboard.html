@@ -18,15 +18,6 @@
             </div>
             <div class="col-xs-1"><i class="glyphicon glyphicon-remove-sign" ng-click="deleteCharacterSheet(sheet.id)"></i></div>
           </div>
-          <br>
-          <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-              <p class='text-muted'>
-                Current game : <br>
-                {{ sheet.game_session.name }}
-              </p>
-            </div>
-          </div>
           <hr ng-if="!$last">
         </div>
       </div>
@@ -58,13 +49,12 @@
     <div class="panel panel-default standard" style='border-color: #F39C12;'>
       <div class="panel-heading text-center lead game_sessions">Game Sessions</div>
       <div class="panel-body">
-        <div ng-repeat='session in sessions'>
+        <div ng-repeat='game in games'>
           <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-              <a href="#games/{{ session.id }}"><h4 style='margin-top:4px;'>{{ session.name }}<span class='pull-right' ng-show="{{ session.new_logs == true }}"><i class='glyphicon glyphicon-flash'></i></span></h4></a>
-              <p><small><b>Started {{ session.created_at }}</b></small></p>
-              <p><i class='text-muted'>{{ session.last_log }}</i></p>
+            <div class="col-xs-8 col-xs-offset-2">
+              <a href="#games/{{ game.id }}"><h4 style='margin-top:4px;'>{{ game.name }}</h4></a>
             </div>
+            <div class="col-xs-offset-6 col-xs-4"><small><b>By {{ game.master.username }}</b></small></div>
           </div>
           <hr ng-if="!$last">
         </div>

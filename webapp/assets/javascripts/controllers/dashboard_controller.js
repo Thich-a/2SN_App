@@ -3,8 +3,6 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
   $http.get( basePath + 'api/me', {})
   .success(function(data){
     $scope.user = data.user;
-    // $scope.sheets = $scope.user.sheets;
-    // $scope.sessions = $scope.user.games;
 
     // getting user posts
     $http.get( basePath + 'api/blogs/' + $scope.user.id, {})
@@ -21,7 +19,11 @@ App.controller('dashboardCtrl', function ($scope, $http, $window, $location, $ro
     // getting game sessions
     $http.get( basePath + 'api/games/' + $scope.user.id, {})
     .success(function(data){
-      $scope.sheets = data.sheets;
+      $scope.games = [];
+      for (var game in data.listGameSessionMaster)
+        $scope.games.push(data.listGameSessionMaster[game]);
+      for (var game in data.listGameSessionPlayer)
+        $scope.games.push(data.listGameSessionPlayer[game]);
     })
 
     // getting user albums
